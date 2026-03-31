@@ -1,0 +1,182 @@
+---
+const business = [
+  'Zarządzanie zespołami i uprawnieniami',
+  'Raportowanie zgodności (compliance)',
+  'White-label i własna domena',
+  'Onboarding nowych pracowników',
+  'Integracja z HR i SSO',
+  'Dedykowany opiekun konta',
+];
+
+const learners = [
+  'Nauka w swoim tempie, z każdego urządzenia',
+  'Certyfikaty uznawane przez pracodawców',
+  'Interaktywne quizy i zadania praktyczne',
+  'Śledzenie własnych postępów',
+  'Dostęp offline do materiałów',
+  'Społeczność i forum kursantów',
+];
+---
+
+<section class="fbl" id="business">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Dla każdego</span>
+      <h2 class="section-title">Rozwiązanie dopasowane do Ciebie</h2>
+      <p class="section-subtitle">Niezależnie od tego, czy zarządzasz szkoleniami firmowymi, czy uczysz się samodzielnie.</p>
+    </div>
+
+    <div class="fbl__grid">
+      <!-- Business card -->
+      <div class="fbl__card fbl__card--business reveal">
+        <div class="fbl__card-header">
+          <span class="fbl__card-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M9 21V7l6-4v18" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <div>
+            <h3 class="fbl__card-title">Dla firm i organizacji</h3>
+            <p class="fbl__card-sub">Skalowalne szkolenia dla całego zespołu</p>
+          </div>
+        </div>
+        <ul class="fbl__list">
+          {business.map(item => (
+            <li class="fbl__list-item">
+              <svg class="fbl__check" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <a href="#contact" class="fbl__cta fbl__cta--primary">Porozmawiaj z nami →</a>
+      </div>
+
+      <!-- Learners card -->
+      <div class="fbl__card fbl__card--learners reveal reveal-d2">
+        <div class="fbl__card-header">
+          <span class="fbl__card-icon fbl__card-icon--green" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <div>
+            <h3 class="fbl__card-title">Dla uczących się</h3>
+            <p class="fbl__card-sub">Rozwijaj swoje umiejętności we własnym tempie</p>
+          </div>
+        </div>
+        <ul class="fbl__list">
+          {learners.map(item => (
+            <li class="fbl__list-item">
+              <svg class="fbl__check fbl__check--green" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <a href="#signup" class="fbl__cta fbl__cta--outline">Zacznij naukę →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.fbl { background: var(--bg-surface); }
+.fbl__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.fbl__card {
+  border-radius: var(--radius);
+  padding: 36px;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  transition: var(--transition);
+}
+.fbl__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+.fbl__card--business {
+  background: var(--bg-accent-light);
+  border-color: #BFDBFE;
+}
+.fbl__card--learners {
+  background: var(--bg-surface);
+}
+.fbl__card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.fbl__card-icon {
+  width: 52px;
+  height: 52px;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-soft);
+}
+.fbl__card-icon--green { /* inherits base styles */ }
+.fbl__card-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.fbl__card-sub {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.fbl__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+.fbl__list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text-primary);
+}
+.fbl__check { flex-shrink: 0; }
+.fbl__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 24px;
+  border-radius: var(--radius-btn);
+  font-size: 15px;
+  font-weight: 600;
+  transition: var(--transition);
+  text-decoration: none;
+  text-align: center;
+}
+.fbl__cta--primary {
+  background: var(--brand-accent);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(37,99,235,0.25);
+}
+.fbl__cta--primary:hover {
+  background: var(--brand-accent-hover);
+  transform: translateY(-2px);
+}
+.fbl__cta--outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1.5px solid var(--border-subtle);
+}
+.fbl__cta--outline:hover {
+  border-color: var(--brand-accent);
+  color: var(--brand-accent);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .fbl__grid { grid-template-columns: 1fr; }
+  .fbl__card { padding: 28px; }
+}
+</style>
