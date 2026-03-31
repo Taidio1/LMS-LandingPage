@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  lms:
+    build: .
+    container_name: lms-landing-page
+    restart: always
+    ports:
+      # Mapuje port 3000 na zewnątrz do portu 80 wewnątrz kontenera (Nginx)
+      - "3000:80"
