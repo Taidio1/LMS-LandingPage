@@ -1,29 +1,11 @@
 ---
 const items = [
-  {
-    q: 'Jak długo trwa darmowy okres próbny?',
-    a: 'Oferujemy 14-dniowy bezpłatny okres próbny na planie Pro bez podawania karty kredytowej. Po jego zakończeniu możesz wybrać plan lub przejść na bezpłatny Basic.',
-  },
-  {
-    q: 'Czy mogę importować kursy z innych platform?',
-    a: 'Tak — obsługujemy import plików SCORM 1.2 i 2004. Możesz też przenieść materiały wideo i PDF bezpośrednio przez panel administracyjny.',
-  },
-  {
-    q: 'Jakie integracje są dostępne?',
-    a: 'Integrujemy się z popularnymi narzędziami HR (BambooHR, Workday), komunikatorami (Slack, Teams), narzędziami automatyzacji (Zapier, Make) oraz obsługujemy SSO przez SAML i OAuth2.',
-  },
-  {
-    q: 'Czy platforma działa w języku polskim?',
-    a: 'Tak, interfejs platformy jest w pełni dostępny w języku polskim. Obsługujemy również angielski, niemiecki i inne języki — możliwość wybrania przez kursanta.',
-  },
-  {
-    q: 'Jak wygląda wsparcie techniczne?',
-    a: 'Plan Basic obejmuje wsparcie e-mail w dni robocze. Plan Pro dodaje czat na żywo. Plan Enterprise oferuje dedykowanego opiekuna konta i wsparcie 24/7.',
-  },
-  {
-    q: 'Czy mogę używać własnej domeny?',
-    a: 'Tak, od planu Pro wzwyż możesz skonfigurować własną domenę (np. nauka.twojaFirma.pl) i pełne white-labeling — logo, kolory, e-maile z Twojej domeny.',
-  },
+  { q: 'Jak długo trwa darmowy okres próbny?', a: 'Oferujemy 14-dniowy bezpłatny okres próbny na planie Pro bez podawania karty kredytowej. Po jego zakończeniu możesz wybrać plan lub przejść na bezpłatny Basic.' },
+  { q: 'Czy mogę importować kursy z innych platform?', a: 'Tak — obsługujemy import plików SCORM 1.2 i 2004. Możesz też przenieść materiały wideo i PDF bezpośrednio przez panel administracyjny.' },
+  { q: 'Jakie integracje są dostępne?', a: 'Integrujemy się z popularnymi narzędziami HR (BambooHR, Workday), komunikatorami (Slack, Teams), narzędziami automatyzacji (Zapier, Make) oraz obsługujemy SSO przez SAML i OAuth2.' },
+  { q: 'Czy platforma działa w języku polskim?', a: 'Tak, interfejs platformy jest w pełni dostępny w języku polskim. Obsługujemy również angielski, niemiecki i inne języki — możliwość wybrania przez kursanta.' },
+  { q: 'Jak wygląda wsparcie techniczne?', a: 'Plan Basic obejmuje wsparcie e-mail w dni robocze. Plan Pro dodaje czat na żywo. Plan Enterprise oferuje dedykowanego opiekuna konta i wsparcie 24/7.' },
+  { q: 'Czy mogę używać własnej domeny?', a: 'Tak, od planu Pro wzwyż możesz skonfigurować własną domenę (np. nauka.twojaFirma.pl) i pełne white-labeling — logo, kolory, e-maile z Twojej domeny.' },
 ];
 ---
 
@@ -33,7 +15,6 @@ const items = [
       <span class="section-label">FAQ</span>
       <h2 class="section-title">Najczęstsze pytania</h2>
     </div>
-
     <div class="faq__list reveal" role="list">
       {items.map((item, i) => (
         <div class="faq__item" role="listitem">
@@ -44,14 +25,11 @@ const items = [
             id={`faq-btn-${i}`}
           >
             {item.q}
-            <span class="faq__icon" aria-hidden="true">+</span>
+            <span class="faq__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
           </button>
-          <div
-            class={`faq__answer${i === 0 ? ' open' : ''}`}
-            id={`faq-answer-${i}`}
-            role="region"
-            aria-labelledby={`faq-btn-${i}`}
-          >
+          <div class={`faq__answer${i === 0 ? ' open' : ''}`} id={`faq-answer-${i}`} role="region" aria-labelledby={`faq-btn-${i}`}>
             <p>{item.a}</p>
           </div>
         </div>
@@ -61,14 +39,9 @@ const items = [
 </section>
 
 <style>
-.faq { background: var(--bg-primary); }
-.faq__list {
-  max-width: 720px;
-  margin: 0 auto;
-}
-.faq__item {
-  border-bottom: 1px solid var(--border-subtle);
-}
+.faq { background: var(--bg-surface); }
+.faq__list { max-width: 720px; margin: 0 auto; }
+.faq__item { border-bottom: 1px solid var(--border-subtle); }
 .faq__item:first-child { border-top: 1px solid var(--border-subtle); }
 .faq__question {
   width: 100%;
@@ -76,7 +49,7 @@ const items = [
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 20px 0;
+  padding: 22px 0;
   font-size: 16px;
   font-weight: 600;
   color: var(--text-primary);
@@ -87,28 +60,26 @@ const items = [
   transition: color 0.2s;
 }
 .faq__question:hover { color: var(--brand-accent); }
-.faq__question.open { color: var(--brand-accent); }
+.faq__question.open {
+  background: var(--gradient-brand-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 .faq__icon {
-  font-size: 22px;
-  font-weight: 400;
-  color: var(--text-secondary);
   flex-shrink: 0;
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-  line-height: 1;
-}
-.faq__question.open .faq__icon { transform: rotate(45deg); }
-.faq__answer {
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
-}
-.faq__answer.open { max-height: 500px; }
-.faq__answer p {
-  padding-bottom: 20px;
-  font-size: 15px;
   color: var(--text-secondary);
-  line-height: 1.75;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  display: flex;
+  align-items: center;
+  /* prevent gradient from clipping icon */
+  -webkit-text-fill-color: initial;
+  background: none;
 }
+.faq__question.open .faq__icon { transform: rotate(180deg); color: var(--brand-accent); }
+.faq__answer { overflow: hidden; max-height: 0; transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1); }
+.faq__answer.open { max-height: 500px; }
+.faq__answer p { padding-bottom: 20px; font-size: 15px; color: var(--text-secondary); line-height: 1.75; }
 </style>
 
 <script>
@@ -117,20 +88,9 @@ document.querySelectorAll<HTMLButtonElement>('.faq__question').forEach(btn => {
     const isOpen = btn.classList.contains('open');
     const answerId = btn.getAttribute('aria-controls');
     const answer = answerId ? document.getElementById(answerId) : null;
-
-    // Close all
-    document.querySelectorAll('.faq__question').forEach(b => {
-      b.classList.remove('open');
-      b.setAttribute('aria-expanded', 'false');
-    });
+    document.querySelectorAll('.faq__question').forEach(b => { b.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); });
     document.querySelectorAll('.faq__answer').forEach(a => a.classList.remove('open'));
-
-    // Open clicked (if it was closed)
-    if (!isOpen && answer) {
-      btn.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-      answer.classList.add('open');
-    }
+    if (!isOpen && answer) { btn.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); answer.classList.add('open'); }
   });
 });
 </script>

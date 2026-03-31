@@ -4,16 +4,21 @@ import Button from '../ui/Button.astro';
 
 <header class="navbar" id="navbar">
   <div class="container navbar__inner">
-    <!-- Logo -->
-    <a href="/" class="navbar__logo" aria-label="[Nazwa Platformy] — Strona główna">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="8" fill="#2563EB"/>
-        <path d="M8 22L16 10l8 12H8z" fill="white"/>
+    <a href="/" class="navbar__logo" aria-label="Ascent — Strona główna">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <defs>
+          <linearGradient id="nav-logo-g" x1="0" y1="32" x2="32" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#2563EB"/>
+            <stop offset="100%" stop-color="#7C3AED"/>
+          </linearGradient>
+        </defs>
+        <rect width="32" height="32" rx="8" fill="url(#nav-logo-g)"/>
+        <path d="M8 22l8-12 8 12" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M8 17l8-12 8 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
       </svg>
-      <span class="navbar__brand">[Nazwa Platformy]</span>
+      <span class="navbar__brand">Ascent</span>
     </a>
 
-    <!-- Desktop nav -->
     <nav class="navbar__nav" aria-label="Główna nawigacja">
       <a href="#features" class="navbar__link">Funkcje</a>
       <a href="#pricing" class="navbar__link">Cennik</a>
@@ -21,30 +26,35 @@ import Button from '../ui/Button.astro';
       <a href="#faq" class="navbar__link">FAQ</a>
     </nav>
 
-    <!-- Desktop CTAs -->
     <div class="navbar__actions">
+      <a href="/compare-tool/index.html?left=https://ascent.tojest.dev&right=https://ascent2.tojest.dev" target="_blank" class="navbar__compare-btn" aria-label="Porównaj wersje">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        Porównaj
+      </a>
       <Button variant="outline" href="#login">Zaloguj się</Button>
-      <Button variant="primary" href="#signup">Rozpocznij za darmo</Button>
+      <Button variant="gradient" href="#signup">Rozpocznij za darmo</Button>
     </div>
 
-    <!-- Hamburger -->
     <button class="navbar__hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<!-- Mobile drawer -->
 <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-label="Menu mobilne">
   <nav class="mobile-drawer__nav">
     <a href="#features" class="mobile-drawer__link">Funkcje</a>
     <a href="#pricing" class="mobile-drawer__link">Cennik</a>
     <a href="#business" class="mobile-drawer__link">Dla firm</a>
     <a href="#faq" class="mobile-drawer__link">FAQ</a>
+    <a href="/compare-tool/index.html?left=https://ascent.tojest.dev&right=https://ascent2.tojest.dev" target="_blank" class="mobile-drawer__link">🔍 Porównaj wersje</a>
   </nav>
   <div class="mobile-drawer__actions">
     <Button variant="outline" href="#login" class="w-full">Zaloguj się</Button>
-    <Button variant="primary" href="#signup" class="w-full">Rozpocznij za darmo</Button>
+    <Button variant="gradient" href="#signup" class="w-full">Rozpocznij za darmo</Button>
   </div>
 </div>
 <div class="drawer-overlay" id="drawerOverlay"></div>
@@ -54,14 +64,16 @@ import Button from '../ui/Button.astro';
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--bg-surface);
-  border-bottom: 1px solid var(--border-subtle);
-  transition: box-shadow 0.3s ease;
+  background: rgba(248,250,255,0);
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .navbar.scrolled {
-  box-shadow: var(--shadow-soft);
-  backdrop-filter: blur(12px);
-  background: rgba(255,255,255,0.9);
+  background: rgba(248,250,255,0.88);
+  border-bottom-color: var(--border-subtle);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 24px rgba(79,70,229,0.06);
 }
 .navbar__inner {
   display: flex;
@@ -74,17 +86,17 @@ import Button from '../ui/Button.astro';
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
-  text-decoration: none;
 }
 .navbar__brand {
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 800;
   color: var(--text-primary);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 .navbar__nav {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
   flex: 1;
 }
@@ -95,17 +107,48 @@ import Button from '../ui/Button.astro';
   color: var(--text-secondary);
   border-radius: 6px;
   transition: var(--transition);
-  text-decoration: none;
+  position: relative;
 }
-.navbar__link:hover {
-  color: var(--text-primary);
-  background: var(--bg-primary);
+.navbar__link:hover { color: var(--text-primary); }
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background: var(--gradient-brand);
+  border-radius: 999px;
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
 }
+.navbar__link:hover::after { transform: scaleX(1); }
 .navbar__actions {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
+}
+.navbar__compare-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.navbar__compare-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--color-primary, #2563EB);
+  background: rgba(37,99,235,0.06);
 }
 .navbar__hamburger {
   display: none;
@@ -113,9 +156,6 @@ import Button from '../ui/Button.astro';
   gap: 5px;
   padding: 8px;
   margin-left: auto;
-  background: none;
-  border: none;
-  cursor: pointer;
 }
 .navbar__hamburger span {
   display: block;
@@ -128,8 +168,6 @@ import Button from '../ui/Button.astro';
 .navbar__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .navbar__hamburger.open span:nth-child(2) { opacity: 0; }
 .navbar__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* Mobile drawer */
 .mobile-drawer {
   position: fixed;
   top: 68px;
@@ -139,11 +177,17 @@ import Button from '../ui/Button.astro';
   border-bottom: 1px solid var(--border-subtle);
   padding: 24px;
   z-index: 99;
-  transform: translateY(-110%);
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  transform: translateY(-150%);
+  visibility: hidden;
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s, visibility 0.3s;
   box-shadow: var(--shadow-hover);
 }
-.mobile-drawer.open { transform: translateY(0); }
+.mobile-drawer.open {
+  transform: translateY(0);
+  visibility: visible;
+  opacity: 1;
+}
 .mobile-drawer__nav {
   display: flex;
   flex-direction: column;
@@ -159,11 +203,7 @@ import Button from '../ui/Button.astro';
   transition: var(--transition);
 }
 .mobile-drawer__link:hover { background: var(--bg-primary); }
-.mobile-drawer__actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+.mobile-drawer__actions { display: flex; flex-direction: column; gap: 10px; }
 .drawer-overlay {
   display: none;
   position: fixed;
@@ -173,7 +213,6 @@ import Button from '../ui/Button.astro';
   backdrop-filter: blur(2px);
 }
 .drawer-overlay.open { display: block; }
-
 @media (max-width: 768px) {
   .navbar__nav, .navbar__actions { display: none; }
   .navbar__hamburger { display: flex; }
@@ -186,12 +225,10 @@ const hamburger = document.getElementById('hamburger');
 const drawer = document.getElementById('mobileDrawer');
 const overlay = document.getElementById('drawerOverlay');
 
-// Scrolled state
 window.addEventListener('scroll', () => {
   navbar?.classList.toggle('scrolled', window.scrollY > 10);
 }, { passive: true });
 
-// Mobile drawer toggle
 function toggleDrawer(open: boolean) {
   hamburger?.classList.toggle('open', open);
   drawer?.classList.toggle('open', open);
@@ -201,13 +238,9 @@ function toggleDrawer(open: boolean) {
 }
 
 hamburger?.addEventListener('click', () => {
-  const isOpen = drawer?.classList.contains('open') ?? false;
-  toggleDrawer(!isOpen);
+  toggleDrawer(!(drawer?.classList.contains('open') ?? false));
 });
-
 overlay?.addEventListener('click', () => toggleDrawer(false));
-
-// Close drawer on nav link click
 drawer?.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => toggleDrawer(false));
 });

@@ -1,19 +1,33 @@
 /* ── Variables ───────────────────────────────── */
 :root {
-  --bg-primary:         #FAFAFB;
-  --bg-surface:         #FFFFFF;
-  --bg-accent-light:    #EFF6FF;
-  --brand-accent:       #2563EB;
-  --brand-accent-hover: #1D4ED8;
-  --text-primary:       #0F172A;
-  --text-secondary:     #64748B;
-  --border-subtle:      #E2E8F0;
-  --shadow-soft:        0 10px 30px -5px rgba(15,23,42,0.04);
-  --shadow-hover:       0 20px 40px -10px rgba(15,23,42,0.08);
-  --transition:         all 0.3s cubic-bezier(0.4,0,0.2,1);
-  --radius:             16px;
-  --radius-btn:         8px;
-  --max-w:              1200px;
+  --gradient-start:      #7C3AED;
+  --gradient-mid:        #4F46E5;
+  --gradient-end:        #2563EB;
+  --gradient-brand:      linear-gradient(135deg, #7C3AED 0%, #4F46E5 50%, #2563EB 100%);
+  --gradient-brand-text: linear-gradient(135deg, #7C3AED, #2563EB);
+
+  --bg-primary:          #F8FAFF;
+  --bg-surface:          #FFFFFF;
+  --bg-accent-light:     #EFF6FF;
+  --bg-tinted:           #F0F4FF;
+
+  --brand-accent:        #4F46E5;
+  --brand-accent-hover:  #4338CA;
+
+  --text-primary:        #0F172A;
+  --text-secondary:      #64748B;
+
+  --border-subtle:       #E2E8F0;
+  --border-brand:        rgba(99,102,241,0.3);
+
+  --shadow-soft:         0 10px 30px -5px rgba(79,70,229,0.08);
+  --shadow-hover:        0 20px 40px -10px rgba(79,70,229,0.15);
+  --shadow-glow:         0 0 40px rgba(124,58,237,0.2);
+
+  --transition:          all 0.3s cubic-bezier(0.4,0,0.2,1);
+  --radius:              16px;
+  --radius-btn:          10px;
+  --max-w:               1200px;
 }
 
 /* ── Reset ───────────────────────────────────── */
@@ -38,9 +52,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin: 0 auto;
   padding: 0 24px;
 }
-
 section { padding: 96px 0; }
 @media (max-width: 768px) { section { padding: 64px 0; } }
+
+/* ── Gradient Text ───────────────────────────── */
+.gradient-text {
+  background: var(--gradient-brand-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 /* ── Scroll Reveal ───────────────────────────── */
 .reveal {
@@ -65,27 +86,21 @@ section { padding: 96px 0; }
   color: var(--brand-accent);
   margin-bottom: 12px;
 }
-
 .section-title {
-  font-size: clamp(32px, 5vw, 48px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
   color: var(--text-primary);
   margin-bottom: 16px;
 }
-
 .section-subtitle {
   font-size: 18px;
   color: var(--text-secondary);
   max-width: 560px;
 }
-
 .section-header {
   text-align: center;
   margin-bottom: 64px;
 }
-
-.section-header .section-subtitle {
-  margin: 0 auto;
-}
+.section-header .section-subtitle { margin: 0 auto; }

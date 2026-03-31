@@ -4,103 +4,117 @@ import Badge from '../ui/Badge.astro';
 ---
 
 <section class="hero">
+  <div class="hero__blob hero__blob--1" aria-hidden="true"></div>
+  <div class="hero__blob hero__blob--2" aria-hidden="true"></div>
+
   <div class="container hero__inner">
-    <!-- Left: text -->
     <div class="hero__content">
       <Badge class="reveal">✦ Platforma edukacyjna dla firm i nie tylko</Badge>
       <h1 class="hero__title reveal reveal-d1">
         Ucz szybciej.<br />
-        Rośnij pewniej.
+        <span class="gradient-text">Rośnij pewniej.</span>
       </h1>
       <p class="hero__subtitle reveal reveal-d2">
         Nowoczesny LMS, który łączy tworzenie kursów, zarządzanie zespołem i analitykę postępów w jednym miejscu. Bez zbędnej złożoności.
       </p>
       <div class="hero__cta reveal reveal-d3">
-        <Button variant="primary" href="#signup">Wypróbuj za darmo</Button>
+        <Button variant="gradient" href="#signup">Wypróbuj za darmo</Button>
         <Button variant="ghost" href="#demo">Zobacz demo →</Button>
       </div>
       <div class="hero__trust reveal reveal-d4">
         <div class="hero__avatars" aria-hidden="true">
           <span class="avatar" style="background:#7C3AED;">AK</span>
-          <span class="avatar" style="background:#0891B2;">MB</span>
+          <span class="avatar" style="background:#4F46E5;">MB</span>
           <span class="avatar" style="background:#059669;">PW</span>
-          <span class="avatar" style="background:#DC2626;">KN</span>
+          <span class="avatar" style="background:#0891B2;">KN</span>
         </div>
-        <span>Dołącz do <strong>1 200+ firm</strong>, które już uczą z [Nazwa]</span>
+        <span>Dołącz do <strong>1 200+ firm</strong>, które już uczą z Ascent</span>
       </div>
     </div>
 
-    <!-- Right: dashboard mockup -->
     <div class="hero__mockup reveal reveal-d2">
-      <!-- Floating badges -->
       <div class="hero__float hero__float--1" aria-hidden="true">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="#059669" stroke-width="2"/></svg>
         Kurs ukończony!
       </div>
       <div class="hero__float hero__float--2" aria-hidden="true">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 17l4-8 4 4 4-6 4 10" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 17l4-8 4 4 4-6 4 10" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         +24% wydajność
       </div>
 
-      <!-- Browser chrome -->
       <div class="browser">
         <div class="browser__bar">
           <span class="browser__dot" style="background:#FF5F57;"></span>
           <span class="browser__dot" style="background:#FEBC2E;"></span>
           <span class="browser__dot" style="background:#28C840;"></span>
-          <div class="browser__url">app.nazwa-platformy.pl/dashboard</div>
+          <div class="browser__url">app.ascent.pl/dashboard</div>
         </div>
         <div class="browser__content">
-          <!-- Dashboard mockup UI -->
           <div class="dash">
             <div class="dash__sidebar">
-              <div class="dash__menu-item dash__menu-item--active"></div>
-              <div class="dash__menu-item"></div>
-              <div class="dash__menu-item"></div>
-              <div class="dash__menu-item"></div>
-              <div class="dash__menu-item"></div>
+              <div class="dash__logo-mark"></div>
+              <div class="dash__menu-item dash__menu-item--active">
+                <div class="dash__menu-icon dash__menu-icon--active"></div>
+                <span>Dashboard</span>
+              </div>
+              <div class="dash__menu-item">
+                <div class="dash__menu-icon"></div>
+                <span>Kursy</span>
+              </div>
+              <div class="dash__menu-item">
+                <div class="dash__menu-icon"></div>
+                <span>Zespół</span>
+              </div>
+              <div class="dash__menu-item">
+                <div class="dash__menu-icon"></div>
+                <span>Raporty</span>
+              </div>
             </div>
             <div class="dash__main">
               <div class="dash__header">
-                <div class="dash__title-block"></div>
-                <div class="dash__badge-block"></div>
+                <div>
+                  <div class="dash__greeting">Dzień dobry, Anna 👋</div>
+                  <div class="dash__date">Poniedziałek, 31 marca 2026</div>
+                </div>
+                <div class="dash__avatar-small">AN</div>
               </div>
               <div class="dash__stats">
-                <div class="dash__stat">
-                  <div class="dash__stat-num" style="background:#EFF6FF;"></div>
-                  <div class="dash__stat-label"></div>
+                <div class="dash__stat dash__stat--blue">
+                  <div class="dash__stat-num">847</div>
+                  <div class="dash__stat-label">Kursantów</div>
                 </div>
-                <div class="dash__stat">
-                  <div class="dash__stat-num" style="background:#F0FDF4;"></div>
-                  <div class="dash__stat-label"></div>
+                <div class="dash__stat dash__stat--green">
+                  <div class="dash__stat-num">23</div>
+                  <div class="dash__stat-label">Kursy</div>
                 </div>
-                <div class="dash__stat">
-                  <div class="dash__stat-num" style="background:#FFF7ED;"></div>
-                  <div class="dash__stat-label"></div>
+                <div class="dash__stat dash__stat--purple">
+                  <div class="dash__stat-num">94%</div>
+                  <div class="dash__stat-label">Ukończeń</div>
                 </div>
               </div>
+              <div class="dash__section-title">Aktywne kursy</div>
               <div class="dash__progress-section">
                 <div class="dash__row">
-                  <div class="dash__row-icon" style="background:#EFF6FF;"></div>
+                  <div class="dash__row-icon" style="background:#EEF2FF;"></div>
                   <div class="dash__row-body">
-                    <div class="dash__row-title"></div>
-                    <div class="dash__progress-bar"><div class="dash__progress-fill" style="width:72%;background:#2563EB;"></div></div>
+                    <div class="dash__row-name">Onboarding 2024</div>
+                    <div class="dash__progress-bar"><div class="dash__progress-fill" style="width:72%;background:linear-gradient(90deg,#4F46E5,#2563EB);"></div></div>
                   </div>
                   <span class="dash__pct">72%</span>
                 </div>
                 <div class="dash__row">
                   <div class="dash__row-icon" style="background:#F0FDF4;"></div>
                   <div class="dash__row-body">
-                    <div class="dash__row-title"></div>
-                    <div class="dash__progress-bar"><div class="dash__progress-fill" style="width:45%;background:#059669;"></div></div>
+                    <div class="dash__row-name">Excel dla HR</div>
+                    <div class="dash__progress-bar"><div class="dash__progress-fill" style="width:45%;background:linear-gradient(90deg,#059669,#10B981);"></div></div>
                   </div>
                   <span class="dash__pct">45%</span>
                 </div>
                 <div class="dash__row">
-                  <div class="dash__row-icon" style="background:#FFF7ED;"></div>
+                  <div class="dash__row-icon" style="background:#FFFBEB;"></div>
                   <div class="dash__row-body">
-                    <div class="dash__row-title"></div>
-                    <div class="dash__progress-bar"><div class="dash__progress-fill" style="width:89%;background:#F59E0B;"></div></div>
+                    <div class="dash__row-name">Compliance Q1</div>
+                    <div class="dash__progress-bar"><div class="dash__progress-fill" style="width:89%;background:linear-gradient(90deg,#D97706,#F59E0B);"></div></div>
                   </div>
                   <span class="dash__pct">89%</span>
                 </div>
@@ -120,29 +134,40 @@ import Badge from '../ui/Badge.astro';
   overflow: hidden;
   position: relative;
 }
-.hero::before {
-  content: '';
+.hero__blob {
   position: absolute;
-  right: -100px;
-  top: -100px;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 65%);
+  border-radius: 50%;
   pointer-events: none;
+  filter: blur(80px);
+}
+.hero__blob--1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(124,58,237,0.14) 0%, transparent 70%);
+  top: -150px;
+  left: -150px;
+}
+.hero__blob--2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
+  bottom: -100px;
+  right: -100px;
 }
 .hero__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 .hero__content { max-width: 560px; }
-
 .hero__title {
-  font-size: clamp(44px, 6vw, 72px);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.07;
+  font-size: clamp(48px, 6.5vw, 80px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
   color: var(--text-primary);
   margin: 16px 0 20px;
 }
@@ -153,12 +178,7 @@ import Badge from '../ui/Badge.astro';
   margin-bottom: 36px;
   max-width: 480px;
 }
-.hero__cta {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 32px;
-}
+.hero__cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
 .hero__trust {
   display: flex;
   align-items: center;
@@ -167,10 +187,7 @@ import Badge from '../ui/Badge.astro';
   color: var(--text-secondary);
 }
 .hero__trust strong { color: var(--text-primary); }
-.hero__avatars {
-  display: flex;
-  margin-right: 4px;
-}
+.hero__avatars { display: flex; margin-right: 4px; }
 .avatar {
   width: 32px;
   height: 32px;
@@ -185,16 +202,12 @@ import Badge from '../ui/Badge.astro';
   margin-right: -8px;
   flex-shrink: 0;
 }
-
-/* Mockup */
-.hero__mockup {
-  position: relative;
-}
+.hero__mockup { position: relative; }
 .browser {
   background: var(--bg-surface);
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-hover), 0 0 0 1px rgba(15,23,42,0.04);
+  box-shadow: var(--shadow-hover), 0 0 0 1px rgba(79,70,229,0.06);
   overflow: hidden;
   transform: rotate(-1.5deg);
 }
@@ -206,12 +219,7 @@ import Badge from '../ui/Badge.astro';
   background: #F1F5F9;
   border-bottom: 1px solid var(--border-subtle);
 }
-.browser__dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
+.browser__dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 .browser__url {
   flex: 1;
   height: 20px;
@@ -224,105 +232,102 @@ import Badge from '../ui/Badge.astro';
   align-items: center;
   padding: 0 8px;
 }
-.browser__content { padding: 0; }
-
-/* Dashboard layout */
-.dash { display: flex; height: 320px; }
+.dash { display: flex; min-height: 340px; }
 .dash__sidebar {
-  width: 48px;
-  background: #F8FAFC;
+  width: 100px;
+  background: #F8FAFF;
   border-right: 1px solid var(--border-subtle);
   padding: 12px 8px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
+}
+.dash__logo-mark {
+  width: 24px;
+  height: 24px;
+  background: var(--gradient-brand);
+  border-radius: 6px;
+  margin: 4px 4px 12px;
 }
 .dash__menu-item {
-  height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
   border-radius: 6px;
-  background: var(--border-subtle);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-secondary);
 }
-.dash__menu-item--active { background: #BFDBFE; }
-.dash__main { flex: 1; padding: 16px; overflow: hidden; }
+.dash__menu-item--active { background: #EEF2FF; color: #4F46E5; font-weight: 600; }
+.dash__menu-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: var(--border-subtle);
+  flex-shrink: 0;
+}
+.dash__menu-icon--active { background: #4F46E5; }
+.dash__main { flex: 1; padding: 14px; overflow: hidden; }
 .dash__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
-.dash__title-block {
-  height: 16px;
-  width: 120px;
-  background: var(--text-primary);
-  border-radius: 4px;
-  opacity: 0.8;
-}
-.dash__badge-block {
-  height: 22px;
-  width: 60px;
-  background: #BFDBFE;
-  border-radius: 999px;
+.dash__greeting { font-size: 12px; font-weight: 700; color: var(--text-primary); }
+.dash__date { font-size: 10px; color: var(--text-secondary); margin-top: 2px; }
+.dash__avatar-small {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .dash__stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 6px;
+  margin-bottom: 12px;
 }
 .dash__stat {
-  padding: 10px;
+  padding: 8px;
   border-radius: 8px;
   border: 1px solid var(--border-subtle);
-  background: var(--bg-surface);
 }
+.dash__stat--blue { background: #EEF2FF; }
+.dash__stat--green { background: #F0FDF4; }
+.dash__stat--purple { background: #F5F3FF; }
 .dash__stat-num {
-  height: 20px;
-  border-radius: 4px;
-  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 2px;
 }
-.dash__stat-label {
-  height: 8px;
-  background: var(--border-subtle);
-  border-radius: 4px;
-  width: 70%;
-}
-.dash__progress-section { display: flex; flex-direction: column; gap: 10px; }
-.dash__row { display: flex; align-items: center; gap: 10px; }
-.dash__row-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  flex-shrink: 0;
-}
-.dash__row-body { flex: 1; }
-.dash__row-title {
-  height: 8px;
-  background: var(--border-subtle);
-  border-radius: 4px;
-  margin-bottom: 6px;
-  width: 60%;
-}
-.dash__progress-bar {
-  height: 6px;
-  background: #F1F5F9;
-  border-radius: 999px;
-  overflow: hidden;
-}
-.dash__progress-fill {
-  height: 100%;
-  border-radius: 999px;
-  transition: width 1s ease;
-}
-.dash__pct {
-  font-size: 11px;
-  font-weight: 600;
+.dash__stat-label { font-size: 9px; color: var(--text-secondary); font-weight: 500; }
+.dash__section-title {
+  font-size: 10px;
+  font-weight: 700;
   color: var(--text-secondary);
-  flex-shrink: 0;
-  width: 30px;
-  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
 }
-
-/* Floating badges */
+.dash__progress-section { display: flex; flex-direction: column; gap: 8px; }
+.dash__row { display: flex; align-items: center; gap: 8px; }
+.dash__row-icon { width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0; }
+.dash__row-body { flex: 1; }
+.dash__row-name { font-size: 10px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+.dash__progress-bar { height: 5px; background: #F1F5F9; border-radius: 999px; overflow: hidden; }
+.dash__progress-fill { height: 100%; border-radius: 999px; }
+.dash__pct { font-size: 10px; font-weight: 700; color: var(--text-secondary); flex-shrink: 0; width: 26px; text-align: right; }
 .hero__float {
   position: absolute;
   display: flex;
@@ -330,32 +335,22 @@ import Badge from '../ui/Badge.astro';
   gap: 8px;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 999px;
-  padding: 8px 14px;
+  border-radius: 12px;
+  padding: 10px 16px;
   font-size: 13px;
   font-weight: 600;
   color: var(--text-primary);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-hover);
   white-space: nowrap;
   z-index: 2;
   animation: float 3s ease-in-out infinite;
 }
-.hero__float--1 {
-  top: -16px;
-  right: -16px;
-  animation-delay: 0s;
-}
-.hero__float--2 {
-  bottom: 40px;
-  left: -24px;
-  animation-delay: 1.5s;
-}
-
+.hero__float--1 { top: -18px; right: -18px; animation-delay: 0s; }
+.hero__float--2 { bottom: 48px; left: -28px; animation-delay: 1.5s; }
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
-
 @media (max-width: 1024px) {
   .hero__inner { grid-template-columns: 1fr; gap: 48px; }
   .hero__content { max-width: 100%; }
@@ -365,5 +360,7 @@ import Badge from '../ui/Badge.astro';
   .hero { padding: 60px 0 72px; }
   .hero__cta { flex-direction: column; }
   .hero__float--1, .hero__float--2 { display: none; }
+  .dash__sidebar { width: 70px; }
+  .dash__menu-item span { display: none; }
 }
 </style>

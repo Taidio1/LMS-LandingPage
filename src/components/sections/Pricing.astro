@@ -1,13 +1,9 @@
 ---
 const plans = [
   {
-    name: 'Basic',
-    desc: 'Dla małych zespołów i indywidualnych twórców',
-    priceMonthly: 49,
-    priceYearly: 39,
-    cta: 'Zacznij za darmo',
-    ctaHref: '#signup',
-    featured: false,
+    name: 'Basic', desc: 'Dla małych zespołów i indywidualnych twórców',
+    priceMonthly: 49, priceYearly: 39,
+    cta: 'Zacznij za darmo', ctaHref: '#signup', featured: false,
     features: [
       { label: 'Do 25 użytkowników', included: true },
       { label: '10 kursów', included: true },
@@ -19,13 +15,9 @@ const plans = [
     ],
   },
   {
-    name: 'Pro',
-    desc: 'Dla rosnących firm z pełnymi potrzebami szkoleniowymi',
-    priceMonthly: 149,
-    priceYearly: 119,
-    cta: 'Wybierz Pro',
-    ctaHref: '#signup-pro',
-    featured: true,
+    name: 'Pro', desc: 'Dla rosnących firm z pełnymi potrzebami szkoleniowymi',
+    priceMonthly: 149, priceYearly: 119,
+    cta: 'Wybierz Pro', ctaHref: '#signup-pro', featured: true,
     features: [
       { label: 'Do 250 użytkowników', included: true },
       { label: 'Nieograniczone kursy', included: true },
@@ -37,13 +29,9 @@ const plans = [
     ],
   },
   {
-    name: 'Enterprise',
-    desc: 'Dla dużych organizacji z niestandardowymi wymaganiami',
-    priceMonthly: null,
-    priceYearly: null,
-    cta: 'Zapytaj o ofertę',
-    ctaHref: '#contact',
-    featured: false,
+    name: 'Enterprise', desc: 'Dla dużych organizacji z niestandardowymi wymaganiami',
+    priceMonthly: null, priceYearly: null,
+    cta: 'Zapytaj o ofertę', ctaHref: '#contact', featured: false,
     features: [
       { label: 'Nieograniczeni użytkownicy', included: true },
       { label: 'Nieograniczone kursy', included: true },
@@ -64,20 +52,13 @@ const plans = [
       <h2 class="section-title">Przejrzyste ceny</h2>
       <p class="section-subtitle">Zacznij za darmo. Skaluj kiedy jesteś gotowy.</p>
     </div>
-
-    <!-- Toggle -->
     <div class="pricing__toggle reveal" id="pricingToggleWrap">
       <span class="pricing__toggle-label">Miesięcznie</span>
       <button class="pricing__toggle-btn" id="pricingToggle" role="switch" aria-checked="false" aria-label="Przełącz rozliczenie roczne">
         <span class="pricing__toggle-thumb"></span>
       </button>
-      <span class="pricing__toggle-label">
-        Rocznie
-        <span class="pricing__save-badge">Oszczędź 20%</span>
-      </span>
+      <span class="pricing__toggle-label">Rocznie <span class="pricing__save-badge">Oszczędź 20%</span></span>
     </div>
-
-    <!-- Plans grid -->
     <div class="pricing__grid reveal">
       {plans.map(plan => (
         <div class={`pricing__card${plan.featured ? ' pricing__card--featured' : ''}`}>
@@ -88,25 +69,21 @@ const plans = [
             {plan.priceMonthly !== null ? (
               <>
                 <span class="pricing__currency">zł</span>
-                <span class="pricing__amount" data-monthly={plan.priceMonthly} data-yearly={plan.priceYearly}>
-                  {plan.priceMonthly}
-                </span>
+                <span class="pricing__amount" data-monthly={plan.priceMonthly} data-yearly={plan.priceYearly}>{plan.priceMonthly}</span>
                 <span class="pricing__period">/miesiąc</span>
               </>
             ) : (
               <span class="pricing__custom">Skontaktuj się</span>
             )}
           </div>
-          <a href={plan.ctaHref} class={`pricing__cta${plan.featured ? ' pricing__cta--primary' : ' pricing__cta--outline'}`}>
-            {plan.cta}
-          </a>
+          <a href={plan.ctaHref} class={`pricing__cta${plan.featured ? ' pricing__cta--white' : ' pricing__cta--outline'}`}>{plan.cta}</a>
           <ul class="pricing__features">
             {plan.features.map(f => (
               <li class={`pricing__feature${f.included ? '' : ' pricing__feature--disabled'}`}>
                 {f.included ? (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke={plan.featured ? 'rgba(255,255,255,0.9)' : '#4F46E5'} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 ) : (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke={plan.featured ? 'rgba(255,255,255,0.3)' : '#CBD5E1'} stroke-width="2" stroke-linecap="round"/></svg>
                 )}
                 {f.label}
               </li>
@@ -120,177 +97,43 @@ const plans = [
 
 <style>
 .pricing { background: var(--bg-surface); }
-
-.pricing__toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 48px;
-}
-.pricing__toggle-label {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.pricing__save-badge {
-  background: #DCFCE7;
-  color: #166534;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 999px;
-}
-.pricing__toggle-btn {
-  width: 48px;
-  height: 26px;
-  background: var(--border-subtle);
-  border-radius: 999px;
-  position: relative;
-  transition: background 0.3s ease;
-  flex-shrink: 0;
-}
-.pricing__toggle-btn[aria-checked="true"] { background: var(--brand-accent); }
-.pricing__toggle-thumb {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 20px;
-  height: 20px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-}
-.pricing__toggle-btn[aria-checked="true"] .pricing__toggle-thumb {
-  transform: translateX(22px);
-}
-
-.pricing__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  align-items: start;
-}
-.pricing__card {
-  background: var(--bg-primary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius);
-  padding: 32px;
-  position: relative;
-  transition: var(--transition);
-}
-.pricing__card:hover { box-shadow: var(--shadow-hover); }
-.pricing__card--featured {
-  background: var(--bg-surface);
-  border: 2px solid var(--brand-accent);
-  transform: scale(1.03);
-  box-shadow: var(--shadow-hover);
-}
-.pricing__badge {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--brand-accent);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 14px;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-.pricing__plan-name {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-  letter-spacing: -0.02em;
-}
-.pricing__plan-desc {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin-bottom: 24px;
-  line-height: 1.5;
-  min-height: 42px;
-}
-.pricing__price {
-  display: flex;
-  align-items: flex-end;
-  gap: 4px;
-  margin-bottom: 24px;
-}
-.pricing__currency {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  line-height: 1.8;
-}
-.pricing__amount {
-  font-size: 48px;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.03em;
-  line-height: 1;
-}
-.pricing__period {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin-bottom: 6px;
-}
-.pricing__custom {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-.pricing__cta {
-  display: block;
-  text-align: center;
-  padding: 13px 20px;
-  border-radius: var(--radius-btn);
-  font-size: 15px;
-  font-weight: 600;
-  transition: var(--transition);
-  margin-bottom: 28px;
-  text-decoration: none;
-}
-.pricing__cta--primary {
-  background: var(--brand-accent);
-  color: #fff;
-  box-shadow: 0 4px 14px rgba(37,99,235,0.25);
-}
-.pricing__cta--primary:hover {
-  background: var(--brand-accent-hover);
-  transform: translateY(-2px);
-}
-.pricing__cta--outline {
-  background: transparent;
-  color: var(--text-primary);
-  border: 1.5px solid var(--border-subtle);
-}
-.pricing__cta--outline:hover {
-  border-color: var(--brand-accent);
-  color: var(--brand-accent);
-  transform: translateY(-2px);
-}
+.pricing__toggle { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 48px; }
+.pricing__toggle-label { font-size: 15px; font-weight: 500; color: var(--text-secondary); display: flex; align-items: center; gap: 8px; }
+.pricing__save-badge { background: #DCFCE7; color: #166534; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; }
+.pricing__toggle-btn { width: 48px; height: 26px; background: var(--border-subtle); border-radius: 999px; position: relative; transition: background 0.3s ease; flex-shrink: 0; }
+.pricing__toggle-btn[aria-checked="true"] { background: var(--gradient-brand); }
+.pricing__toggle-thumb { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; background: #fff; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,0.15); transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
+.pricing__toggle-btn[aria-checked="true"] .pricing__toggle-thumb { transform: translateX(22px); }
+.pricing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.pricing__card { background: var(--bg-primary); border: 1px solid var(--border-subtle); border-radius: var(--radius); padding: 32px; position: relative; transition: var(--transition); }
+.pricing__card:not(.pricing__card--featured):hover { border-color: var(--border-brand); box-shadow: var(--shadow-hover); }
+.pricing__card--featured { background: var(--gradient-brand); border: none; transform: scale(1.03); box-shadow: var(--shadow-glow); }
+.pricing__card--featured .pricing__plan-name,
+.pricing__card--featured .pricing__amount,
+.pricing__card--featured .pricing__custom { color: #fff; }
+.pricing__card--featured .pricing__plan-desc,
+.pricing__card--featured .pricing__currency { color: rgba(255,255,255,0.75); }
+.pricing__card--featured .pricing__period { color: rgba(255,255,255,0.6); }
+.pricing__card--featured .pricing__feature { color: rgba(255,255,255,0.9); }
+.pricing__card--featured .pricing__feature--disabled { color: rgba(255,255,255,0.35); }
+.pricing__badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #fff; color: #4F46E5; font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 999px; white-space: nowrap; box-shadow: 0 2px 8px rgba(79,70,229,0.2); }
+.pricing__plan-name { font-size: 22px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; letter-spacing: -0.02em; }
+.pricing__plan-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.5; min-height: 42px; }
+.pricing__price { display: flex; align-items: flex-end; gap: 4px; margin-bottom: 24px; }
+.pricing__currency { font-size: 20px; font-weight: 600; color: var(--text-secondary); line-height: 1.8; }
+.pricing__amount { font-size: 48px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.03em; line-height: 1; }
+.pricing__period { font-size: 14px; color: var(--text-secondary); margin-bottom: 6px; }
+.pricing__custom { font-size: 28px; font-weight: 700; color: var(--text-primary); }
+.pricing__cta { display: block; text-align: center; padding: 13px 20px; border-radius: var(--radius-btn); font-size: 15px; font-weight: 600; transition: var(--transition); margin-bottom: 28px; text-decoration: none; }
+.pricing__cta--white { background: #fff; color: #4F46E5; box-shadow: 0 4px 14px rgba(0,0,0,0.12); }
+.pricing__cta--white:hover { background: #F5F3FF; transform: translateY(-2px); }
+.pricing__cta--outline { background: transparent; color: var(--text-primary); border: 1.5px solid var(--border-subtle); }
+.pricing__cta--outline:hover { border-color: var(--brand-accent); color: var(--brand-accent); transform: translateY(-2px); }
 .pricing__features { display: flex; flex-direction: column; gap: 11px; }
-.pricing__feature {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  color: var(--text-primary);
-}
+.pricing__feature { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-primary); }
 .pricing__feature svg { flex-shrink: 0; }
 .pricing__feature--disabled { color: var(--text-secondary); }
-
-@media (max-width: 1024px) {
-  .pricing__grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
-  .pricing__card--featured { transform: none; }
-}
+@media (max-width: 1024px) { .pricing__grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; } .pricing__card--featured { transform: none; } }
 </style>
 
 <script>
@@ -298,14 +141,34 @@ const toggle = document.getElementById('pricingToggle');
 const amounts = document.querySelectorAll<HTMLElement>('.pricing__amount');
 let isYearly = false;
 
+function animateValue(el: HTMLElement, start: number, end: number, duration: number) {
+  let startTimestamp: number | null = null;
+  const step = (timestamp: number) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    // Wykorzystujemy ułatwienie krzywej (ease-out-quad) dla płynniejszego zwalniania
+    const easeOut = progress * (2 - progress);
+    el.textContent = Math.floor(easeOut * (end - start) + start).toString();
+    
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    } else {
+      el.textContent = end.toString();
+    }
+  };
+  window.requestAnimationFrame(step);
+}
+
 toggle?.addEventListener('click', () => {
   isYearly = !isYearly;
   toggle.setAttribute('aria-checked', String(isYearly));
   amounts.forEach(el => {
-    const val = isYearly
-      ? parseInt(el.dataset.yearly ?? '0')
-      : parseInt(el.dataset.monthly ?? '0');
-    el.textContent = String(val);
+    const startValue = parseInt(el.textContent || '0');
+    const targetValue = isYearly ? parseInt(el.dataset.yearly ?? '0') : parseInt(el.dataset.monthly ?? '0');
+    
+    if (startValue !== targetValue) {
+      animateValue(el, startValue, targetValue, 600);
+    }
   });
 });
 </script>
