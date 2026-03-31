@@ -6,5 +6,5 @@ services:
     container_name: lms-landing-page
     restart: always
     ports:
-      # Mapuje port 3000 na zewnątrz do portu 80 wewnątrz kontenera (Nginx)
-      - "3000:80"
+      # Mapuje port 4000 na zewnątrz do portu 80 wewnątrz kontenera (Nginx)
+      - "4000:80"
