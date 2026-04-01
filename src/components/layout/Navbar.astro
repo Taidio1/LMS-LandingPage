@@ -1,12 +1,14 @@
 ---
 import Button from '../ui/Button.astro';
 import type { Lang } from '../../i18n/index';
+import { languageRoutes, languageLabels, languages } from '../../i18n/index';
 import { en } from '../../i18n/en';
 import { pl } from '../../i18n/pl';
+import { de } from '../../i18n/de';
 
 interface Props { lang?: Lang; }
 const { lang = 'en' } = Astro.props;
-const t = (lang === 'pl' ? pl : en).nav;
+const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).nav;
 ---
 
 <header class="navbar" id="navbar">
@@ -34,13 +36,28 @@ const t = (lang === 'pl' ? pl : en).nav;
     </nav>
 
     <div class="navbar__actions">
-      <a href={t.langSwitchHref} class="navbar__lang-btn" aria-label="Switch language">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
-        </svg>
-        {t.langSwitch}
-      </a>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="navbar__lang-btn" id="langDropdownBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Switch language">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+          </svg>
+          {languageLabels[lang]}
+          <svg class="lang-dropdown__arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <ul class="lang-dropdown__menu" role="listbox">
+          {languages.map((l) => (
+            <li role="option" aria-selected={l === lang}>
+              {l === lang
+                ? <span class="lang-dropdown__item lang-dropdown__item--active">{"✓ "}{languageLabels[l]}</span>
+                : <a href={languageRoutes[l]} class="lang-dropdown__item">{languageLabels[l]}</a>
+              }
+            </li>
+          ))}
+        </ul>
+      </div>
       <Button variant="outline" href="#login">{t.login}</Button>
       <Button variant="gradient" href="#signup">{t.cta}</Button>
     </div>
@@ -57,7 +74,9 @@ const t = (lang === 'pl' ? pl : en).nav;
     <a href="#pricing" class="mobile-drawer__link">{t.pricing}</a>
     <a href="#business" class="mobile-drawer__link">{t.business}</a>
     <a href="#faq" class="mobile-drawer__link">{t.faq}</a>
-    <a href={t.langSwitchHref} class="mobile-drawer__link">🌐 {t.langSwitch}</a>
+    {languages.filter(l => l !== lang).map((l) => (
+      <a href={languageRoutes[l]} class="mobile-drawer__link">🌐 {languageLabels[l]}</a>
+    ))}
   </nav>
   <div class="mobile-drawer__actions">
     <Button variant="outline" href="#login" class="w-full">{t.login}</Button>
@@ -102,6 +121,39 @@ const t = (lang === 'pl' ? pl : en).nav;
   color: var(--text-primary);
   border-color: var(--color-primary, #2563EB);
   background: rgba(37,99,235,0.06);
+}
+.lang-dropdown { position: relative; }
+.lang-dropdown__arrow { transition: transform 0.2s ease; flex-shrink: 0; }
+.lang-dropdown.open .lang-dropdown__arrow { transform: rotate(180deg); }
+.lang-dropdown__menu {
+  display: none;
+  position: absolute; top: calc(100% + 6px); right: 0;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(15,23,42,0.12);
+  min-width: 80px;
+  overflow: hidden;
+  list-style: none; margin: 0; padding: 4px;
+  z-index: 200;
+}
+.lang-dropdown.open .lang-dropdown__menu { display: block; }
+.lang-dropdown__item {
+  display: block; width: 100%;
+  padding: 8px 14px; font-size: 13px; font-weight: 600;
+  color: var(--text-secondary);
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+a.lang-dropdown__item:hover {
+  color: var(--text-primary);
+  background: rgba(37,99,235,0.06);
+}
+.lang-dropdown__item--active {
+  color: var(--text-primary);
+  cursor: default;
 }
 .navbar__hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; margin-left: auto; }
 .navbar__hamburger span { display: block; width: 22px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: var(--transition); }
@@ -151,6 +203,21 @@ hamburger?.addEventListener('click', () => {
   toggleDrawer(!(drawer?.classList.contains('open') ?? false));
 });
 overlay?.addEventListener('click', () => toggleDrawer(false));
+
+const langDropdown = document.getElementById('langDropdown');
+const langBtn = document.getElementById('langDropdownBtn');
+
+langBtn?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const isOpen = langDropdown?.classList.contains('open') ?? false;
+  langDropdown?.classList.toggle('open', !isOpen);
+  langBtn.setAttribute('aria-expanded', String(!isOpen));
+});
+
+document.addEventListener('click', () => {
+  langDropdown?.classList.remove('open');
+  langBtn?.setAttribute('aria-expanded', 'false');
+});
 drawer?.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => toggleDrawer(false));
 });
