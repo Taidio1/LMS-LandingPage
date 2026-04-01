@@ -1,3 +1,15 @@
-export type Lang = 'en' | 'pl';
+export type Lang = 'en' | 'pl' | 'de';
 export const defaultLang: Lang = 'en';
-export const languages: Lang[] = ['en', 'pl'];
+export const languages: Lang[] = ['en', 'pl', 'de'];
+
+export const languageRoutes: Record<Lang, string> = {
+  en: '/',
+  pl: '/pl/',
+  de: '/de/',
+};
+
+export const languageLabels: Record<Lang, string> = {
+  en: 'EN',
+  pl: 'PL',
+  de: 'DE',
+};
