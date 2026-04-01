@@ -1,10 +1,20 @@
 ---
+import type { Lang } from '../../i18n/index';
+import { en } from '../../i18n/en';
+import { pl } from '../../i18n/pl';
+
+interface Props { lang?: Lang; }
+const { lang = 'en' } = Astro.props;
+const t = (lang === 'pl' ? pl : en).footer;
 const year = new Date().getFullYear();
+
+const productHrefs = ['#features', '#pricing', '#', '#', '#'];
+const companyHrefs = ['#', '#', '#', '#', '#'];
+const resourceHrefs = ['#', '#', '#', '#', '#'];
 ---
 
 <footer class="footer">
   <div class="container footer__inner">
-    <!-- Column 1: Brand -->
     <div class="footer__col footer__col--brand">
       <a href="/" class="footer__logo" aria-label="Ascent">
         <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
@@ -14,167 +24,78 @@ const year = new Date().getFullYear();
         </svg>
         <span>Ascent</span>
       </a>
-      <p class="footer__desc">Nowoczesna platforma LMS do zarządzania szkoleniami i rozwojem pracowników w firmach każdej wielkości.</p>
+      <p class="footer__desc">{t.desc}</p>
       <div class="footer__social">
-        <!-- LinkedIn -->
         <a href="#" class="footer__social-link" aria-label="LinkedIn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2" fill="currentColor"/></svg>
         </a>
-        <!-- Twitter/X -->
         <a href="#" class="footer__social-link" aria-label="Twitter / X">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
-        <!-- YouTube -->
         <a href="#" class="footer__social-link" aria-label="YouTube">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
         </a>
       </div>
     </div>
 
-    <!-- Column 2: Produkt -->
     <div class="footer__col">
-      <h4 class="footer__heading">Produkt</h4>
+      <h4 class="footer__heading">{t.product}</h4>
       <ul class="footer__links">
-        <li><a href="#features">Funkcje</a></li>
-        <li><a href="#pricing">Cennik</a></li>
-        <li><a href="#">Integracje</a></li>
-        <li><a href="#">Changelog</a></li>
-        <li><a href="#">Status systemu</a></li>
+        {t.productLinks.map((label, i) => (
+          <li><a href={productHrefs[i]}>{label}</a></li>
+        ))}
       </ul>
     </div>
 
-    <!-- Column 3: Firma -->
     <div class="footer__col">
-      <h4 class="footer__heading">Firma</h4>
+      <h4 class="footer__heading">{t.company}</h4>
       <ul class="footer__links">
-        <li><a href="#">O nas</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Kariera</a></li>
-        <li><a href="#">Partnerzy</a></li>
-        <li><a href="#">Kontakt</a></li>
+        {t.companyLinks.map((label, i) => (
+          <li><a href={companyHrefs[i]}>{label}</a></li>
+        ))}
       </ul>
     </div>
 
-    <!-- Column 4: Zasoby -->
     <div class="footer__col">
-      <h4 class="footer__heading">Zasoby</h4>
+      <h4 class="footer__heading">{t.resources}</h4>
       <ul class="footer__links">
-        <li><a href="#">Dokumentacja</a></li>
-        <li><a href="#">API</a></li>
-        <li><a href="#">Centrum pomocy</a></li>
-        <li><a href="#">Społeczność</a></li>
-        <li><a href="#">Webinary</a></li>
+        {t.resourceLinks.map((label, i) => (
+          <li><a href={resourceHrefs[i]}>{label}</a></li>
+        ))}
       </ul>
     </div>
   </div>
 
-  <!-- Bottom bar -->
   <div class="footer__bottom">
     <div class="container footer__bottom-inner">
-      <p>© {year} Ascent. Wszelkie prawa zastrzeżone.</p>
+      <p>© {year} Ascent. {t.copyright}</p>
       <div class="footer__legal">
-        <a href="#">Polityka prywatności</a>
-        <a href="#">Regulamin</a>
-        <a href="#">Cookies</a>
+        <a href="#">{t.privacy}</a>
+        <a href="#">{t.terms}</a>
+        <a href="#">{t.cookies}</a>
       </div>
     </div>
   </div>
 </footer>
 
 <style>
-.footer {
-  background: #0F172A;
-  color: #94A3B8;
-  padding-top: 72px;
-}
-.footer__inner {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px;
-  padding-bottom: 64px;
-}
+.footer { background: #0F172A; color: #94A3B8; padding-top: 72px; }
+.footer__inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 64px; }
 .footer__col--brand { padding-right: 32px; }
-.footer__logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #fff;
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 16px;
-  text-decoration: none;
-}
-.footer__desc {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #64748B;
-  margin-bottom: 24px;
-}
-.footer__social {
-  display: flex;
-  gap: 12px;
-}
-.footer__social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.06);
-  color: #94A3B8;
-  transition: var(--transition);
-}
-.footer__social-link:hover {
-  background: rgba(255,255,255,0.12);
-  color: #fff;
-}
-.footer__heading {
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
-.footer__links {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.footer__links a {
-  font-size: 14px;
-  color: #64748B;
-  transition: color 0.2s ease;
-}
+.footer__logo { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 17px; font-weight: 700; margin-bottom: 16px; text-decoration: none; }
+.footer__desc { font-size: 14px; line-height: 1.7; color: #64748B; margin-bottom: 24px; }
+.footer__social { display: flex; gap: 12px; }
+.footer__social-link { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); color: #94A3B8; transition: var(--transition); }
+.footer__social-link:hover { background: rgba(255,255,255,0.12); color: #fff; }
+.footer__heading { font-size: 13px; font-weight: 600; color: #fff; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
+.footer__links { display: flex; flex-direction: column; gap: 12px; }
+.footer__links a { font-size: 14px; color: #64748B; transition: color 0.2s ease; }
 .footer__links a:hover { color: #fff; }
-.footer__bottom {
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 24px 0;
-}
-.footer__bottom-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 13px;
-  color: #475569;
-}
-.footer__legal {
-  display: flex;
-  gap: 24px;
-}
-.footer__legal a {
-  color: #475569;
-  transition: color 0.2s;
-}
+.footer__bottom { border-top: 1px solid rgba(255,255,255,0.06); padding: 24px 0; }
+.footer__bottom-inner { display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: #475569; }
+.footer__legal { display: flex; gap: 24px; }
+.footer__legal a { color: #475569; transition: color 0.2s; }
 .footer__legal a:hover { color: #94A3B8; }
-
-@media (max-width: 1024px) {
-  .footer__inner { grid-template-columns: 1fr 1fr; gap: 40px; }
-  .footer__col--brand { grid-column: 1 / -1; padding-right: 0; }
-}
-@media (max-width: 640px) {
-  .footer__inner { grid-template-columns: 1fr; gap: 32px; }
-  .footer__bottom-inner { flex-direction: column; gap: 12px; text-align: center; }
-}
+@media (max-width: 1024px) { .footer__inner { grid-template-columns: 1fr 1fr; gap: 40px; } .footer__col--brand { grid-column: 1 / -1; padding-right: 0; } }
+@media (max-width: 640px) { .footer__inner { grid-template-columns: 1fr; gap: 32px; } .footer__bottom-inner { flex-direction: column; gap: 12px; text-align: center; } }
 </style>

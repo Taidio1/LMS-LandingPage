@@ -1,5 +1,12 @@
 ---
 import Button from '../ui/Button.astro';
+import type { Lang } from '../../i18n/index';
+import { en } from '../../i18n/en';
+import { pl } from '../../i18n/pl';
+
+interface Props { lang?: Lang; }
+const { lang = 'en' } = Astro.props;
+const t = (lang === 'pl' ? pl : en).finalCta;
 ---
 
 <section class="final-cta">
@@ -15,13 +22,13 @@ import Button from '../ui/Button.astro';
   <div class="final-cta__orb final-cta__orb--2" aria-hidden="true"></div>
 
   <div class="container final-cta__inner">
-    <h2 class="final-cta__title reveal">Gotowy, żeby zacząć?</h2>
-    <p class="final-cta__sub reveal reveal-d1">Dołącz do ponad 1 200 firm, które zaufały Ascent i zmień sposób, w jaki Twój zespół się uczy.</p>
+    <h2 class="final-cta__title reveal">{t.title}</h2>
+    <p class="final-cta__sub reveal reveal-d1">{t.sub}</p>
     <div class="final-cta__actions reveal reveal-d2">
-      <Button variant="white" href="#signup">Rozpocznij za darmo</Button>
-      <a href="#contact" class="final-cta__link">Porozmawiaj z nami →</a>
+      <Button variant="white" href="#signup">{t.cta}</Button>
+      <a href="#contact" class="final-cta__link">{t.link}</a>
     </div>
-    <p class="final-cta__note reveal reveal-d3">Bez karty kredytowej · 14 dni za darmo · Anuluj kiedy chcesz</p>
+    <p class="final-cta__note reveal reveal-d3">{t.note}</p>
   </div>
 </section>
 
@@ -29,9 +36,7 @@ import Button from '../ui/Button.astro';
 .final-cta {
   background: var(--gradient-brand);
   padding: 120px 0;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
+  position: relative; overflow: hidden; text-align: center;
 }
 .final-cta__pattern { position: absolute; inset: 0; opacity: 0.06; pointer-events: none; }
 .final-cta__orb { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(60px); }

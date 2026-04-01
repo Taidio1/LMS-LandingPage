@@ -1,4 +1,12 @@
 ---
+import type { Lang } from '../../i18n/index';
+import { en } from '../../i18n/en';
+import { pl } from '../../i18n/pl';
+
+interface Props { lang?: Lang; }
+const { lang = 'en' } = Astro.props;
+const t = (lang === 'pl' ? pl : en).socialProof;
+
 const logos = [
   { name: 'TechFlow',  initials: 'TF', bg: '#EEF2FF', color: '#4F46E5' },
   { name: 'Nexora',    initials: 'NX', bg: '#F0FDF4', color: '#059669' },
@@ -6,17 +14,12 @@ const logos = [
   { name: 'Skyline',   initials: 'SK', bg: '#F5F3FF', color: '#7C3AED' },
   { name: 'Acme Corp', initials: 'AC', bg: '#EFF6FF', color: '#2563EB' },
 ];
-const counters = [
-  { target: 12000, display: '12 000+', label: 'Użytkowników' },
-  { target: 500,   display: '500+',    label: 'Kursów' },
-  { target: 98,    display: '98%',     label: 'Wskaźnik ukończeń' },
-];
 ---
 
 <div class="social-proof">
   <div class="container social-proof__inner">
     <div class="social-proof__logos">
-      <span class="social-proof__label">Zaufały nam:</span>
+      <span class="social-proof__label">{t.trusted}</span>
       {logos.map(logo => (
         <div class="logo-chip" title={logo.name} aria-label={logo.name} style={`background:${logo.bg};`}>
           <span class="logo-chip__initials" style={`color:${logo.color};`}>{logo.initials}</span>
@@ -26,10 +29,10 @@ const counters = [
     </div>
     <div class="social-proof__divider" aria-hidden="true"></div>
     <div class="social-proof__stats">
-      {counters.map(c => (
+      {t.stats.map(s => (
         <div class="stat-item">
-          <span class="stat-item__num counter gradient-text" data-target={c.target} data-display={c.display}>{c.display}</span>
-          <span class="stat-item__label">{c.label}</span>
+          <span class="stat-item__num gradient-text">{s.display}</span>
+          <span class="stat-item__label">{s.label}</span>
         </div>
       ))}
     </div>
@@ -44,46 +47,19 @@ const counters = [
   padding: 28px 0;
 }
 .social-proof__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  flex-wrap: wrap;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 32px; flex-wrap: wrap;
 }
 .social-proof__logos { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.social-proof__label {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  white-space: nowrap;
-  margin-right: 4px;
-}
-.logo-chip {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 8px;
-  transition: opacity 0.2s;
-}
+.social-proof__label { font-size: 13px; font-weight: 500; color: var(--text-secondary); white-space: nowrap; margin-right: 4px; }
+.logo-chip { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; transition: opacity 0.2s; }
 .logo-chip:hover { opacity: 0.8; }
 .logo-chip__initials { font-size: 12px; font-weight: 800; }
 .logo-chip__name { font-size: 12px; font-weight: 600; color: var(--text-secondary); }
-.social-proof__divider {
-  width: 1px;
-  height: 40px;
-  background: var(--border-subtle);
-  flex-shrink: 0;
-}
+.social-proof__divider { width: 1px; height: 40px; background: var(--border-subtle); flex-shrink: 0; }
 .social-proof__stats { display: flex; align-items: center; gap: 40px; }
 .stat-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.stat-item__num {
-  font-size: 28px;
-  font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-  font-variant-numeric: tabular-nums;
-}
+.stat-item__num { font-size: 28px; font-weight: 800; line-height: 1.2; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
 .stat-item__label { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
 @media (max-width: 1024px) { .social-proof__divider { display: none; } }
 @media (max-width: 768px) {

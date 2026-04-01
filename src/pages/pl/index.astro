@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/layout/Navbar.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Hero from '../../components/sections/Hero.astro';
+import SocialProofBar from '../../components/sections/SocialProofBar.astro';
+import Features from '../../components/sections/Features.astro';
+import ForBusinessLearners from '../../components/sections/ForBusinessLearners.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
+import Pricing from '../../components/sections/Pricing.astro';
+import FAQ from '../../components/sections/FAQ.astro';
+import FinalCTA from '../../components/sections/FinalCTA.astro';
+
+const lang = 'pl' as const;
+---
+
+<BaseLayout lang={lang}>
+  <Navbar lang={lang} />
+  <main>
+    <Hero lang={lang} />
+    <SocialProofBar lang={lang} />
+    <Features lang={lang} />
+    <ForBusinessLearners lang={lang} />
+    <Testimonials />
+    <Pricing lang={lang} />
+    <FAQ lang={lang} />
+    <FinalCTA lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</BaseLayout>

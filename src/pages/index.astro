@@ -10,19 +10,21 @@ import Testimonials from '../components/sections/Testimonials.astro';
 import Pricing from '../components/sections/Pricing.astro';
 import FAQ from '../components/sections/FAQ.astro';
 import FinalCTA from '../components/sections/FinalCTA.astro';
+
+const lang = 'en' as const;
 ---
 
-<BaseLayout>
-  <Navbar />
+<BaseLayout lang={lang}>
+  <Navbar lang={lang} />
   <main>
-    <Hero />
-    <SocialProofBar />
-    <Features />
-    <ForBusinessLearners />
+    <Hero lang={lang} />
+    <SocialProofBar lang={lang} />
+    <Features lang={lang} />
+    <ForBusinessLearners lang={lang} />
     <Testimonials />
-    <Pricing />
-    <FAQ />
-    <FinalCTA />
+    <Pricing lang={lang} />
+    <FAQ lang={lang} />
+    <FinalCTA lang={lang} />
   </main>
-  <Footer />
+  <Footer lang={lang} />
 </BaseLayout>
