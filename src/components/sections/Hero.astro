@@ -1,6 +1,13 @@
 ---
 import Button from '../ui/Button.astro';
 import Badge from '../ui/Badge.astro';
+import type { Lang } from '../../i18n/index';
+import { en } from '../../i18n/en';
+import { pl } from '../../i18n/pl';
+
+interface Props { lang?: Lang; }
+const { lang = 'en' } = Astro.props;
+const t = (lang === 'pl' ? pl : en).hero;
 ---
 
 <section class="hero">
@@ -9,17 +16,23 @@ import Badge from '../ui/Badge.astro';
 
   <div class="container hero__inner">
     <div class="hero__content">
-      <Badge class="reveal">✦ Platforma edukacyjna dla firm i nie tylko</Badge>
+      <Badge class="reveal">{t.badge}</Badge>
       <h1 class="hero__title reveal reveal-d1">
-        Ucz szybciej.<br />
-        <span class="gradient-text">Rośnij pewniej.</span>
+        {t.title1}<br />
+        <span class="gradient-text">{t.title2}</span>
       </h1>
-      <p class="hero__subtitle reveal reveal-d2">
-        Nowoczesny LMS, który łączy tworzenie kursów, zarządzanie zespołem i analitykę postępów w jednym miejscu. Bez zbędnej złożoności.
-      </p>
+      <p class="hero__subtitle reveal reveal-d2">{t.subtitle}</p>
       <div class="hero__cta reveal reveal-d3">
-        <Button variant="gradient" href="#signup">Wypróbuj za darmo</Button>
-        <Button variant="ghost" href="#demo">Zobacz demo →</Button>
+        <Button variant="gradient" href="#signup">{t.ctaPrimary}</Button>
+        <Button variant="ghost" href="#demo">{t.ctaSecondary}</Button>
+      </div>
+      <div class="hero__usps reveal reveal-d3">
+        {t.usps.map(usp => (
+          <span class="hero__usp-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#4F46E5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {usp}
+          </span>
+        ))}
       </div>
       <div class="hero__trust reveal reveal-d4">
         <div class="hero__avatars" aria-hidden="true">
@@ -28,18 +41,18 @@ import Badge from '../ui/Badge.astro';
           <span class="avatar" style="background:#059669;">PW</span>
           <span class="avatar" style="background:#0891B2;">KN</span>
         </div>
-        <span>Dołącz do <strong>1 200+ firm</strong>, które już uczą z Ascent</span>
+        <span set:html={t.trust}></span>
       </div>
     </div>
 
     <div class="hero__mockup reveal reveal-d2">
       <div class="hero__float hero__float--1" aria-hidden="true">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="#059669" stroke-width="2"/></svg>
-        Kurs ukończony!
+        {t.floatComplete}
       </div>
       <div class="hero__float hero__float--2" aria-hidden="true">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 17l4-8 4 4 4-6 4 10" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        +24% wydajność
+        {t.floatStat}
       </div>
 
       <div class="browser">
@@ -47,7 +60,7 @@ import Badge from '../ui/Badge.astro';
           <span class="browser__dot" style="background:#FF5F57;"></span>
           <span class="browser__dot" style="background:#FEBC2E;"></span>
           <span class="browser__dot" style="background:#28C840;"></span>
-          <div class="browser__url">app.ascent.pl/dashboard</div>
+          <div class="browser__url">app.ascent.io/dashboard</div>
         </div>
         <div class="browser__content">
           <div class="dash">
@@ -59,40 +72,40 @@ import Badge from '../ui/Badge.astro';
               </div>
               <div class="dash__menu-item">
                 <div class="dash__menu-icon"></div>
-                <span>Kursy</span>
+                <span>{t.dashCourses}</span>
               </div>
               <div class="dash__menu-item">
                 <div class="dash__menu-icon"></div>
-                <span>Zespół</span>
+                <span>Team</span>
               </div>
               <div class="dash__menu-item">
                 <div class="dash__menu-icon"></div>
-                <span>Raporty</span>
+                <span>Reports</span>
               </div>
             </div>
             <div class="dash__main">
               <div class="dash__header">
                 <div>
-                  <div class="dash__greeting">Dzień dobry, Anna 👋</div>
-                  <div class="dash__date">Poniedziałek, 31 marca 2026</div>
+                  <div class="dash__greeting">{t.dashGreeting}</div>
+                  <div class="dash__date">{t.dashDate}</div>
                 </div>
                 <div class="dash__avatar-small">AN</div>
               </div>
               <div class="dash__stats">
                 <div class="dash__stat dash__stat--blue">
                   <div class="dash__stat-num">847</div>
-                  <div class="dash__stat-label">Kursantów</div>
+                  <div class="dash__stat-label">{t.dashLearners}</div>
                 </div>
                 <div class="dash__stat dash__stat--green">
                   <div class="dash__stat-num">23</div>
-                  <div class="dash__stat-label">Kursy</div>
+                  <div class="dash__stat-label">{t.dashCourses}</div>
                 </div>
                 <div class="dash__stat dash__stat--purple">
                   <div class="dash__stat-num">94%</div>
-                  <div class="dash__stat-label">Ukończeń</div>
+                  <div class="dash__stat-label">{t.dashCompleted}</div>
                 </div>
               </div>
-              <div class="dash__section-title">Aktywne kursy</div>
+              <div class="dash__section-title">{t.dashActiveCourses}</div>
               <div class="dash__progress-section">
                 <div class="dash__row">
                   <div class="dash__row-icon" style="background:#EEF2FF;"></div>
@@ -105,7 +118,7 @@ import Badge from '../ui/Badge.astro';
                 <div class="dash__row">
                   <div class="dash__row-icon" style="background:#F0FDF4;"></div>
                   <div class="dash__row-body">
-                    <div class="dash__row-name">Excel dla HR</div>
+                    <div class="dash__row-name">Excel for HR</div>
                     <div class="dash__progress-bar"><div class="dash__progress-fill" style="width:45%;background:linear-gradient(90deg,#059669,#10B981);"></div></div>
                   </div>
                   <span class="dash__pct">45%</span>
@@ -141,18 +154,14 @@ import Badge from '../ui/Badge.astro';
   filter: blur(80px);
 }
 .hero__blob--1 {
-  width: 600px;
-  height: 600px;
+  width: 600px; height: 600px;
   background: radial-gradient(circle, rgba(124,58,237,0.14) 0%, transparent 70%);
-  top: -150px;
-  left: -150px;
+  top: -150px; left: -150px;
 }
 .hero__blob--2 {
-  width: 500px;
-  height: 500px;
+  width: 500px; height: 500px;
   background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
-  bottom: -100px;
-  right: -100px;
+  bottom: -100px; right: -100px;
 }
 .hero__inner {
   display: grid;
@@ -164,7 +173,7 @@ import Badge from '../ui/Badge.astro';
 }
 .hero__content { max-width: 560px; }
 .hero__title {
-  font-size: clamp(48px, 6.5vw, 80px);
+  font-size: clamp(40px, 5.5vw, 72px);
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 1.05;
@@ -175,10 +184,28 @@ import Badge from '../ui/Badge.astro';
   font-size: 18px;
   color: var(--text-secondary);
   line-height: 1.7;
-  margin-bottom: 36px;
+  margin-bottom: 32px;
   max-width: 480px;
 }
-.hero__cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+.hero__cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+.hero__usps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.hero__usp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 5px 12px 5px 8px;
+}
 .hero__trust {
   display: flex;
   align-items: center;
@@ -189,18 +216,12 @@ import Badge from '../ui/Badge.astro';
 .hero__trust strong { color: var(--text-primary); }
 .hero__avatars { display: flex; margin-right: 4px; }
 .avatar {
-  width: 32px;
-  height: 32px;
+  width: 32px; height: 32px;
   border-radius: 50%;
   border: 2px solid #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
-  color: #fff;
-  margin-right: -8px;
-  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #fff;
+  margin-right: -8px; flex-shrink: 0;
 }
 .hero__mockup { position: relative; }
 .browser {
@@ -212,113 +233,74 @@ import Badge from '../ui/Badge.astro';
   transform: rotate(-1.5deg);
 }
 .browser__bar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  display: flex; align-items: center; gap: 6px;
   padding: 10px 14px;
   background: #F1F5F9;
   border-bottom: 1px solid var(--border-subtle);
 }
 .browser__dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 .browser__url {
-  flex: 1;
-  height: 20px;
+  flex: 1; height: 20px;
   background: var(--bg-surface);
-  border-radius: 4px;
-  margin-left: 8px;
-  font-size: 11px;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  padding: 0 8px;
+  border-radius: 4px; margin-left: 8px;
+  font-size: 11px; color: var(--text-secondary);
+  display: flex; align-items: center; padding: 0 8px;
 }
 .dash { display: flex; min-height: 340px; }
 .dash__sidebar {
-  width: 100px;
-  background: #F8FAFF;
+  width: 100px; background: #F8FAFF;
   border-right: 1px solid var(--border-subtle);
   padding: 12px 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: flex; flex-direction: column; gap: 4px;
 }
 .dash__logo-mark {
-  width: 24px;
-  height: 24px;
+  width: 24px; height: 24px;
   background: var(--gradient-brand);
-  border-radius: 6px;
-  margin: 4px 4px 12px;
+  border-radius: 6px; margin: 4px 4px 12px;
 }
 .dash__menu-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 8px;
-  border-radius: 6px;
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--text-secondary);
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 8px; border-radius: 6px;
+  font-size: 10px; font-weight: 500; color: var(--text-secondary);
 }
 .dash__menu-item--active { background: #EEF2FF; color: #4F46E5; font-weight: 600; }
 .dash__menu-icon {
-  width: 14px;
-  height: 14px;
-  border-radius: 3px;
-  background: var(--border-subtle);
-  flex-shrink: 0;
+  width: 14px; height: 14px; border-radius: 3px;
+  background: var(--border-subtle); flex-shrink: 0;
 }
 .dash__menu-icon--active { background: #4F46E5; }
 .dash__main { flex: 1; padding: 14px; overflow: hidden; }
 .dash__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
+  display: flex; align-items: center;
+  justify-content: space-between; margin-bottom: 12px;
 }
 .dash__greeting { font-size: 12px; font-weight: 700; color: var(--text-primary); }
 .dash__date { font-size: 10px; color: var(--text-secondary); margin-top: 2px; }
 .dash__avatar-small {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--gradient-brand);
-  color: #fff;
-  font-size: 9px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--gradient-brand); color: #fff;
+  font-size: 9px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
 }
 .dash__stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-  margin-bottom: 12px;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 6px; margin-bottom: 12px;
 }
 .dash__stat {
-  padding: 8px;
-  border-radius: 8px;
+  padding: 8px; border-radius: 8px;
   border: 1px solid var(--border-subtle);
 }
 .dash__stat--blue { background: #EEF2FF; }
 .dash__stat--green { background: #F0FDF4; }
 .dash__stat--purple { background: #F5F3FF; }
 .dash__stat-num {
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-  line-height: 1;
-  margin-bottom: 2px;
+  font-size: 14px; font-weight: 800; color: var(--text-primary);
+  letter-spacing: -0.02em; line-height: 1; margin-bottom: 2px;
 }
 .dash__stat-label { font-size: 9px; color: var(--text-secondary); font-weight: 500; }
 .dash__section-title {
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 8px;
+  font-size: 10px; font-weight: 700; color: var(--text-secondary);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
 }
 .dash__progress-section { display: flex; flex-direction: column; gap: 8px; }
 .dash__row { display: flex; align-items: center; gap: 8px; }
@@ -330,20 +312,13 @@ import Badge from '../ui/Badge.astro';
 .dash__pct { font-size: 10px; font-weight: 700; color: var(--text-secondary); flex-shrink: 0; width: 26px; text-align: right; }
 .hero__float {
   position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  display: flex; align-items: center; gap: 8px;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 10px 16px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-primary);
-  box-shadow: var(--shadow-hover);
-  white-space: nowrap;
-  z-index: 2;
-  animation: float 3s ease-in-out infinite;
+  border-radius: 12px; padding: 10px 16px;
+  font-size: 13px; font-weight: 600; color: var(--text-primary);
+  box-shadow: var(--shadow-hover); white-space: nowrap;
+  z-index: 2; animation: float 3s ease-in-out infinite;
 }
 .hero__float--1 { top: -18px; right: -18px; animation-delay: 0s; }
 .hero__float--2 { bottom: 48px; left: -28px; animation-delay: 1.5s; }

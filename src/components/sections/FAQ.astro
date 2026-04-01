@@ -1,22 +1,21 @@
 ---
-const items = [
-  { q: 'Jak długo trwa darmowy okres próbny?', a: 'Oferujemy 14-dniowy bezpłatny okres próbny na planie Pro bez podawania karty kredytowej. Po jego zakończeniu możesz wybrać plan lub przejść na bezpłatny Basic.' },
-  { q: 'Czy mogę importować kursy z innych platform?', a: 'Tak — obsługujemy import plików SCORM 1.2 i 2004. Możesz też przenieść materiały wideo i PDF bezpośrednio przez panel administracyjny.' },
-  { q: 'Jakie integracje są dostępne?', a: 'Integrujemy się z popularnymi narzędziami HR (BambooHR, Workday), komunikatorami (Slack, Teams), narzędziami automatyzacji (Zapier, Make) oraz obsługujemy SSO przez SAML i OAuth2.' },
-  { q: 'Czy platforma działa w języku polskim?', a: 'Tak, interfejs platformy jest w pełni dostępny w języku polskim. Obsługujemy również angielski, niemiecki i inne języki — możliwość wybrania przez kursanta.' },
-  { q: 'Jak wygląda wsparcie techniczne?', a: 'Plan Basic obejmuje wsparcie e-mail w dni robocze. Plan Pro dodaje czat na żywo. Plan Enterprise oferuje dedykowanego opiekuna konta i wsparcie 24/7.' },
-  { q: 'Czy mogę używać własnej domeny?', a: 'Tak, od planu Pro wzwyż możesz skonfigurować własną domenę (np. nauka.twojaFirma.pl) i pełne white-labeling — logo, kolory, e-maile z Twojej domeny.' },
-];
+import type { Lang } from '../../i18n/index';
+import { en } from '../../i18n/en';
+import { pl } from '../../i18n/pl';
+
+interface Props { lang?: Lang; }
+const { lang = 'en' } = Astro.props;
+const t = (lang === 'pl' ? pl : en).faq;
 ---
 
 <section class="faq" id="faq">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">FAQ</span>
-      <h2 class="section-title">Najczęstsze pytania</h2>
+      <span class="section-label">{t.label}</span>
+      <h2 class="section-title">{t.title}</h2>
     </div>
     <div class="faq__list reveal" role="list">
-      {items.map((item, i) => (
+      {t.items.map((item, i) => (
         <div class="faq__item" role="listitem">
           <button
             class={`faq__question${i === 0 ? ' open' : ''}`}
@@ -44,20 +43,11 @@ const items = [
 .faq__item { border-bottom: 1px solid var(--border-subtle); }
 .faq__item:first-child { border-top: 1px solid var(--border-subtle); }
 .faq__question {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 22px 0;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-primary);
-  text-align: left;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: color 0.2s;
+  width: 100%; display: flex; align-items: center;
+  justify-content: space-between; gap: 16px;
+  padding: 22px 0; font-size: 16px; font-weight: 600;
+  color: var(--text-primary); text-align: left;
+  background: none; border: none; cursor: pointer; transition: color 0.2s;
 }
 .faq__question:hover { color: var(--brand-accent); }
 .faq__question.open {
@@ -67,14 +57,10 @@ const items = [
   background-clip: text;
 }
 .faq__icon {
-  flex-shrink: 0;
-  color: var(--text-secondary);
+  flex-shrink: 0; color: var(--text-secondary);
   transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-  display: flex;
-  align-items: center;
-  /* prevent gradient from clipping icon */
-  -webkit-text-fill-color: initial;
-  background: none;
+  display: flex; align-items: center;
+  -webkit-text-fill-color: initial; background: none;
 }
 .faq__question.open .faq__icon { transform: rotate(180deg); color: var(--brand-accent); }
 .faq__answer { overflow: hidden; max-height: 0; transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1); }
