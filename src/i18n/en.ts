@@ -10,8 +10,6 @@ export const en = {
     faq: 'FAQ',
     login: 'Log in',
     cta: 'Get started',
-    langSwitch: 'PL',
-    langSwitchHref: '/pl/',
   },
   hero: {
     badge: '✦ White-label LMS for businesses',

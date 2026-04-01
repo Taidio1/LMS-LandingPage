@@ -12,8 +12,6 @@ export const pl: Translations = {
     faq: 'FAQ',
     login: 'Zaloguj się',
     cta: 'Zacznij teraz',
-    langSwitch: 'EN',
-    langSwitchHref: '/',
   },
   hero: {
     badge: '✦ White-label LMS dla firm',
