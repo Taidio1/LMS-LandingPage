@@ -4,10 +4,11 @@ import Badge from '../ui/Badge.astro';
 import type { Lang } from '../../i18n/index';
 import { en } from '../../i18n/en';
 import { pl } from '../../i18n/pl';
+import { de } from '../../i18n/de';
 
 interface Props { lang?: Lang; }
 const { lang = 'en' } = Astro.props;
-const t = (lang === 'pl' ? pl : en).hero;
+const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).hero;
 ---
 
 <section class="hero">
@@ -86,7 +87,7 @@ const t = (lang === 'pl' ? pl : en).hero;
             <div class="dash__main">
               <div class="dash__header">
                 <div>
-                  <div class="dash__greeting">{t.dashGreeting}</div>
+                  <div class="dash__greeting">{lang === 'pl' ? 'Dzień dobry, ' : 'Good morning, '}<span class="greeting-name-wrap"><span id="hero-greeting-name">Anna</span></span> 👋</div>
                   <div class="dash__date">{t.dashDate}</div>
                 </div>
                 <div class="dash__avatar-small">AN</div>
@@ -275,6 +276,16 @@ const t = (lang === 'pl' ? pl : en).hero;
   justify-content: space-between; margin-bottom: 12px;
 }
 .dash__greeting { font-size: 12px; font-weight: 700; color: var(--text-primary); }
+.greeting-name-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+  line-height: 1.2;
+}
+#hero-greeting-name {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
 .dash__date { font-size: 10px; color: var(--text-secondary); margin-top: 2px; }
 .dash__avatar-small {
   width: 28px; height: 28px; border-radius: 50%;
@@ -339,3 +350,33 @@ const t = (lang === 'pl' ? pl : en).hero;
   .dash__menu-item span { display: none; }
 }
 </style>
+
+<script define:vars={{ lang: Astro.props.lang ?? 'en' }}>
+  const names = {
+    en: ['Anna', 'Kuba', 'Marta', 'Tom', 'Zosia', 'Mark'],
+    pl: ['Anna', 'Kuba', 'Marta', 'Tomek', 'Zosia', 'Marek'],
+  };
+  const list = names[lang] ?? names.en;
+  let idx = 0;
+
+  const el = document.getElementById('hero-greeting-name');
+  if (el) {
+    setInterval(() => {
+      idx = (idx + 1) % list.length;
+      // exit: slide out downward
+      el.style.transform = 'translateY(100%)';
+      el.style.opacity = '0';
+      setTimeout(() => {
+        // snap to top (above clip), swap text, then slide down into place
+        el.style.transition = 'none';
+        el.style.transform = 'translateY(-100%)';
+        el.textContent = list[idx];
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          el.style.transition = '';
+          el.style.transform = 'translateY(0)';
+          el.style.opacity = '1';
+        }));
+      }, 320);
+    }, 2500);
+  }
+</script>
