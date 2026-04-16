@@ -6,6 +6,7 @@ import { LearnerDashboard } from './views/learner/LearnerDashboard';
 import { MyCourses } from './views/learner/MyCourses';
 import { Progress } from './views/learner/Progress';
 import { AdminDashboard } from './views/admin/AdminDashboard';
+import { CoursesManager } from './views/admin/CoursesManager';
 
 const Placeholder = ({ name }: { name: string }) => (
   <div className="p-12 text-center text-slate-400 text-lg">{name} — coming soon</div>
@@ -21,7 +22,7 @@ function App() {
       if (activeTab === 'Progress') return <Progress />;
       return <LearnerDashboard />;
     }
-    if (activeTab === 'Courses') return <Placeholder name="Courses" />;
+    if (activeTab === 'Courses') return <CoursesManager />;
     if (activeTab === 'Learners') return <Placeholder name="Learners" />;
     return <AdminDashboard />;
   };
