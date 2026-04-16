@@ -5,6 +5,7 @@ import { TabBar } from './components/shared/TabBar';
 import { LearnerDashboard } from './views/learner/LearnerDashboard';
 import { MyCourses } from './views/learner/MyCourses';
 import { Progress } from './views/learner/Progress';
+import { AdminDashboard } from './views/admin/AdminDashboard';
 
 const Placeholder = ({ name }: { name: string }) => (
   <div className="p-12 text-center text-slate-400 text-lg">{name} — coming soon</div>
@@ -22,7 +23,7 @@ function App() {
     }
     if (activeTab === 'Courses') return <Placeholder name="Courses" />;
     if (activeTab === 'Learners') return <Placeholder name="Learners" />;
-    return <Placeholder name="Admin Dashboard" />;
+    return <AdminDashboard />;
   };
 
   return (
