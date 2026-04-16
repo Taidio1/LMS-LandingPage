@@ -3,6 +3,7 @@ import { useNavigation } from './context/NavigationContext';
 import { Header } from './components/shared/Header';
 import { TabBar } from './components/shared/TabBar';
 import { LearnerDashboard } from './views/learner/LearnerDashboard';
+import { MyCourses } from './views/learner/MyCourses';
 
 const Placeholder = ({ name }: { name: string }) => (
   <div className="p-12 text-center text-slate-400 text-lg">{name} — coming soon</div>
@@ -14,7 +15,7 @@ function App() {
 
   const renderView = () => {
     if (role === 'LEARNER') {
-      if (activeTab === 'My Courses') return <Placeholder name="My Courses" />;
+      if (activeTab === 'My Courses') return <MyCourses />;
       if (activeTab === 'Progress') return <Placeholder name="Progress" />;
       return <LearnerDashboard />;
     }
