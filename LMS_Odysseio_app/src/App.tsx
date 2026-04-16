@@ -2,6 +2,7 @@ import { useRole } from './context/RoleContext';
 import { useNavigation } from './context/NavigationContext';
 import { Header } from './components/shared/Header';
 import { TabBar } from './components/shared/TabBar';
+import { LearnerDashboard } from './views/learner/LearnerDashboard';
 
 const Placeholder = ({ name }: { name: string }) => (
   <div className="p-12 text-center text-slate-400 text-lg">{name} — coming soon</div>
@@ -15,7 +16,7 @@ function App() {
     if (role === 'LEARNER') {
       if (activeTab === 'My Courses') return <Placeholder name="My Courses" />;
       if (activeTab === 'Progress') return <Placeholder name="Progress" />;
-      return <Placeholder name="Learner Dashboard" />;
+      return <LearnerDashboard />;
     }
     if (activeTab === 'Courses') return <Placeholder name="Courses" />;
     if (activeTab === 'Learners') return <Placeholder name="Learners" />;
