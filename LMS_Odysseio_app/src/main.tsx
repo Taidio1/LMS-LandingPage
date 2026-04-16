@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './index.css'
 import App from './App.tsx'
 import { RoleProvider } from './context/RoleContext.tsx'
+import { NavigationProvider } from './context/NavigationContext.tsx'
 
 const queryClient = new QueryClient()
 
@@ -11,7 +12,9 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <RoleProvider>
-        <App />
+        <NavigationProvider>
+          <App />
+        </NavigationProvider>
       </RoleProvider>
     </QueryClientProvider>
   </StrictMode>,
