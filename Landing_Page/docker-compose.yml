@@ -1,10 +1,11 @@
-version: '3.8'
-
+# Samodzielne uruchomienie TYLKO landing page (dev/lokalnie).
+# Do deploymentu produkcyjnego na mikr.us używaj ../docker-compose.yml w root repo,
+# który uruchamia landing + LMS app razem na wspolnej sieci.
 services:
-  lms:
+  landing-page:
     build: .
-    container_name: lms-landing-page
-    restart: always
+    container_name: lms-landing-page-standalone
+    restart: unless-stopped
     ports:
-      # Mapuje port 4000 na zewnątrz do portu 80 wewnątrz kontenera (Nginx)
+      # Host 4000 -> Nginx 80
       - "4000:80"

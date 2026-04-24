@@ -1,11 +1,9 @@
 node_modules
 dist
-.astro
 .git
 .env
 .env.*
 Dockerfile
 .dockerignore
-docker-compose.yml
-.worktrees
-docs
+.superpowers
+README.md

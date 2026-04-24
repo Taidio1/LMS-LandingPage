@@ -1,0 +1,32 @@
+services:
+  landing-page:
+    build:
+      context: ./Landing_Page
+      dockerfile: Dockerfile
+    image: lms-landing-page:latest
+    container_name: lms-landing-page
+    restart: unless-stopped
+    networks:
+      - lms_network
+    ports:
+      # Host 4000 -> Nginx 80 (Landing Page)
+      - "4000:80"
+
+  lms-app:
+    build:
+      context: ./LMS_Odysseio_app
+      dockerfile: Dockerfile
+    image: lms-odysseio-app:latest
+    container_name: lms-odysseio-app
+    restart: unless-stopped
+    networks:
+      - lms_network
+    ports:
+      # Host 4001 -> Nginx 80 (LMS SPA)
+      # Tu kieruj subdomenę lmsodysseio.tojest.dev (DNS/proxy mikr.us -> port 4001)
+      - "4001:80"
+
+networks:
+  lms_network:
+    name: lms_network
+    driver: bridge
