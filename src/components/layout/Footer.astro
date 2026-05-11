@@ -6,12 +6,8 @@ const year = new Date().getFullYear();
   <div class="container footer__inner">
     <!-- Column 1: Brand -->
     <div class="footer__col footer__col--brand">
-      <a href="/" class="footer__logo" aria-label="[Nazwa Platformy]">
-        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-          <rect width="32" height="32" rx="8" fill="#2563EB"/>
-          <path d="M8 22L16 10l8 12H8z" fill="white"/>
-        </svg>
-        <span>[Nazwa Platformy]</span>
+      <a href="/" class="footer__logo" aria-label="OnboardToGo">
+        <img src="/Logo_full.png" alt="OnboardToGo" class="footer__logo-img" />
       </a>
       <p class="footer__desc">Nowoczesna platforma LMS do zarządzania szkoleniami i rozwojem pracowników w firmach każdej wielkości.</p>
       <div class="footer__social">
@@ -70,7 +66,7 @@ const year = new Date().getFullYear();
   <!-- Bottom bar -->
   <div class="footer__bottom">
     <div class="container footer__bottom-inner">
-      <p>© {year} [Nazwa Platformy]. Wszelkie prawa zastrzeżone.</p>
+      <p>© {year} OnboardToGo. Wszelkie prawa zastrzeżone.</p>
       <div class="footer__legal">
         <a href="#">Polityka prywatności</a>
         <a href="#">Regulamin</a>
@@ -98,10 +94,15 @@ const year = new Date().getFullYear();
   align-items: center;
   gap: 10px;
   color: #fff;
-  font-size: 17px;
-  font-weight: 700;
   margin-bottom: 16px;
   text-decoration: none;
+}
+.footer__logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+  /* Invert to white on dark background — since logo has transparent BG */
+  filter: brightness(0) invert(1);
 }
 .footer__desc {
   font-size: 14px;

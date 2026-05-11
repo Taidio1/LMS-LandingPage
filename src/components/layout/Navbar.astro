@@ -5,12 +5,8 @@ import Button from '../ui/Button.astro';
 <header class="navbar" id="navbar">
   <div class="container navbar__inner">
     <!-- Logo -->
-    <a href="/" class="navbar__logo" aria-label="[Nazwa Platformy] — Strona główna">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="8" fill="#2563EB"/>
-        <path d="M8 22L16 10l8 12H8z" fill="white"/>
-      </svg>
-      <span class="navbar__brand">[Nazwa Platformy]</span>
+    <a href="/" class="navbar__logo" aria-label="OnboardToGo — Strona główna">
+      <img src="/Logo_full.png" alt="OnboardToGo" class="navbar__logo-img" />
     </a>
 
     <!-- Desktop nav -->
@@ -67,7 +63,7 @@ import Button from '../ui/Button.astro';
   display: flex;
   align-items: center;
   gap: 32px;
-  height: 68px;
+  height: 90px;
 }
 .navbar__logo {
   display: flex;
@@ -81,6 +77,11 @@ import Button from '../ui/Button.astro';
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.01em;
+}
+.navbar__logo-img {
+  height: 74px;
+  width: auto;
+  display: block;
 }
 .navbar__nav {
   display: flex;
@@ -132,7 +133,7 @@ import Button from '../ui/Button.astro';
 /* Mobile drawer */
 .mobile-drawer {
   position: fixed;
-  top: 68px;
+  top: 72px;
   left: 0;
   right: 0;
   background: var(--bg-surface);
