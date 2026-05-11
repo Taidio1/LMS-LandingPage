@@ -2,56 +2,56 @@
 const plans = [
   {
     name: 'Basic',
-    desc: 'Dla małych zespołów i indywidualnych twórców',
+    desc: 'For small teams and individual creators',
     priceMonthly: 49,
     priceYearly: 39,
-    cta: 'Zacznij za darmo',
+    cta: 'Get started for free',
     ctaHref: '#signup',
     featured: false,
     features: [
-      { label: 'Do 25 użytkowników', included: true },
-      { label: '10 kursów', included: true },
-      { label: 'Podstawowa analityka', included: true },
-      { label: 'Certyfikaty', included: false },
+      { label: 'Up to 25 users', included: true },
+      { label: '10 courses', included: true },
+      { label: 'Basic analytics', included: true },
+      { label: 'Certificates', included: false },
       { label: 'White-label', included: false },
-      { label: 'SSO / Integracje API', included: false },
-      { label: 'Dedykowany opiekun', included: false },
+      { label: 'SSO / API Integrations', included: false },
+      { label: 'Dedicated account manager', included: false },
     ],
   },
   {
     name: 'Pro',
-    desc: 'Dla rosnących firm z pełnymi potrzebami szkoleniowymi',
+    desc: 'For growing companies with full training needs',
     priceMonthly: 149,
     priceYearly: 119,
-    cta: 'Wybierz Pro',
+    cta: 'Choose Pro',
     ctaHref: '#signup-pro',
     featured: true,
     features: [
-      { label: 'Do 250 użytkowników', included: true },
-      { label: 'Nieograniczone kursy', included: true },
-      { label: 'Zaawansowana analityka', included: true },
-      { label: 'Certyfikaty PDF', included: true },
+      { label: 'Up to 250 users', included: true },
+      { label: 'Unlimited courses', included: true },
+      { label: 'Advanced analytics', included: true },
+      { label: 'PDF Certificates', included: true },
       { label: 'White-label', included: true },
-      { label: 'SSO / Integracje API', included: true },
-      { label: 'Dedykowany opiekun', included: false },
+      { label: 'SSO / API Integrations', included: true },
+      { label: 'Dedicated account manager', included: false },
     ],
   },
   {
     name: 'Enterprise',
-    desc: 'Dla dużych organizacji z niestandardowymi wymaganiami',
+    desc: 'For large organizations with custom requirements',
     priceMonthly: null,
     priceYearly: null,
-    cta: 'Zapytaj o ofertę',
+    cta: 'Request a quote',
     ctaHref: '#contact',
     featured: false,
     features: [
-      { label: 'Nieograniczeni użytkownicy', included: true },
-      { label: 'Nieograniczone kursy', included: true },
-      { label: 'Analityka enterprise', included: true },
-      { label: 'Certyfikaty PDF', included: true },
-      { label: 'White-label + własna domena', included: true },
-      { label: 'SSO / Integracje API', included: true },
-      { label: 'Dedykowany opiekun 24/7', included: true },
+      { label: 'Unlimited users', included: true },
+      { label: 'Unlimited courses', included: true },
+      { label: 'Enterprise analytics', included: true },
+      { label: 'PDF Certificates', included: true },
+      { label: 'White-label + custom domain', included: true },
+      { label: 'SSO / API Integrations', included: true },
+      { label: 'Dedicated account manager 24/7', included: true },
     ],
   },
 ];
@@ -60,20 +60,20 @@ const plans = [
 <section class="pricing" id="pricing">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">Cennik</span>
-      <h2 class="section-title">Przejrzyste ceny</h2>
-      <p class="section-subtitle">Zacznij za darmo. Skaluj kiedy jesteś gotowy.</p>
+      <span class="section-label">Pricing</span>
+      <h2 class="section-title">Transparent pricing</h2>
+      <p class="section-subtitle">Start for free. Scale when you're ready.</p>
     </div>
 
     <!-- Toggle -->
     <div class="pricing__toggle reveal" id="pricingToggleWrap">
-      <span class="pricing__toggle-label">Miesięcznie</span>
-      <button class="pricing__toggle-btn" id="pricingToggle" role="switch" aria-checked="false" aria-label="Przełącz rozliczenie roczne">
+      <span class="pricing__toggle-label">Monthly</span>
+      <button class="pricing__toggle-btn" id="pricingToggle" role="switch" aria-checked="false" aria-label="Toggle yearly billing">
         <span class="pricing__toggle-thumb"></span>
       </button>
       <span class="pricing__toggle-label">
-        Rocznie
-        <span class="pricing__save-badge">Oszczędź 20%</span>
+        Yearly
+        <span class="pricing__save-badge">Save 20%</span>
       </span>
     </div>
 
@@ -81,20 +81,20 @@ const plans = [
     <div class="pricing__grid reveal">
       {plans.map(plan => (
         <div class={`pricing__card${plan.featured ? ' pricing__card--featured' : ''}`}>
-          {plan.featured && <span class="pricing__badge">Najpopularniejszy</span>}
+          {plan.featured && <span class="pricing__badge">Most popular</span>}
           <h3 class="pricing__plan-name">{plan.name}</h3>
           <p class="pricing__plan-desc">{plan.desc}</p>
           <div class="pricing__price">
             {plan.priceMonthly !== null ? (
               <>
-                <span class="pricing__currency">zł</span>
+                <span class="pricing__currency">$</span>
                 <span class="pricing__amount" data-monthly={plan.priceMonthly} data-yearly={plan.priceYearly}>
                   {plan.priceMonthly}
                 </span>
-                <span class="pricing__period">/miesiąc</span>
+                <span class="pricing__period">/month</span>
               </>
             ) : (
-              <span class="pricing__custom">Skontaktuj się</span>
+              <span class="pricing__custom">Contact us</span>
             )}
           </div>
           <a href={plan.ctaHref} class={`pricing__cta${plan.featured ? ' pricing__cta--primary' : ' pricing__cta--outline'}`}>

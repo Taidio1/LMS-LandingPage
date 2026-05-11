@@ -5,42 +5,42 @@ import Button from '../ui/Button.astro';
 <header class="navbar" id="navbar">
   <div class="container navbar__inner">
     <!-- Logo -->
-    <a href="/" class="navbar__logo" aria-label="OnboardToGo — Strona główna">
+    <a href="/" class="navbar__logo" aria-label="OnboardToGo — Home">
       <img src="/Logo_full.png" alt="OnboardToGo" class="navbar__logo-img" />
     </a>
 
     <!-- Desktop nav -->
-    <nav class="navbar__nav" aria-label="Główna nawigacja">
-      <a href="#features" class="navbar__link">Funkcje</a>
-      <a href="#pricing" class="navbar__link">Cennik</a>
-      <a href="#business" class="navbar__link">Dla firm</a>
+    <nav class="navbar__nav" aria-label="Main navigation">
+      <a href="#features" class="navbar__link">Features</a>
+      <a href="#pricing" class="navbar__link">Pricing</a>
+      <a href="#business" class="navbar__link">For Business</a>
       <a href="#faq" class="navbar__link">FAQ</a>
     </nav>
 
     <!-- Desktop CTAs -->
     <div class="navbar__actions">
-      <Button variant="outline" href="#login">Zaloguj się</Button>
-      <Button variant="primary" href="#signup">Rozpocznij za darmo</Button>
+      <Button variant="outline" href="#login">Log in</Button>
+      <Button variant="primary" href="#signup">Start for free</Button>
     </div>
 
     <!-- Hamburger -->
-    <button class="navbar__hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false">
+    <button class="navbar__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
 <!-- Mobile drawer -->
-<div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-label="Menu mobilne">
+<div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-label="Mobile menu">
   <nav class="mobile-drawer__nav">
-    <a href="#features" class="mobile-drawer__link">Funkcje</a>
-    <a href="#pricing" class="mobile-drawer__link">Cennik</a>
-    <a href="#business" class="mobile-drawer__link">Dla firm</a>
+    <a href="#features" class="mobile-drawer__link">Features</a>
+    <a href="#pricing" class="mobile-drawer__link">Pricing</a>
+    <a href="#business" class="mobile-drawer__link">For Business</a>
     <a href="#faq" class="mobile-drawer__link">FAQ</a>
   </nav>
   <div class="mobile-drawer__actions">
-    <Button variant="outline" href="#login" class="w-full">Zaloguj się</Button>
-    <Button variant="primary" href="#signup" class="w-full">Rozpocznij za darmo</Button>
+    <Button variant="outline" href="#login" class="w-full">Log in</Button>
+    <Button variant="primary" href="#signup" class="w-full">Start for free</Button>
   </div>
 </div>
 <div class="drawer-overlay" id="drawerOverlay"></div>

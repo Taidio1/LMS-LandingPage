@@ -1,7 +1,7 @@
 ---
 const testimonials = [
   {
-    text: 'Wdrożenie OnboardToGo zmniejszyło czas onboardingu nowych pracowników o 40%. Kurs można zbudować w ciągu jednego popołudnia i od razu przypisać całemu działowi.',
+    text: 'Implementing OnboardToGo reduced our new employee onboarding time by 40%. A course can be built in a single afternoon and immediately assigned to the entire department.',
     name: 'Agnieszka Kowalska',
     role: 'Head of HR',
     company: 'TechFlow S.A.',
@@ -9,7 +9,7 @@ const testimonials = [
     color: '#7C3AED',
   },
   {
-    text: 'Nareszcie mamy pełny wgląd w postępy szkoleń compliance. Raporty generują się jednym kliknięciem, a certyfikaty trafiają do pracowników automatycznie.',
+    text: 'We finally have full visibility into compliance training progress. Reports are generated with one click, and certificates reach employees automatically.',
     name: 'Marek Bąk',
     role: 'Chief People Officer',
     company: 'Nexora Group',
@@ -17,7 +17,7 @@ const testimonials = [
     color: '#0891B2',
   },
   {
-    text: 'Jako twórca kursów cenię sobie prostotę buildera. Przeniosłem swój program mentoringowy na [Nazwa] i w ciągu tygodnia miałem pierwszych płacących kursantów.',
+    text: 'As a course creator, I appreciate the simplicity of the builder. I moved my mentoring program to OnboardToGo and within a week had my first paying learners.',
     name: 'Piotr Wierzbicki',
     role: 'Business Coach',
     company: 'PW Academy',
@@ -30,9 +30,9 @@ const testimonials = [
 <section class="testimonials">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">Opinie</span>
-      <h2 class="section-title">Co mówią nasi użytkownicy</h2>
-      <p class="section-subtitle">Firmy i twórcy kursów, którzy już uczą z [Nazwa].</p>
+      <span class="section-label">Testimonials</span>
+      <h2 class="section-title">What our users say</h2>
+      <p class="section-subtitle">Companies and course creators already learning with OnboardToGo.</p>
     </div>
 
     <!-- Desktop grid / Mobile carousel wrapper -->
@@ -59,12 +59,12 @@ const testimonials = [
     </div>
 
     <!-- Mobile dots -->
-    <div class="testimonials__dots" id="testimonialsDots" aria-label="Nawigacja karuzeli">
+    <div class="testimonials__dots" id="testimonialsDots" aria-label="Carousel navigation">
       {testimonials.map((_, i) => (
         <button
           class={`testimonials__dot${i === 0 ? ' active' : ''}`}
           data-index={i}
-          aria-label={`Opinia ${i + 1}`}
+          aria-label={`Testimonial ${i + 1}`}
         ></button>
       ))}
     </div>
