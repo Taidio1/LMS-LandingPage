@@ -1,4 +1,20 @@
 services:
+  nginx-proxy:
+    build:
+      context: ./nginx-proxy
+      dockerfile: Dockerfile
+    image: lms-nginx-proxy:latest
+    container_name: lms-nginx-proxy
+    restart: unless-stopped
+    networks:
+      - lms_network
+    ports:
+      # Proxy nasłuchuje na porcie 3000 hosta
+      - "3000:80"
+    depends_on:
+      - landing-page
+      - lms-app
+
   landing-page:
     build:
       context: ./Landing_Page
@@ -8,9 +24,7 @@ services:
     restart: unless-stopped
     networks:
       - lms_network
-    ports:
-      # Host 4000 -> Nginx 80 (Landing Page)
-      - "4000:80"
+    # Brak publicznych portów — dostęp tylko przez nginx-proxy
 
   lms-app:
     build:
@@ -21,10 +35,7 @@ services:
     restart: unless-stopped
     networks:
       - lms_network
-    ports:
-      # Host 4001 -> Nginx 80 (LMS SPA)
-      # Tu kieruj subdomenę lmsodysseio.tojest.dev (DNS/proxy mikr.us -> port 4001)
-      - "4001:80"
+    # Brak publicznych portów — dostęp tylko przez nginx-proxy
 
 networks:
   lms_network:
