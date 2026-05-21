@@ -44,6 +44,9 @@ export const de: Translations = {
     title: 'Eine Plattform für Organisationen.',
     titleLine2: 'Keine Kosten pro Nutzer.',
     subtitle: 'Eine Plattform. Unbegrenzte Lernende. Ihre Marke. Keine Überraschungen auf der Rechnung.',
+    previewMonthlyCost: 'Monatliche Kosten',
+    previewActiveLearners: 'Aktive Lernende diesen Monat',
+    previewLearners: 'Lernende',
     items: [
       {
         title: 'Keine Gebühren pro Nutzer — niemals',

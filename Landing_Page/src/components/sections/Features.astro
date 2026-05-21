@@ -76,15 +76,15 @@ const barHeights = [60, 75, 50, 85, 98];
             <div class="feature-card__preview preview-billing">
               <div class="pb-header">
                 <div>
-                  <div class="pb-label">Monthly cost</div>
+                  <div class="pb-label">{t.previewMonthlyCost}</div>
                   <div class="pb-amount">$100</div>
                 </div>
                 <span class="pb-badge">
-                  ✓ <span class="learner-counter" data-target="10000">10,000</span> learners
+                  ✓ <span class="learner-counter" data-target="10000">10,000</span> {t.previewLearners}
                 </span>
               </div>
               <div class="pb-bar"><div class="pb-bar-fill"></div></div>
-              <div class="pb-label">Active learners this month</div>
+              <div class="pb-label">{t.previewActiveLearners}</div>
               <div class="pb-users">
                 <div class="pb-user"><span class="pb-dot"></span></div>
                 <div class="pb-user"><span class="pb-dot"></span></div>
@@ -112,7 +112,7 @@ const barHeights = [60, 75, 50, 85, 98];
           {card.preview === 'setup' && (
             <div class="feature-card__preview preview-setup">
               {setupSteps.map((step, si) => (
-                <div class="setup-step" data-step-index={si}>
+                <div class="setup-step">
                   <div class={`step-num step-${step.state}`}>
                     {step.state === 'done' ? '✓' : si + 1}
                   </div>
@@ -169,6 +169,9 @@ const barHeights = [60, 75, 50, 85, 98];
 
     animateOnEntry(billingPreview, () => {
       if (barFill) {
+        barFill.style.transition = 'none';
+        barFill.style.width = '0';
+        void barFill.offsetWidth; // force reflow
         barFill.style.transition = 'width 0.6s ease-out';
         requestAnimationFrame(() => { barFill.style.width = '100%'; });
       }
@@ -227,15 +230,6 @@ const barHeights = [60, 75, 50, 85, 98];
 
 <style>
   .features { background: var(--bg-primary); }
-
-  /* Header */
-  .section-title {
-    font-size: clamp(26px, 4vw, 38px);
-    font-weight: 800;
-    color: var(--text-primary);
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-  }
 
   /* Bento grid */
   .features__bento {
@@ -386,10 +380,10 @@ const barHeights = [60, 75, 50, 85, 98];
   .analytics-bar {
     flex: 1; height: 0;
     border-radius: 3px 3px 0 0;
-    background: color-mix(in srgb, #0891B2 55%, transparent);
-    border: 1px solid color-mix(in srgb, #0891B2 75%, transparent);
+    background: color-mix(in srgb, var(--card-accent) 55%, transparent);
+    border: 1px solid color-mix(in srgb, var(--card-accent) 75%, transparent);
   }
-  .analytics-bar:last-child { background: #0891B2; border-color: #0891B2; }
+  .analytics-bar:last-child { background: var(--card-accent); border-color: var(--card-accent); }
 
   /* Responsive */
   @media (max-width: 768px) {

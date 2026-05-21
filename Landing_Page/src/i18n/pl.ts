@@ -44,6 +44,9 @@ export const pl: Translations = {
     title: 'Platforma dla organizacji.',
     titleLine2: 'Bez opłat za użytkownika.',
     subtitle: 'Jedna platforma. Nieograniczeni kursanci. Twoja marka. Zero niespodzianek na fakturze.',
+    previewMonthlyCost: 'Koszt miesięczny',
+    previewActiveLearners: 'Aktywni kursanci w tym miesiącu',
+    previewLearners: 'kursantów',
     items: [
       {
         title: 'Bez opłat za użytkownika — zawsze',

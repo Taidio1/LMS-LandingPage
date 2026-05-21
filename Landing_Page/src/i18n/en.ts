@@ -42,6 +42,9 @@ export const en = {
     title: 'Built for organizations.',
     titleLine2: 'Not for per-seat billing.',
     subtitle: 'One platform. Unlimited learners. Your brand. No surprises on your invoice.',
+    previewMonthlyCost: 'Monthly cost',
+    previewActiveLearners: 'Active learners this month',
+    previewLearners: 'learners',
     items: [
       {
         title: 'No per-user fees — ever',
