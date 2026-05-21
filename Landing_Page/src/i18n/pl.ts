@@ -47,6 +47,8 @@ export const pl: Translations = {
     previewMonthlyCost: 'Koszt miesięczny',
     previewActiveLearners: 'Aktywni kursanci w tym miesiącu',
     previewLearners: 'kursantów',
+    previewCompletionRate: 'Wskaźnik ukończeń',
+    previewVsLastQuarter: 'vs poprzedni kwartał',
     items: [
       {
         title: 'Bez opłat za użytkownika — zawsze',

@@ -127,11 +127,11 @@ const barHeights = [60, 75, 50, 85, 98];
               <div class="analytics-header">
                 <div>
                   <div class="analytics-stat-num">98%</div>
-                  <div class="analytics-stat-label">Completion rate</div>
+                  <div class="analytics-stat-label">{t.previewCompletionRate}</div>
                 </div>
                 <div class="analytics-right">
                   <div class="analytics-delta">↑ 12%</div>
-                  <div class="analytics-stat-label">vs last quarter</div>
+                  <div class="analytics-stat-label">{t.previewVsLastQuarter}</div>
                 </div>
               </div>
               <div class="analytics-bars">
@@ -369,7 +369,7 @@ const barHeights = [60, 75, 50, 85, 98];
     display: flex; flex-direction: column; gap: 10px;
   }
   .analytics-header { display: flex; justify-content: space-between; align-items: flex-start; }
-  .analytics-stat-num  { font-size: 22px; font-weight: 800; color: #0891B2; line-height: 1; }
+  .analytics-stat-num  { font-size: 22px; font-weight: 800; color: var(--card-accent); line-height: 1; }
   .analytics-stat-label { font-size: 10px; color: #9ca3af; margin-top: 2px; }
   .analytics-delta { font-size: 14px; font-weight: 700; color: #059669; }
   .analytics-right { text-align: right; }

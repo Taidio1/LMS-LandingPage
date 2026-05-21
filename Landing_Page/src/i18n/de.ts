@@ -47,6 +47,8 @@ export const de: Translations = {
     previewMonthlyCost: 'Monatliche Kosten',
     previewActiveLearners: 'Aktive Lernende diesen Monat',
     previewLearners: 'Lernende',
+    previewCompletionRate: 'Abschlussquote',
+    previewVsLastQuarter: 'vs. letztes Quartal',
     items: [
       {
         title: 'Keine Gebühren pro Nutzer — niemals',

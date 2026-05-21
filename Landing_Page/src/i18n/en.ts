@@ -45,6 +45,8 @@ export const en = {
     previewMonthlyCost: 'Monthly cost',
     previewActiveLearners: 'Active learners this month',
     previewLearners: 'learners',
+    previewCompletionRate: 'Completion rate',
+    previewVsLastQuarter: 'vs last quarter',
     items: [
       {
         title: 'No per-user fees — ever',
