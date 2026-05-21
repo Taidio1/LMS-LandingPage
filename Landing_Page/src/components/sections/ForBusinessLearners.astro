@@ -3,10 +3,12 @@ import type { Lang } from '../../i18n/index';
 import { en } from '../../i18n/en';
 import { pl } from '../../i18n/pl';
 import { de } from '../../i18n/de';
+import { getContactHref } from '../../utils/nav-links';
 
 interface Props { lang?: Lang; }
 const { lang = 'en' } = Astro.props;
 const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).forBusiness;
+const contactHref = getContactHref(lang);
 ---
 
 <section class="fbl" id="business">
@@ -36,7 +38,7 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).forBusiness;
               </li>
             ))}
           </ul>
-          <a href="#contact" class="fbl__cta fbl__cta--gradient">{t.business.cta}</a>
+          <a href={contactHref} class="fbl__cta fbl__cta--gradient">{t.business.cta}</a>
         </div>
       </div>
 
@@ -58,7 +60,7 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).forBusiness;
             </li>
           ))}
         </ul>
-        <a href="#signup" class="fbl__cta fbl__cta--outline">{t.learners.cta}</a>
+        <a href={contactHref} class="fbl__cta fbl__cta--outline">{t.learners.cta}</a>
       </div>
     </div>
   </div>

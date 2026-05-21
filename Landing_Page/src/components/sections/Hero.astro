@@ -5,10 +5,12 @@ import type { Lang } from '../../i18n/index';
 import { en } from '../../i18n/en';
 import { pl } from '../../i18n/pl';
 import { de } from '../../i18n/de';
+import { getContactHref } from '../../utils/nav-links';
 
 interface Props { lang?: Lang; }
 const { lang = 'en' } = Astro.props;
 const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).hero;
+const contactHref = getContactHref(lang);
 ---
 
 <section class="hero">
@@ -24,7 +26,7 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).hero;
       </h1>
       <p class="hero__subtitle reveal reveal-d2">{t.subtitle}</p>
       <div class="hero__cta reveal reveal-d3">
-        <Button variant="gradient" href="#signup">{t.ctaPrimary}</Button>
+        <Button variant="gradient" href={contactHref}>{t.ctaPrimary}</Button>
         <Button variant="ghost" href="https://onboardtogo.com/demo-app">{t.ctaSecondary}</Button>
       </div>
       <div class="hero__usps reveal reveal-d3">

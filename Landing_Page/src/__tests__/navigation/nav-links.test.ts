@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getNavSectionHref } from '../../utils/nav-links';
+import { getContactHref, getNavSectionHref } from '../../utils/nav-links';
 
 describe('getNavSectionHref', () => {
   it('keeps section links local on the matching language landing page', () => {
@@ -12,5 +12,11 @@ describe('getNavSectionHref', () => {
     expect(getNavSectionHref('en', '/demo/', 'features')).toBe('/#features');
     expect(getNavSectionHref('pl', '/pl/demo/', 'business')).toBe('/pl/#business');
     expect(getNavSectionHref('de', '/demo/', 'signup')).toBe('/de/#signup');
+  });
+
+  it('returns localized contact routes', () => {
+    expect(getContactHref('en')).toBe('/contact/');
+    expect(getContactHref('pl')).toBe('/pl/contact/');
+    expect(getContactHref('de')).toBe('/de/contact/');
   });
 });

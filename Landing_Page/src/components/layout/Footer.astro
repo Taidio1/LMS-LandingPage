@@ -3,6 +3,7 @@ import type { Lang } from '../../i18n/index';
 import { en } from '../../i18n/en';
 import { pl } from '../../i18n/pl';
 import { de } from '../../i18n/de';
+import { contactRoutes } from '../../i18n/index';
 
 interface Props { lang?: Lang; }
 const { lang = 'en' } = Astro.props;
@@ -10,7 +11,7 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).footer;
 const year = new Date().getFullYear();
 
 const productHrefs = ['#features', '#pricing', '#', '#', '#'];
-const companyHrefs = ['#', '#', '#', '#', '#'];
+const companyHrefs = ['#', '#', '#', '#', contactRoutes[lang]];
 const resourceHrefs = ['#', '#', '#', '#', '#'];
 ---
 

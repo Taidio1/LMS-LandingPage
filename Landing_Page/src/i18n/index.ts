@@ -8,6 +8,12 @@ export const languageRoutes: Record<Lang, string> = {
   de: '/de/',
 };
 
+export const contactRoutes: Record<Lang, string> = {
+  en: '/contact/',
+  pl: '/pl/contact/',
+  de: '/de/contact/',
+};
+
 export const languageLabels: Record<Lang, string> = {
   en: 'EN',
   pl: 'PL',

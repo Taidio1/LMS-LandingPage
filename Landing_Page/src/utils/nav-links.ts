@@ -1,4 +1,4 @@
-import { languageRoutes, type Lang } from '../i18n/index';
+import { contactRoutes, languageRoutes, type Lang } from '../i18n/index';
 
 export type NavSectionId = 'features' | 'pricing' | 'business' | 'faq' | 'login' | 'signup';
 
@@ -11,4 +11,8 @@ export function getNavSectionHref(lang: Lang, pathname: string, sectionId: NavSe
   const isLanguageHome = normalizePath(pathname) === route;
 
   return isLanguageHome ? `#${sectionId}` : `${route}#${sectionId}`;
+}
+
+export function getContactHref(lang: Lang) {
+  return contactRoutes[lang];
 }

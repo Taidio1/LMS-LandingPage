@@ -1,0 +1,347 @@
+---
+import type { Lang } from '../../i18n/index';
+import { en } from '../../i18n/en';
+import { pl } from '../../i18n/pl';
+import { de } from '../../i18n/de';
+
+interface Props { lang?: Lang; }
+const { lang = 'en' } = Astro.props;
+const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).contact;
+---
+
+<section class="contact-page">
+  <div class="container contact-page__inner">
+    <div class="contact-page__intro reveal">
+      <span class="section-label">{t.eyebrow}</span>
+      <h1 class="contact-page__title">{t.title}</h1>
+      <p class="contact-page__subtitle">{t.subtitle}</p>
+
+      <div class="contact-page__details" aria-label="Contact details">
+        {t.details.map((item) => (
+          <div class="contact-page__detail">
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="contact-card reveal reveal-d2">
+      <div class="contact-card__header">
+        <div>
+          <h2>{t.formTitle}</h2>
+          <p>{t.formSubtitle}</p>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <div class="contact-form__row">
+          <label>
+            <span>{t.name}</span>
+            <input name="name" autocomplete="name" required />
+          </label>
+          <label>
+            <span>{t.email}</span>
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+        </div>
+
+        <label>
+          <span>{t.company}</span>
+          <input name="company" autocomplete="organization" />
+        </label>
+
+        <label>
+          <span>{t.topic}</span>
+          <select name="topic" required>
+            <option value="" selected disabled>{t.topicPlaceholder}</option>
+            {t.topics.map((topic) => <option value={topic}>{topic}</option>)}
+          </select>
+        </label>
+
+        <label>
+          <span>{t.message}</span>
+          <textarea name="message" rows="5" placeholder={t.messagePlaceholder} required></textarea>
+        </label>
+
+        <button type="submit" class="contact-form__submit">{t.submit}</button>
+        <p class="contact-form__note">{t.responseTime}</p>
+      </form>
+    </div>
+
+    <aside class="contact-direct reveal reveal-d3">
+      <h2>{t.directTitle}</h2>
+      <div class="contact-direct__items">
+        <a href={`mailto:${t.contactEmail}`} class="contact-direct__item">
+          <span>{t.emailLabel}</span>
+          <strong>{t.contactEmail}</strong>
+        </a>
+        <div class="contact-direct__item">
+          <span>{t.meetingLabel}</span>
+          <strong>{t.meetingText}</strong>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<style>
+.contact-page {
+  background:
+    linear-gradient(135deg, rgba(37,99,235,0.08), transparent 34%),
+    linear-gradient(315deg, rgba(5,150,105,0.08), transparent 30%),
+    var(--bg-primary);
+  min-height: calc(100vh - 68px);
+  padding: 76px 0 96px;
+}
+.contact-page__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(420px, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+.contact-page__intro {
+  padding-top: 28px;
+}
+.contact-page__title {
+  max-width: 620px;
+  margin: 18px 0 18px;
+  color: var(--text-primary);
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+.contact-page__subtitle {
+  max-width: 540px;
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 1.7;
+}
+.contact-page__details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 560px;
+  margin-top: 34px;
+}
+.contact-page__detail {
+  background: rgba(255,255,255,0.72);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: var(--shadow-soft);
+}
+.contact-page__detail strong,
+.contact-page__detail span {
+  display: block;
+}
+.contact-page__detail strong {
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+.contact-page__detail span {
+  margin-top: 6px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.contact-card {
+  background: rgba(255,255,255,0.88);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
+  padding: 34px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.contact-card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+.contact-card__header h2,
+.contact-direct h2 {
+  color: var(--text-primary);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.contact-card__header p {
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.contact-form,
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+}
+.contact-form {
+  gap: 16px;
+}
+.contact-form__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.contact-form label span {
+  margin-bottom: 7px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 8px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 15px;
+  transition: var(--transition);
+}
+.contact-form input,
+.contact-form select {
+  height: 48px;
+  padding: 0 14px;
+}
+.contact-form textarea {
+  min-height: 132px;
+  resize: vertical;
+  padding: 14px;
+  line-height: 1.55;
+}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 4px rgba(79,70,229,0.12);
+  outline: none;
+}
+.contact-form__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  margin-top: 4px;
+  border-radius: var(--radius-btn);
+  background: var(--gradient-brand);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  transition: var(--transition);
+  box-shadow: 0 8px 26px rgba(79,70,229,0.26);
+}
+.contact-form__submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 34px rgba(79,70,229,0.34);
+}
+.contact-form__note {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+.contact-direct {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.4fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.contact-direct__items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.contact-direct__item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 16px 18px;
+  background: #F8FAFF;
+}
+.contact-direct__item span {
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.contact-direct__item strong {
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+a.contact-direct__item {
+  transition: var(--transition);
+}
+a.contact-direct__item:hover {
+  border-color: var(--border-brand);
+  transform: translateY(-2px);
+}
+@media (max-width: 980px) {
+  .contact-page__inner {
+    grid-template-columns: 1fr;
+  }
+  .contact-page__intro {
+    padding-top: 0;
+  }
+}
+@media (max-width: 640px) {
+  .contact-page {
+    padding: 52px 0 72px;
+  }
+  .contact-page__details,
+  .contact-form__row,
+  .contact-direct,
+  .contact-direct__items {
+    grid-template-columns: 1fr;
+  }
+  .contact-card,
+  .contact-direct {
+    padding: 22px;
+  }
+}
+</style>
+
+<script define:vars={{ contactEmail: t.contactEmail }}>
+  const form = document.getElementById('contactForm');
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const name = String(data.get('name') ?? '').trim();
+    const email = String(data.get('email') ?? '').trim();
+    const company = String(data.get('company') ?? '').trim();
+    const topic = String(data.get('topic') ?? '').trim();
+    const message = String(data.get('message') ?? '').trim();
+
+    const body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Company: ${company || '-'}`,
+      `Topic: ${topic}`,
+      '',
+      message,
+    ].join('\n');
+
+    const subject = `OnBoardToGo inquiry: ${topic || 'Contact'}`;
+    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+</script>
