@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { MODULES, UI_BLOCKS } from '../../components/compositor/catalog-data';
+import { BASE_TEMPLATE_UI_BLOCK_IDS, MODULES, UI_BLOCKS } from '../../components/compositor/catalog-data';
 
 describe('catalog-data', () => {
   it('exports 9 modules', () => {
@@ -41,6 +41,15 @@ describe('catalog-data', () => {
   it('all UI blocks have uiGroup', () => {
     UI_BLOCKS.forEach(b => {
       expect(['data', 'content', 'navigation']).toContain(b.uiGroup);
+    });
+  });
+
+  it('base template uses existing navigation blocks', () => {
+    const ids = UI_BLOCKS.map(b => b.id);
+
+    expect(BASE_TEMPLATE_UI_BLOCK_IDS).toEqual(['header-role-badge', 'sidebar-nav']);
+    BASE_TEMPLATE_UI_BLOCK_IDS.forEach(id => {
+      expect(ids).toContain(id);
     });
   });
 });

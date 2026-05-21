@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { CatalogPanel } from './CatalogPanel';
 import { PreviewCanvas } from './PreviewCanvas';
 import { ContactForm } from './ContactForm';
-import { LEARNER_MODULE_IDS, ADMIN_MODULE_IDS } from './catalog-data';
+import { LEARNER_MODULE_IDS, ADMIN_MODULE_IDS, BASE_TEMPLATE_UI_BLOCK_IDS } from './catalog-data';
 import styles from './compositor.module.css';
 
 export function Compositor() {
   const [selectedModules, setSelectedModules] = useState<Set<string>>(new Set());
-  const [selectedUIBlocks, setSelectedUIBlocks] = useState<Set<string>>(new Set());
-  const [previewRole, setPreviewRole] = useState<'learner' | 'admin'>('learner');
+  const [selectedUIBlocks, setSelectedUIBlocks] = useState<Set<string>>(new Set(BASE_TEMPLATE_UI_BLOCK_IDS));
+  const [previewRole, setPreviewRole] = useState<'learner' | 'admin'>('admin');
 
   const toggleModule = (id: string) => {
     setSelectedModules(prev => {

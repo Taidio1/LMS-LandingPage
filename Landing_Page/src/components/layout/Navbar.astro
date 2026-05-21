@@ -5,13 +5,14 @@ import { languageRoutes, languageLabels, languages } from '../../i18n/index';
 import { en } from '../../i18n/en';
 import { pl } from '../../i18n/pl';
 import { de } from '../../i18n/de';
-import { getContactHref, getNavSectionHref, type NavSectionId } from '../../utils/nav-links';
+import { getContactHref, getDemoHref, getNavSectionHref, type NavSectionId } from '../../utils/nav-links';
 
 interface Props { lang?: Lang; }
 const { lang = 'en' } = Astro.props;
 const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).nav;
 const sectionHref = (sectionId: NavSectionId) => getNavSectionHref(lang, Astro.url.pathname, sectionId);
 const contactHref = getContactHref(lang);
+const demoHref = getDemoHref(lang);
 ---
 
 <header class="navbar" id="navbar">
@@ -36,7 +37,7 @@ const contactHref = getContactHref(lang);
       <a href={sectionHref('pricing')} class="navbar__link">{t.pricing}</a>
       <a href={sectionHref('business')} class="navbar__link">{t.business}</a>
       <a href={sectionHref('faq')} class="navbar__link">{t.faq}</a>
-      <a href="/demo" class="navbar__link navbar__link--demo">{t.demo}</a>
+      <a href={demoHref} class="navbar__link navbar__link--demo">{t.demo}</a>
     </nav>
 
     <div class="navbar__actions">
@@ -78,7 +79,7 @@ const contactHref = getContactHref(lang);
     <a href={sectionHref('pricing')} class="mobile-drawer__link">{t.pricing}</a>
     <a href={sectionHref('business')} class="mobile-drawer__link">{t.business}</a>
     <a href={sectionHref('faq')} class="mobile-drawer__link">{t.faq}</a>
-    <a href="/demo" class="mobile-drawer__link">{t.demo}</a>
+    <a href={demoHref} class="mobile-drawer__link">{t.demo}</a>
     {languages.filter(l => l !== lang).map((l) => (
       <a href={languageRoutes[l]} class="mobile-drawer__link">🌐 {languageLabels[l]}</a>
     ))}

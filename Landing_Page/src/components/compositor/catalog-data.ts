@@ -41,3 +41,4 @@ export const UI_BLOCKS: ComponentDef[] = [
 
 export const LEARNER_MODULE_IDS = MODULES.filter(m => m.role === 'learner').map(m => m.id);
 export const ADMIN_MODULE_IDS = MODULES.filter(m => m.role === 'admin').map(m => m.id);
+export const BASE_TEMPLATE_UI_BLOCK_IDS = ['header-role-badge', 'sidebar-nav'];

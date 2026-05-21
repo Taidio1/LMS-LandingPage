@@ -2,28 +2,13 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/layout/Navbar.astro';
 import Footer from '../../components/layout/Footer.astro';
-import { Compositor } from '../../components/compositor/Compositor';
+import DemoPage from '../../components/sections/DemoPage.astro';
 
 const lang = 'en' as const;
 ---
 
 <BaseLayout lang={lang}>
   <Navbar lang={lang} />
-  <main>
-    <section style="padding: 48px 0 24px;">
-      <div class="container">
-        <p class="section-label reveal">Component Library</p>
-        <h1 style="font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; color: var(--text-primary); margin: 8px 0 12px; line-height: 1.15;">
-          Build your LMS, <span class="gradient-text">your way</span>
-        </h1>
-        <p style="font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.65; max-width: 560px;">
-          Browse available modules and UI components. Select what you need, preview your application live, and request a personalised demo.
-        </p>
-      </div>
-    </section>
-    <div style="padding-bottom: 64px;">
-      <Compositor client:load />
-    </div>
-  </main>
+  <DemoPage lang={lang} />
   <Footer lang={lang} />
 </BaseLayout>

@@ -16,16 +16,16 @@ export function PreviewCanvas({ selectedModules, selectedUIBlocks, previewRole, 
     <div className={styles.previewCanvas}>
       <div className={styles.roleSwitcher}>
         <button
-          className={`${styles.rolePill} ${previewRole === 'learner' ? styles.rolePillActive : ''}`}
-          onClick={() => onRoleChange('learner')}
-        >
-          Learner
-        </button>
-        <button
           className={`${styles.rolePill} ${previewRole === 'admin' ? styles.rolePillActive : ''}`}
           onClick={() => onRoleChange('admin')}
         >
           Admin
+        </button>
+        <button
+          className={`${styles.rolePill} ${previewRole === 'learner' ? styles.rolePillActive : ''}`}
+          onClick={() => onRoleChange('learner')}
+        >
+          Learner
         </button>
       </div>
 
