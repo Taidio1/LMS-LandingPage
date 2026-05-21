@@ -41,5 +41,9 @@ Thumbs.db
 # Git worktrees
 .worktrees/
 
+# Local agent docs
+.superpowers/
+docs/
+
 # OS
 desktop.ini

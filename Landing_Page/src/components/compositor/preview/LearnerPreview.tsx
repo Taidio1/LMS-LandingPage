@@ -23,7 +23,7 @@ export function LearnerPreview({ selectedModules, selectedUIBlocks }: Props) {
     <div style={{ fontFamily: 'system-ui, sans-serif', fontSize: '11px', background: '#F8FAFF', borderRadius: '8px', overflow: 'hidden' }}>
       {showHeader && (
         <div style={{ background: 'linear-gradient(135deg,#7C3AED 0%,#4F46E5 50%,#2563EB 100%)', color: '#fff', padding: '8px 12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontWeight: 700, fontSize: '12px' }}>Ascent LMS</span>
+          <span style={{ fontWeight: 700, fontSize: '12px' }}>OnBoardToGo LMS</span>
           <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
             <span style={{ background: 'rgba(255,255,255,0.2)', borderRadius: '10px', padding: '2px 6px', fontSize: '9px' }}>Learner</span>
             <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(255,255,255,0.3)' }} />

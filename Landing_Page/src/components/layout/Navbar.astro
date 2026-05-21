@@ -5,15 +5,17 @@ import { languageRoutes, languageLabels, languages } from '../../i18n/index';
 import { en } from '../../i18n/en';
 import { pl } from '../../i18n/pl';
 import { de } from '../../i18n/de';
+import { getNavSectionHref, type NavSectionId } from '../../utils/nav-links';
 
 interface Props { lang?: Lang; }
 const { lang = 'en' } = Astro.props;
 const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).nav;
+const sectionHref = (sectionId: NavSectionId) => getNavSectionHref(lang, Astro.url.pathname, sectionId);
 ---
 
 <header class="navbar" id="navbar">
   <div class="container navbar__inner">
-    <a href={languageRoutes[lang]} class="navbar__logo" aria-label="Ascent — Home">
+    <a href={languageRoutes[lang]} class="navbar__logo" aria-label="OnBoardToGo — Home">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
         <defs>
           <linearGradient id="nav-logo-g" x1="0" y1="32" x2="32" y2="0" gradientUnits="userSpaceOnUse">
@@ -29,10 +31,10 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).nav;
     </a>
 
     <nav class="navbar__nav" aria-label="Main navigation">
-      <a href="#features" class="navbar__link">{t.features}</a>
-      <a href="#pricing" class="navbar__link">{t.pricing}</a>
-      <a href="#business" class="navbar__link">{t.business}</a>
-      <a href="#faq" class="navbar__link">{t.faq}</a>
+      <a href={sectionHref('features')} class="navbar__link">{t.features}</a>
+      <a href={sectionHref('pricing')} class="navbar__link">{t.pricing}</a>
+      <a href={sectionHref('business')} class="navbar__link">{t.business}</a>
+      <a href={sectionHref('faq')} class="navbar__link">{t.faq}</a>
       <a href="/demo" class="navbar__link navbar__link--demo">{t.demo}</a>
     </nav>
 
@@ -59,8 +61,8 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).nav;
           ))}
         </ul>
       </div>
-      <Button variant="outline" href="#login">{t.login}</Button>
-      <Button variant="gradient" href="#signup">{t.cta}</Button>
+      <Button variant="outline" href={sectionHref('login')}>{t.login}</Button>
+      <Button variant="gradient" href={sectionHref('signup')}>{t.cta}</Button>
     </div>
 
     <button class="navbar__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
@@ -71,18 +73,18 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).nav;
 
 <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-label="Mobile menu">
   <nav class="mobile-drawer__nav">
-    <a href="#features" class="mobile-drawer__link">{t.features}</a>
-    <a href="#pricing" class="mobile-drawer__link">{t.pricing}</a>
-    <a href="#business" class="mobile-drawer__link">{t.business}</a>
-    <a href="#faq" class="mobile-drawer__link">{t.faq}</a>
+    <a href={sectionHref('features')} class="mobile-drawer__link">{t.features}</a>
+    <a href={sectionHref('pricing')} class="mobile-drawer__link">{t.pricing}</a>
+    <a href={sectionHref('business')} class="mobile-drawer__link">{t.business}</a>
+    <a href={sectionHref('faq')} class="mobile-drawer__link">{t.faq}</a>
     <a href="/demo" class="mobile-drawer__link">{t.demo}</a>
     {languages.filter(l => l !== lang).map((l) => (
       <a href={languageRoutes[l]} class="mobile-drawer__link">🌐 {languageLabels[l]}</a>
     ))}
   </nav>
   <div class="mobile-drawer__actions">
-    <Button variant="outline" href="#login" class="w-full">{t.login}</Button>
-    <Button variant="gradient" href="#signup" class="w-full">{t.cta}</Button>
+    <Button variant="outline" href={sectionHref('login')} class="w-full">{t.login}</Button>
+    <Button variant="gradient" href={sectionHref('signup')} class="w-full">{t.cta}</Button>
   </div>
 </div>
 <div class="drawer-overlay" id="drawerOverlay"></div>

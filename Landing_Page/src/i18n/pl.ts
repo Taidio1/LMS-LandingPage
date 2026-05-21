@@ -2,7 +2,7 @@ import type { Translations } from './en';
 
 export const pl: Translations = {
   meta: {
-    title: 'Ascent — Platforma szkoleniowa white-label',
+    title: 'OnBoardToGo — Platforma szkoleniowa white-label',
     description: 'Platforma LMS white-label. Uruchom w ciągu dni. Szkol cały zespół bez rosnących kosztów.',
   },
   nav: {
@@ -21,7 +21,7 @@ export const pl: Translations = {
     subtitle: 'Szkol cały zespół bez rosnących kosztów.',
     ctaPrimary: 'Zacznij teraz',
     ctaSecondary: 'Zobacz demo →',
-    trust: 'Zaufało nam ponad <strong>1 200 firm</strong> szkolących z Ascent',
+    trust: 'Zaufało nam ponad <strong>1 200 firm</strong> szkolących z OnBoardToGo',
     usps: ['Bez opłat za użytkownika', 'White-label', 'Szybkie wdrożenie', 'Jakość enterprise'],
     floatComplete: 'Kurs ukończony!',
     floatStat: '+24% wydajność',
@@ -41,7 +41,7 @@ export const pl: Translations = {
     ],
   },
   features: {
-    label: 'Dlaczego Ascent',
+    label: 'Dlaczego OnBoardToGo',
     title: 'Platforma dla organizacji.',
     titleLine2: 'Bez opłat za użytkownika.',
     subtitle: 'Jedna platforma. Nieograniczeni kursanci. Twoja marka. Zero niespodzianek na fakturze.',
@@ -103,10 +103,10 @@ export const pl: Translations = {
   testimonials: {
     label: 'Opinie',
     title: 'Uwielbiany przez zespoły szkoleniowe',
-    subtitle: 'Firmy i twórcy kursów, którzy już uczą z Ascent.',
+    subtitle: 'Firmy i twórcy kursów, którzy już uczą z OnBoardToGo.',
     items: [
       {
-        text: 'Wdrożenie Ascent zmniejszyło czas onboardingu nowych pracowników o 40%. Kurs można zbudować w ciągu jednego popołudnia i od razu przypisać całemu działowi.',
+        text: 'Wdrożenie OnBoardToGo zmniejszyło czas onboardingu nowych pracowników o 40%. Kurs można zbudować w ciągu jednego popołudnia i od razu przypisać całemu działowi.',
         name: 'Agnieszka Kowalska', role: 'Head of HR', company: 'TechFlow S.A.',
         initials: 'AK', color: '#7C3AED',
       },
@@ -116,7 +116,7 @@ export const pl: Translations = {
         initials: 'MB', color: '#0891B2',
       },
       {
-        text: 'Jako twórca kursów cenię sobie prostotę buildera. Przeniosłem swój program mentoringowy na Ascent i w ciągu tygodnia miałem pierwszych płacących kursantów.',
+        text: 'Jako twórca kursów cenię sobie prostotę buildera. Przeniosłem swój program mentoringowy na OnBoardToGo i w ciągu tygodnia miałem pierwszych płacących kursantów.',
         name: 'Piotr Wierzbicki', role: 'Business Coach', company: 'PW Academy',
         initials: 'PW', color: '#059669',
       },
@@ -224,7 +224,7 @@ export const pl: Translations = {
   },
   finalCta: {
     title: 'Gotowy, żeby zacząć?',
-    sub: 'Dołącz do ponad 1 200 firm szkolących z Ascent — jedna stała opłata, nieograniczeni kursanci.',
+    sub: 'Dołącz do ponad 1 200 firm szkolących z OnBoardToGo — jedna stała opłata, nieograniczeni kursanci.',
     cta: 'Zacznij teraz',
     link: 'Porozmawiaj z nami →',
     note: 'Bez karty kredytowej · Konfiguracja $3 000 · Bez opłat za użytkownika',

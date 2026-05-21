@@ -1,6 +1,6 @@
 export const en = {
   meta: {
-    title: 'Ascent — White-label Training Platform',
+    title: 'OnBoardToGo — White-label Training Platform',
     description: 'White-label LMS. Set it up in days. Train your entire team without scaling costs.',
   },
   nav: {
@@ -19,7 +19,7 @@ export const en = {
     subtitle: 'Train your entire team without scaling costs.',
     ctaPrimary: 'Get started',
     ctaSecondary: 'See demo →',
-    trust: 'Trusted by <strong>1,200+ companies</strong> already training with Ascent',
+    trust: 'Trusted by <strong>1,200+ companies</strong> already training with OnBoardToGo',
     usps: ['No per-user fees', 'White-label', 'Fast setup', 'Enterprise quality'],
     floatComplete: 'Course complete!',
     floatStat: '+24% productivity',
@@ -39,7 +39,7 @@ export const en = {
     ],
   },
   features: {
-    label: 'Why Ascent',
+    label: 'Why OnBoardToGo',
     title: 'Built for organizations.',
     titleLine2: 'Not for per-seat billing.',
     subtitle: 'One platform. Unlimited learners. Your brand. No surprises on your invoice.',
@@ -101,10 +101,10 @@ export const en = {
   testimonials: {
     label: 'Testimonials',
     title: 'Loved by training teams',
-    subtitle: 'Companies and course creators who already teach with Ascent.',
+    subtitle: 'Companies and course creators who already teach with OnBoardToGo.',
     items: [
       {
-        text: 'Implementing Ascent reduced onboarding time for new employees by 40%. A course can be built in a single afternoon and immediately assigned to an entire department.',
+        text: 'Implementing OnBoardToGo reduced onboarding time for new employees by 40%. A course can be built in a single afternoon and immediately assigned to an entire department.',
         name: 'Agnieszka Kowalska', role: 'Head of HR', company: 'TechFlow S.A.',
         initials: 'AK', color: '#7C3AED',
       },
@@ -114,7 +114,7 @@ export const en = {
         initials: 'MB', color: '#0891B2',
       },
       {
-        text: 'As a course creator, I value the simplicity of the builder. I moved my mentoring program to Ascent and had my first paying students within a week.',
+        text: 'As a course creator, I value the simplicity of the builder. I moved my mentoring program to OnBoardToGo and had my first paying students within a week.',
         name: 'Piotr Wierzbicki', role: 'Business Coach', company: 'PW Academy',
         initials: 'PW', color: '#059669',
       },
@@ -222,7 +222,7 @@ export const en = {
   },
   finalCta: {
     title: 'Ready to start?',
-    sub: 'Join 1,200+ companies training with Ascent — one flat fee, unlimited learners.',
+    sub: 'Join 1,200+ companies training with OnBoardToGo — one flat fee, unlimited learners.',
     cta: 'Get started',
     link: 'Talk to us →',
     note: 'No credit card · $3,000 setup · No per-user fees',
