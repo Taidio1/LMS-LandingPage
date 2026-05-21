@@ -1,29 +1,21 @@
 ---
-const testimonials = [
-  {
-    text: 'Wdrożenie Ascent zmniejszyło czas onboardingu nowych pracowników o 40%. Kurs można zbudować w ciągu jednego popołudnia i od razu przypisać całemu działowi.',
-    name: 'Agnieszka Kowalska', role: 'Head of HR', company: 'TechFlow S.A.',
-    initials: 'AK', color: '#7C3AED',
-  },
-  {
-    text: 'Nareszcie mamy pełny wgląd w postępy szkoleń compliance. Raporty generują się jednym kliknięciem, a certyfikaty trafiają do pracowników automatycznie.',
-    name: 'Marek Bąk', role: 'Chief People Officer', company: 'Nexora Group',
-    initials: 'MB', color: '#0891B2',
-  },
-  {
-    text: 'Jako twórca kursów cenię sobie prostotę buildera. Przeniosłem swój program mentoringowy na Ascent i w ciągu tygodnia miałem pierwszych płacących kursantów.',
-    name: 'Piotr Wierzbicki', role: 'Business Coach', company: 'PW Academy',
-    initials: 'PW', color: '#059669',
-  },
-];
+import type { Lang } from '../../i18n/index';
+import { en } from '../../i18n/en';
+import { pl } from '../../i18n/pl';
+import { de } from '../../i18n/de';
+
+interface Props { lang?: Lang; }
+const { lang = 'en' } = Astro.props;
+const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).testimonials;
+const testimonials = t.items;
 ---
 
 <section class="testimonials">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">Opinie</span>
-      <h2 class="section-title">Co mówią nasi użytkownicy</h2>
-      <p class="section-subtitle">Firmy i twórcy kursów, którzy już uczą z Ascent.</p>
+      <span class="section-label">{t.label}</span>
+      <h2 class="section-title">{t.title}</h2>
+      <p class="section-subtitle">{t.subtitle}</p>
     </div>
     <div class="testimonials__carousel" id="testimonialsCarousel">
       <div class="testimonials__track" id="testimonialsTrack">

@@ -8,6 +8,7 @@ export const en = {
     pricing: 'Pricing',
     business: 'For Business',
     faq: 'FAQ',
+    demo: 'Demo',
     login: 'Log in',
     cta: 'Get started',
   },

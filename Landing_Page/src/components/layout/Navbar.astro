@@ -25,7 +25,7 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).nav;
         <path d="M8 22l8-12 8 12" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         <path d="M8 17l8-12 8 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
       </svg>
-      <span class="navbar__brand">Ascent</span>
+      <span class="navbar__brand">OnBoardToGo</span>
     </a>
 
     <nav class="navbar__nav" aria-label="Main navigation">
@@ -33,6 +33,7 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).nav;
       <a href="#pricing" class="navbar__link">{t.pricing}</a>
       <a href="#business" class="navbar__link">{t.business}</a>
       <a href="#faq" class="navbar__link">{t.faq}</a>
+      <a href="/demo" class="navbar__link navbar__link--demo">{t.demo}</a>
     </nav>
 
     <div class="navbar__actions">
@@ -74,6 +75,7 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).nav;
     <a href="#pricing" class="mobile-drawer__link">{t.pricing}</a>
     <a href="#business" class="mobile-drawer__link">{t.business}</a>
     <a href="#faq" class="mobile-drawer__link">{t.faq}</a>
+    <a href="/demo" class="mobile-drawer__link">{t.demo}</a>
     {languages.filter(l => l !== lang).map((l) => (
       <a href={languageRoutes[l]} class="mobile-drawer__link">🌐 {languageLabels[l]}</a>
     ))}

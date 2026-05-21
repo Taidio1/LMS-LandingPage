@@ -10,6 +10,7 @@ export const de: Translations = {
     pricing: 'Preise',
     business: 'Für Unternehmen',
     faq: 'FAQ',
+    demo: 'Demo',
     login: 'Anmelden',
     cta: 'Jetzt starten',
   },
