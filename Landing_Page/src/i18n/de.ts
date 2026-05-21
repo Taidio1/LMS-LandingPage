@@ -41,24 +41,25 @@ export const de: Translations = {
   },
   features: {
     label: 'Warum Ascent',
-    title: 'Alles, was Sie für Schulungen brauchen',
-    subtitle: 'Vier Säulen effektiven organisationalen Lernens.',
+    title: 'Eine Plattform für Organisationen.',
+    titleLine2: 'Keine Kosten pro Nutzer.',
+    subtitle: 'Eine Plattform. Unbegrenzte Lernende. Ihre Marke. Keine Überraschungen auf der Rechnung.',
     items: [
       {
         title: 'Keine Gebühren pro Nutzer — niemals',
-        desc: 'Eine monatliche Pauschalgebühr, egal wie viele Personen Sie schulen. Fügen Sie 10 oder 10.000 Lernende hinzu — Ihre Rechnung bleibt gleich.',
+        desc: 'Monatliche Pauschalgebühr, egal wie viele Personen Sie schulen. Fügen Sie 10 oder 10.000 Lernende hinzu — Ihre Rechnung bleibt gleich.',
       },
       {
         title: 'Vollständiges White-Label',
-        desc: 'Ihre Marke, Ihre Domain, Ihre Farben. Lernende sehen Ihr Unternehmen — nicht unseres. Eigene E-Mails, eigene Anmeldung, vollständig gebrandmarkt.',
+        desc: 'Ihre Marke, Domain, Farben. Lernende sehen Sie — nicht uns. Eigene E-Mails, eigene Anmeldung, vollständiges Branding.',
       },
       {
-        title: 'Live in Tagen, nicht Monaten',
-        desc: 'Wir kümmern uns um die technische Einrichtung, damit Sie sich auf Inhalte konzentrieren können. SCORM importieren, Videos hochladen und schneller live gehen als jede Alternative.',
+        title: 'Live in Tagen',
+        desc: 'Wir kümmern uns um die technische Einrichtung, damit Sie sich auf Inhalte konzentrieren können. SCORM importieren, Videos hochladen, schnell live gehen.',
       },
       {
         title: 'Enterprise-Qualität',
-        desc: 'SSO (SAML, OAuth), erweiterte Analysen, Compliance-Reporting und SCORM 2004 — entwickelt für Organisationen, die Schulungen ernst nehmen.',
+        desc: 'SSO (SAML, OAuth), erweiterte Analysen, Compliance-Reporting und SCORM 2004. Für Organisationen, die Schulungen ernst nehmen.',
       },
     ],
   },
@@ -96,6 +97,24 @@ export const de: Translations = {
   testimonials: {
     label: 'Referenzen',
     title: 'Geliebt von Schulungsteams',
+    subtitle: 'Unternehmen und Kursersteller, die bereits mit Ascent schulen.',
+    items: [
+      {
+        text: 'Die Implementierung von Ascent hat die Onboarding-Zeit für neue Mitarbeiter um 40 % reduziert. Ein Kurs kann an einem einzigen Nachmittag erstellt und sofort der gesamten Abteilung zugewiesen werden.',
+        name: 'Agnieszka Kowalska', role: 'Head of HR', company: 'TechFlow S.A.',
+        initials: 'AK', color: '#7C3AED',
+      },
+      {
+        text: 'Wir haben endlich vollen Einblick in den Fortschritt der Compliance-Schulungen. Berichte werden mit einem Klick erstellt, und Zertifikate werden automatisch an Mitarbeiter versendet.',
+        name: 'Marek Bąk', role: 'Chief People Officer', company: 'Nexora Group',
+        initials: 'MB', color: '#0891B2',
+      },
+      {
+        text: 'Als Kursersteller schätze ich die Einfachheit des Builders. Ich habe mein Mentoring-Programm auf Ascent umgestellt und hatte innerhalb einer Woche meine ersten zahlenden Kursteilnehmer.',
+        name: 'Piotr Wierzbicki', role: 'Business Coach', company: 'PW Academy',
+        initials: 'PW', color: '#059669',
+      },
+    ],
   },
   pricing: {
     label: 'Preise',

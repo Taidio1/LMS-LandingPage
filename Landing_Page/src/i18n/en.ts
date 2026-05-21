@@ -39,24 +39,25 @@ export const en = {
   },
   features: {
     label: 'Why Ascent',
-    title: 'Everything you need to train at scale',
-    subtitle: 'Four pillars of effective organizational learning.',
+    title: 'Built for organizations.',
+    titleLine2: 'Not for per-seat billing.',
+    subtitle: 'One platform. Unlimited learners. Your brand. No surprises on your invoice.',
     items: [
       {
         title: 'No per-user fees — ever',
-        desc: 'One flat monthly fee, no matter how many people you train. Add 10 or 10,000 learners and your bill stays the same.',
+        desc: 'Flat monthly rate regardless of how many people train. Add 10 or 10,000 learners — your invoice stays the same.',
       },
       {
         title: 'Full white-label',
-        desc: 'Your brand, your domain, your colors. Learners see your company — not ours. Custom emails, custom login, fully branded.',
+        desc: 'Your brand, domain, colors. Learners see you — not us. Custom emails, custom login, fully branded.',
       },
       {
-        title: 'Live in days, not months',
-        desc: 'We handle the technical setup so you can focus on content. Import SCORM, upload videos, and go live faster than any alternative.',
+        title: 'Live in days',
+        desc: 'We handle the technical setup so you can focus on content. Import SCORM, upload videos, go live fast.',
       },
       {
         title: 'Enterprise quality',
-        desc: 'SSO (SAML, OAuth), advanced analytics, compliance reporting, and SCORM 2004 — built for organizations that take training seriously.',
+        desc: 'SSO (SAML, OAuth), advanced analytics, compliance reporting, and SCORM 2004. Built for teams that take training seriously.',
       },
     ],
   },
@@ -94,6 +95,24 @@ export const en = {
   testimonials: {
     label: 'Testimonials',
     title: 'Loved by training teams',
+    subtitle: 'Companies and course creators who already teach with Ascent.',
+    items: [
+      {
+        text: 'Implementing Ascent reduced onboarding time for new employees by 40%. A course can be built in a single afternoon and immediately assigned to an entire department.',
+        name: 'Agnieszka Kowalska', role: 'Head of HR', company: 'TechFlow S.A.',
+        initials: 'AK', color: '#7C3AED',
+      },
+      {
+        text: 'We finally have full visibility into compliance training progress. Reports generate with one click, and certificates are automatically sent to employees.',
+        name: 'Marek Bąk', role: 'Chief People Officer', company: 'Nexora Group',
+        initials: 'MB', color: '#0891B2',
+      },
+      {
+        text: 'As a course creator, I value the simplicity of the builder. I moved my mentoring program to Ascent and had my first paying students within a week.',
+        name: 'Piotr Wierzbicki', role: 'Business Coach', company: 'PW Academy',
+        initials: 'PW', color: '#059669',
+      },
+    ],
   },
   pricing: {
     label: 'Pricing',

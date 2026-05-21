@@ -41,24 +41,25 @@ export const pl: Translations = {
   },
   features: {
     label: 'Dlaczego Ascent',
-    title: 'Wszystko, czego potrzebujesz do szkoleń na skalę',
-    subtitle: 'Cztery filary skutecznej nauki w organizacji.',
+    title: 'Platforma dla organizacji.',
+    titleLine2: 'Bez opłat za użytkownika.',
+    subtitle: 'Jedna platforma. Nieograniczeni kursanci. Twoja marka. Zero niespodzianek na fakturze.',
     items: [
       {
         title: 'Bez opłat za użytkownika — zawsze',
-        desc: 'Jedna stała opłata miesięczna bez względu na liczbę szkolonych. Dodaj 10 lub 10 000 kursantów — rachunek pozostaje taki sam.',
+        desc: 'Stała miesięczna opłata niezależnie od liczby szkolonych. Dodaj 10 lub 10 000 kursantów — faktura pozostaje taka sama.',
       },
       {
         title: 'Pełny white-label',
-        desc: 'Twoja marka, Twoja domena, Twoje kolory. Kursanci widzą Twoją firmę — nie naszą. Własne e-maile, własne logowanie, pełna personalizacja.',
+        desc: 'Twoja marka, domena, kolory. Kursanci widzą Ciebie — nie nas. Własne e-maile, własne logowanie, pełna personalizacja.',
       },
       {
-        title: 'Uruchom w dni, nie miesiące',
-        desc: 'Zajmujemy się konfiguracją techniczną, abyś mógł skupić się na treści. Importuj SCORM, przesyłaj filmy i startuj szybciej niż z jakąkolwiek alternatywą.',
+        title: 'Uruchom w dni',
+        desc: 'Zajmujemy się konfiguracją techniczną, abyś mógł skupić się na treści. Importuj SCORM, przesyłaj filmy, startuj szybko.',
       },
       {
         title: 'Jakość enterprise',
-        desc: 'SSO (SAML, OAuth), zaawansowana analityka, raportowanie zgodności i SCORM 2004 — zbudowane dla organizacji traktujących szkolenia poważnie.',
+        desc: 'SSO (SAML, OAuth), zaawansowana analityka, raportowanie zgodności i SCORM 2004. Zbudowane dla organizacji traktujących szkolenia poważnie.',
       },
     ],
   },
@@ -96,6 +97,24 @@ export const pl: Translations = {
   testimonials: {
     label: 'Opinie',
     title: 'Uwielbiany przez zespoły szkoleniowe',
+    subtitle: 'Firmy i twórcy kursów, którzy już uczą z Ascent.',
+    items: [
+      {
+        text: 'Wdrożenie Ascent zmniejszyło czas onboardingu nowych pracowników o 40%. Kurs można zbudować w ciągu jednego popołudnia i od razu przypisać całemu działowi.',
+        name: 'Agnieszka Kowalska', role: 'Head of HR', company: 'TechFlow S.A.',
+        initials: 'AK', color: '#7C3AED',
+      },
+      {
+        text: 'Nareszcie mamy pełny wgląd w postępy szkoleń compliance. Raporty generują się jednym kliknięciem, a certyfikaty trafiają do pracowników automatycznie.',
+        name: 'Marek Bąk', role: 'Chief People Officer', company: 'Nexora Group',
+        initials: 'MB', color: '#0891B2',
+      },
+      {
+        text: 'Jako twórca kursów cenię sobie prostotę buildera. Przeniosłem swój program mentoringowy na Ascent i w ciągu tygodnia miałem pierwszych płacących kursantów.',
+        name: 'Piotr Wierzbicki', role: 'Business Coach', company: 'PW Academy',
+        initials: 'PW', color: '#059669',
+      },
+    ],
   },
   pricing: {
     label: 'Cennik',
