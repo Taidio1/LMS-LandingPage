@@ -1,6 +1,6 @@
-import { contactRoutes, demoRoutes, languageRoutes, type Lang } from '../i18n/index';
+import { contactRoutes, docsRoutes, languageRoutes, type Lang } from '../i18n/index';
 
-export type NavSectionId = 'features' | 'pricing' | 'business' | 'faq' | 'login' | 'signup';
+export type NavSectionId = 'features' | 'pricing' | 'business' | 'faq' | 'signup';
 
 function normalizePath(pathname: string) {
   return pathname.endsWith('/') ? pathname : `${pathname}/`;
@@ -17,6 +17,6 @@ export function getContactHref(lang: Lang) {
   return contactRoutes[lang];
 }
 
-export function getDemoHref(lang: Lang) {
-  return demoRoutes[lang];
+export function getDocsHref(lang: Lang) {
+  return docsRoutes[lang];
 }
