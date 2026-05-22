@@ -1,230 +1,464 @@
 ---
-import Button from '../ui/Button.astro';
-import type { Lang } from '../../i18n/index';
-import { languageRoutes, languageLabels, languages } from '../../i18n/index';
-import { en } from '../../i18n/en';
-import { pl } from '../../i18n/pl';
-import { de } from '../../i18n/de';
-import { getContactHref, getDemoHref, getNavSectionHref, type NavSectionId } from '../../utils/nav-links';
+import Button from "../ui/Button.astro";
+import type { Lang } from "../../i18n/index";
+import { languageRoutes, languageLabels, languages } from "../../i18n/index";
+import { en } from "../../i18n/en";
+import { pl } from "../../i18n/pl";
+import { de } from "../../i18n/de";
+import {
+  getContactHref,
+  getDocsHref,
+  getNavSectionHref,
+  type NavSectionId,
+} from "../../utils/nav-links";
 
-interface Props { lang?: Lang; }
-const { lang = 'en' } = Astro.props;
-const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).nav;
-const sectionHref = (sectionId: NavSectionId) => getNavSectionHref(lang, Astro.url.pathname, sectionId);
+interface Props {
+  lang?: Lang;
+}
+const { lang = "en" } = Astro.props;
+const t = (lang === "de" ? de : lang === "pl" ? pl : en).nav;
+const sectionHref = (sectionId: NavSectionId) =>
+  getNavSectionHref(lang, Astro.url.pathname, sectionId);
 const contactHref = getContactHref(lang);
-const demoHref = getDemoHref(lang);
+const docsHref = getDocsHref(lang);
 ---
 
 <header class="navbar" id="navbar">
   <div class="container navbar__inner">
-    <a href={languageRoutes[lang]} class="navbar__logo" aria-label="OnBoardToGo — Home">
+    <a
+      href={languageRoutes[lang]}
+      class="navbar__logo"
+      aria-label="OnBoardToGo — Home"
+    >
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
         <defs>
-          <linearGradient id="nav-logo-g" x1="0" y1="32" x2="32" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#2563EB"/>
-            <stop offset="100%" stop-color="#7C3AED"/>
+          <linearGradient
+            id="nav-logo-g"
+            x1="0"
+            y1="32"
+            x2="32"
+            y2="0"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%" stop-color="#2563EB"></stop>
+            <stop offset="100%" stop-color="#7C3AED"></stop>
           </linearGradient>
         </defs>
-        <rect width="32" height="32" rx="8" fill="url(#nav-logo-g)"/>
-        <path d="M8 22l8-12 8 12" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <path d="M8 17l8-12 8 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect width="32" height="32" rx="8" fill="url(#nav-logo-g)"></rect>
+        <path
+          d="M8 22l8-12 8 12"
+          stroke="rgba(255,255,255,0.5)"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"></path>
+        <path
+          d="M8 17l8-12 8 12"
+          stroke="white"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"></path>
       </svg>
-      <span class="navbar__brand">OnBoardToGo</span>
+      <span class="navbar__brand">OnboardingToGo</span>
     </a>
 
     <nav class="navbar__nav" aria-label="Main navigation">
-      <a href={sectionHref('features')} class="navbar__link">{t.features}</a>
-      <a href={sectionHref('pricing')} class="navbar__link">{t.pricing}</a>
-      <a href={sectionHref('business')} class="navbar__link">{t.business}</a>
-      <a href={sectionHref('faq')} class="navbar__link">{t.faq}</a>
-      <a href={demoHref} class="navbar__link navbar__link--demo">{t.demo}</a>
+      <a href={sectionHref("features")} class="navbar__link">{t.features}</a>
+      <a href={sectionHref("pricing")} class="navbar__link">{t.pricing}</a>
+      <a href={sectionHref("business")} class="navbar__link">{t.business}</a>
+      <a href={sectionHref("faq")} class="navbar__link">{t.faq}</a>
+      <a href={docsHref} class="navbar__link navbar__link--docs">{t.docs}</a>
     </nav>
 
     <div class="navbar__actions">
       <div class="lang-dropdown" id="langDropdown">
-        <button class="navbar__lang-btn" id="langDropdownBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Switch language">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+        <button
+          class="navbar__lang-btn"
+          id="langDropdownBtn"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-label="Switch language"
+        >
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
+            ></path>
           </svg>
           {languageLabels[lang]}
-          <svg class="lang-dropdown__arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"/>
+          <svg
+            class="lang-dropdown__arrow"
+            width="10"
+            height="10"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </button>
         <ul class="lang-dropdown__menu" role="listbox">
-          {languages.map((l) => (
-            <li role="option" aria-selected={l === lang}>
-              {l === lang
-                ? <span class="lang-dropdown__item lang-dropdown__item--active">{"✓ "}{languageLabels[l]}</span>
-                : <a href={languageRoutes[l]} class="lang-dropdown__item">{languageLabels[l]}</a>
-              }
-            </li>
-          ))}
+          {
+            languages.map((l) => (
+              <li role="option" aria-selected={l === lang}>
+                {l === lang ? (
+                  <span class="lang-dropdown__item lang-dropdown__item--active">
+                    {"✓ "}
+                    {languageLabels[l]}
+                  </span>
+                ) : (
+                  <a href={languageRoutes[l]} class="lang-dropdown__item">
+                    {languageLabels[l]}
+                  </a>
+                )}
+              </li>
+            ))
+          }
         </ul>
       </div>
-      <Button variant="outline" href={sectionHref('login')}>{t.login}</Button>
+      <Button variant="outline" href={docsHref}>{t.liveDemo}</Button>
       <Button variant="gradient" href={contactHref}>{t.cta}</Button>
     </div>
 
-    <button class="navbar__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <button
+      class="navbar__hamburger"
+      id="hamburger"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-label="Mobile menu">
+<div
+  class="mobile-drawer"
+  id="mobileDrawer"
+  role="dialog"
+  aria-label="Mobile menu"
+>
   <nav class="mobile-drawer__nav">
-    <a href={sectionHref('features')} class="mobile-drawer__link">{t.features}</a>
-    <a href={sectionHref('pricing')} class="mobile-drawer__link">{t.pricing}</a>
-    <a href={sectionHref('business')} class="mobile-drawer__link">{t.business}</a>
-    <a href={sectionHref('faq')} class="mobile-drawer__link">{t.faq}</a>
-    <a href={demoHref} class="mobile-drawer__link">{t.demo}</a>
-    {languages.filter(l => l !== lang).map((l) => (
-      <a href={languageRoutes[l]} class="mobile-drawer__link">🌐 {languageLabels[l]}</a>
-    ))}
+    <a href={sectionHref("features")} class="mobile-drawer__link"
+      >{t.features}</a
+    >
+    <a href={sectionHref("pricing")} class="mobile-drawer__link">{t.pricing}</a>
+    <a href={sectionHref("business")} class="mobile-drawer__link"
+      >{t.business}</a
+    >
+    <a href={sectionHref("faq")} class="mobile-drawer__link">{t.faq}</a>
+    <a href={docsHref} class="mobile-drawer__link">{t.docs}</a>
+    {
+      languages
+        .filter((l) => l !== lang)
+        .map((l) => (
+          <a href={languageRoutes[l]} class="mobile-drawer__link">
+            🌐 {languageLabels[l]}
+          </a>
+        ))
+    }
   </nav>
   <div class="mobile-drawer__actions">
-    <Button variant="outline" href={sectionHref('login')} class="w-full">{t.login}</Button>
-    <Button variant="gradient" href={contactHref} class="w-full">{t.cta}</Button>
+    <Button variant="outline" href={docsHref} class="w-full"
+      >{t.liveDemo}</Button
+    >
+    <Button variant="gradient" href={contactHref} class="w-full">{t.cta}</Button
+    >
   </div>
 </div>
 <div class="drawer-overlay" id="drawerOverlay"></div>
 
 <style>
-.navbar {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(248,250,255,0);
-  border-bottom: 1px solid transparent;
-  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-.navbar.scrolled {
-  background: rgba(248,250,255,0.88);
-  border-bottom-color: var(--border-subtle);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 4px 24px rgba(79,70,229,0.06);
-}
-.navbar__inner { display: flex; align-items: center; gap: 32px; height: 68px; }
-.navbar__logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-.navbar__brand { font-size: 18px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; }
-.navbar__nav { display: flex; align-items: center; justify-content: center; gap: 4px; flex: 1; }
-.navbar__link { padding: 8px 14px; font-size: 15px; font-weight: 500; color: var(--text-secondary); border-radius: 6px; transition: var(--transition); position: relative; }
-.navbar__link:hover { color: var(--text-primary); }
-.navbar__link::after { content: ''; position: absolute; bottom: 2px; left: 14px; right: 14px; height: 2px; background: var(--gradient-brand); border-radius: 999px; transform: scaleX(0); transition: transform 0.25s ease; }
-.navbar__link:hover::after { transform: scaleX(1); }
-.navbar__actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-.navbar__lang-btn {
-  display: flex; align-items: center; gap: 6px;
-  padding: 7px 13px; font-size: 13px; font-weight: 600;
-  color: var(--text-secondary);
-  border: 1.5px solid var(--border-subtle);
-  border-radius: 8px; background: transparent;
-  cursor: pointer; transition: var(--transition);
-  text-decoration: none; white-space: nowrap;
-}
-.navbar__lang-btn:hover {
-  color: var(--text-primary);
-  border-color: var(--color-primary, #2563EB);
-  background: rgba(37,99,235,0.06);
-}
-.lang-dropdown { position: relative; }
-.lang-dropdown__arrow { transition: transform 0.2s ease; flex-shrink: 0; }
-.lang-dropdown.open .lang-dropdown__arrow { transform: rotate(180deg); }
-.lang-dropdown__menu {
-  display: none;
-  position: absolute; top: calc(100% + 6px); right: 0;
-  background: var(--bg-surface);
-  border: 1.5px solid var(--border-subtle);
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(15,23,42,0.12);
-  min-width: 80px;
-  overflow: hidden;
-  list-style: none; margin: 0; padding: 4px;
-  z-index: 200;
-}
-.lang-dropdown.open .lang-dropdown__menu { display: block; }
-.lang-dropdown__item {
-  display: block; width: 100%;
-  padding: 8px 14px; font-size: 13px; font-weight: 600;
-  color: var(--text-secondary);
-  border-radius: 6px;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: var(--transition);
-}
-a.lang-dropdown__item:hover {
-  color: var(--text-primary);
-  background: rgba(37,99,235,0.06);
-}
-.lang-dropdown__item--active {
-  color: var(--text-primary);
-  cursor: default;
-}
-.navbar__hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; margin-left: auto; }
-.navbar__hamburger span { display: block; width: 22px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: var(--transition); }
-.navbar__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.navbar__hamburger.open span:nth-child(2) { opacity: 0; }
-.navbar__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.mobile-drawer {
-  position: fixed; top: 68px; left: 0; right: 0;
-  background: var(--bg-surface); border-bottom: 1px solid var(--border-subtle);
-  padding: 24px; z-index: 99;
-  transform: translateY(-150%); visibility: hidden; opacity: 0;
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s, visibility 0.3s;
-  box-shadow: var(--shadow-hover);
-}
-.mobile-drawer.open { transform: translateY(0); visibility: visible; opacity: 1; }
-.mobile-drawer__nav { display: flex; flex-direction: column; gap: 4px; margin-bottom: 20px; }
-.mobile-drawer__link { padding: 12px 16px; font-size: 16px; font-weight: 500; color: var(--text-primary); border-radius: 8px; transition: var(--transition); }
-.mobile-drawer__link:hover { background: var(--bg-primary); }
-.mobile-drawer__actions { display: flex; flex-direction: column; gap: 10px; }
-.drawer-overlay { display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.3); z-index: 98; backdrop-filter: blur(2px); }
-.drawer-overlay.open { display: block; }
-@media (max-width: 768px) {
-  .navbar__nav, .navbar__actions { display: none; }
-  .navbar__hamburger { display: flex; }
-}
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(248, 250, 255, 0);
+    border-bottom: 1px solid transparent;
+    transition:
+      background 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .navbar.scrolled {
+    background: rgba(248, 250, 255, 0.88);
+    border-bottom-color: var(--border-subtle);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 24px rgba(79, 70, 229, 0.06);
+  }
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 68px;
+  }
+  .navbar__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .navbar__brand {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+  .navbar__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex: 1;
+  }
+  .navbar__link {
+    padding: 8px 14px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-radius: 6px;
+    transition: var(--transition);
+    position: relative;
+  }
+  .navbar__link:hover {
+    color: var(--text-primary);
+  }
+  .navbar__link::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 14px;
+    right: 14px;
+    height: 2px;
+    background: var(--gradient-brand);
+    border-radius: 999px;
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+  }
+  .navbar__link:hover::after {
+    transform: scaleX(1);
+  }
+  .navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .navbar__lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 13px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border: 1.5px solid var(--border-subtle);
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .navbar__lang-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--color-primary, #2563eb);
+    background: rgba(37, 99, 235, 0.06);
+  }
+  .lang-dropdown {
+    position: relative;
+  }
+  .lang-dropdown__arrow {
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  .lang-dropdown.open .lang-dropdown__arrow {
+    transform: rotate(180deg);
+  }
+  .lang-dropdown__menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-subtle);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+    min-width: 80px;
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+    padding: 4px;
+    z-index: 200;
+  }
+  .lang-dropdown.open .lang-dropdown__menu {
+    display: block;
+  }
+  .lang-dropdown__item {
+    display: block;
+    width: 100%;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: var(--transition);
+  }
+  a.lang-dropdown__item:hover {
+    color: var(--text-primary);
+    background: rgba(37, 99, 235, 0.06);
+  }
+  .lang-dropdown__item--active {
+    color: var(--text-primary);
+    cursor: default;
+  }
+  .navbar__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    margin-left: auto;
+  }
+  .navbar__hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: var(--transition);
+  }
+  .navbar__hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .navbar__hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .navbar__hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  .mobile-drawer {
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 24px;
+    z-index: 99;
+    transform: translateY(-150%);
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s,
+      visibility 0.3s;
+    box-shadow: var(--shadow-hover);
+  }
+  .mobile-drawer.open {
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+  }
+  .mobile-drawer__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 20px;
+  }
+  .mobile-drawer__link {
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+    border-radius: 8px;
+    transition: var(--transition);
+  }
+  .mobile-drawer__link:hover {
+    background: var(--bg-primary);
+  }
+  .mobile-drawer__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.3);
+    z-index: 98;
+    backdrop-filter: blur(2px);
+  }
+  .drawer-overlay.open {
+    display: block;
+  }
+  @media (max-width: 768px) {
+    .navbar__nav,
+    .navbar__actions {
+      display: none;
+    }
+    .navbar__hamburger {
+      display: flex;
+    }
+  }
 </style>
 
 <script>
-const navbar = document.getElementById('navbar');
-const hamburger = document.getElementById('hamburger');
-const drawer = document.getElementById('mobileDrawer');
-const overlay = document.getElementById('drawerOverlay');
+  const navbar = document.getElementById("navbar");
+  const hamburger = document.getElementById("hamburger");
+  const drawer = document.getElementById("mobileDrawer");
+  const overlay = document.getElementById("drawerOverlay");
 
-window.addEventListener('scroll', () => {
-  navbar?.classList.toggle('scrolled', window.scrollY > 10);
-}, { passive: true });
+  window.addEventListener(
+    "scroll",
+    () => {
+      navbar?.classList.toggle("scrolled", window.scrollY > 10);
+    },
+    { passive: true },
+  );
 
-function toggleDrawer(open: boolean) {
-  hamburger?.classList.toggle('open', open);
-  drawer?.classList.toggle('open', open);
-  overlay?.classList.toggle('open', open);
-  hamburger?.setAttribute('aria-expanded', String(open));
-  document.body.style.overflow = open ? 'hidden' : '';
-}
+  function toggleDrawer(open: boolean) {
+    hamburger?.classList.toggle("open", open);
+    drawer?.classList.toggle("open", open);
+    overlay?.classList.toggle("open", open);
+    hamburger?.setAttribute("aria-expanded", String(open));
+    document.body.style.overflow = open ? "hidden" : "";
+  }
 
-hamburger?.addEventListener('click', () => {
-  toggleDrawer(!(drawer?.classList.contains('open') ?? false));
-});
-overlay?.addEventListener('click', () => toggleDrawer(false));
+  hamburger?.addEventListener("click", () => {
+    toggleDrawer(!(drawer?.classList.contains("open") ?? false));
+  });
+  overlay?.addEventListener("click", () => toggleDrawer(false));
 
-const langDropdown = document.getElementById('langDropdown');
-const langBtn = document.getElementById('langDropdownBtn');
+  const langDropdown = document.getElementById("langDropdown");
+  const langBtn = document.getElementById("langDropdownBtn");
 
-langBtn?.addEventListener('click', (e) => {
-  e.stopPropagation();
-  const isOpen = langDropdown?.classList.contains('open') ?? false;
-  langDropdown?.classList.toggle('open', !isOpen);
-  langBtn.setAttribute('aria-expanded', String(!isOpen));
-});
+  langBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isOpen = langDropdown?.classList.contains("open") ?? false;
+    langDropdown?.classList.toggle("open", !isOpen);
+    langBtn.setAttribute("aria-expanded", String(!isOpen));
+  });
 
-document.addEventListener('click', () => {
-  langDropdown?.classList.remove('open');
-  langBtn?.setAttribute('aria-expanded', 'false');
-});
-drawer?.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => toggleDrawer(false));
-});
+  document.addEventListener("click", () => {
+    langDropdown?.classList.remove("open");
+    langBtn?.setAttribute("aria-expanded", "false");
+  });
+  drawer?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => toggleDrawer(false));
+  });
 </script>

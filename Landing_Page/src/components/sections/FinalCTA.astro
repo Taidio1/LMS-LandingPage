@@ -4,12 +4,13 @@ import type { Lang } from '../../i18n/index';
 import { en } from '../../i18n/en';
 import { pl } from '../../i18n/pl';
 import { de } from '../../i18n/de';
-import { getContactHref } from '../../utils/nav-links';
+import { getContactHref, getDocsHref } from '../../utils/nav-links';
 
 interface Props { lang?: Lang; }
 const { lang = 'en' } = Astro.props;
 const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).finalCta;
 const contactHref = getContactHref(lang);
+const docsHref = getDocsHref(lang);
 ---
 
 <section class="final-cta">
@@ -29,7 +30,7 @@ const contactHref = getContactHref(lang);
     <p class="final-cta__sub reveal reveal-d1">{t.sub}</p>
     <div class="final-cta__actions reveal reveal-d2">
       <Button variant="white" href={contactHref}>{t.cta}</Button>
-      <a href={contactHref} class="final-cta__link">{t.link}</a>
+      <Button variant="accent" href={docsHref}>{t.link}</Button>
     </div>
     <p class="final-cta__note reveal reveal-d3">{t.note}</p>
   </div>

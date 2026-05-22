@@ -1,17 +1,19 @@
 ---
-import Button from '../ui/Button.astro';
-import Badge from '../ui/Badge.astro';
-import type { Lang } from '../../i18n/index';
-import { en } from '../../i18n/en';
-import { pl } from '../../i18n/pl';
-import { de } from '../../i18n/de';
-import { getContactHref, getDemoHref } from '../../utils/nav-links';
+import Button from "../ui/Button.astro";
+import Badge from "../ui/Badge.astro";
+import type { Lang } from "../../i18n/index";
+import { en } from "../../i18n/en";
+import { pl } from "../../i18n/pl";
+import { de } from "../../i18n/de";
+import { getContactHref, getDocsHref } from "../../utils/nav-links";
 
-interface Props { lang?: Lang; }
-const { lang = 'en' } = Astro.props;
-const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).hero;
+interface Props {
+  lang?: Lang;
+}
+const { lang = "en" } = Astro.props;
+const t = (lang === "de" ? de : lang === "pl" ? pl : en).hero;
 const contactHref = getContactHref(lang);
-const demoHref = getDemoHref(lang);
+const docsHref = getDocsHref(lang);
 ---
 
 <section class="hero">
@@ -28,15 +30,25 @@ const demoHref = getDemoHref(lang);
       <p class="hero__subtitle reveal reveal-d2">{t.subtitle}</p>
       <div class="hero__cta reveal reveal-d3">
         <Button variant="gradient" href={contactHref}>{t.ctaPrimary}</Button>
-        <Button variant="ghost" href={demoHref}>{t.ctaSecondary}</Button>
+        <Button variant="accent" href={docsHref}>{t.ctaSecondary}</Button>
       </div>
       <div class="hero__usps reveal reveal-d3">
-        {t.usps.map(usp => (
-          <span class="hero__usp-chip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#4F46E5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            {usp}
-          </span>
-        ))}
+        {
+          t.usps.map((usp) => (
+            <span class="hero__usp-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 13l4 4L19 7"
+                  stroke="#4F46E5"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              {usp}
+            </span>
+          ))
+        }
       </div>
       <div class="hero__trust reveal reveal-d4">
         <div class="hero__avatars" aria-hidden="true">
@@ -45,17 +57,36 @@ const demoHref = getDemoHref(lang);
           <span class="avatar" style="background:#059669;">PW</span>
           <span class="avatar" style="background:#0891B2;">KN</span>
         </div>
-        <span set:html={t.trust}></span>
+        <span set:html={t.trust} />
       </div>
     </div>
 
     <div class="hero__mockup reveal reveal-d2">
       <div class="hero__float hero__float--1" aria-hidden="true">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="#059669" stroke-width="2"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+          ><path
+            d="M9 12l2 2 4-4"
+            stroke="#059669"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path><circle
+            cx="12"
+            cy="12"
+            r="9"
+            stroke="#059669"
+            stroke-width="2"></circle></svg
+        >
         {t.floatComplete}
       </div>
       <div class="hero__float hero__float--2" aria-hidden="true">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 17l4-8 4 4 4-6 4 10" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+          ><path
+            d="M3 17l4-8 4 4 4-6 4 10"
+            stroke="#4F46E5"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path></svg
+        >
         {t.floatStat}
       </div>
 
@@ -90,7 +121,12 @@ const demoHref = getDemoHref(lang);
             <div class="dash__main">
               <div class="dash__header">
                 <div>
-                  <div class="dash__greeting">{lang === 'pl' ? 'Dzień dobry, ' : 'Good morning, '}<span class="greeting-name-wrap"><span id="hero-greeting-name">Anna</span></span> 👋</div>
+                  <div class="dash__greeting">
+                    {lang === "pl" ? "Dzień dobry, " : "Good morning, "}<span
+                      class="greeting-name-wrap"
+                      ><span id="hero-greeting-name">Anna</span></span
+                    > 👋
+                  </div>
                   <div class="dash__date">{t.dashDate}</div>
                 </div>
                 <div class="dash__avatar-small">AN</div>
@@ -115,7 +151,13 @@ const demoHref = getDemoHref(lang);
                   <div class="dash__row-icon" style="background:#EEF2FF;"></div>
                   <div class="dash__row-body">
                     <div class="dash__row-name">Onboarding 2024</div>
-                    <div class="dash__progress-bar"><div class="dash__progress-fill" style="width:72%;background:linear-gradient(90deg,#4F46E5,#2563EB);"></div></div>
+                    <div class="dash__progress-bar">
+                      <div
+                        class="dash__progress-fill"
+                        style="width:72%;background:linear-gradient(90deg,#4F46E5,#2563EB);"
+                      >
+                      </div>
+                    </div>
                   </div>
                   <span class="dash__pct">72%</span>
                 </div>
@@ -123,7 +165,13 @@ const demoHref = getDemoHref(lang);
                   <div class="dash__row-icon" style="background:#F0FDF4;"></div>
                   <div class="dash__row-body">
                     <div class="dash__row-name">Excel for HR</div>
-                    <div class="dash__progress-bar"><div class="dash__progress-fill" style="width:45%;background:linear-gradient(90deg,#059669,#10B981);"></div></div>
+                    <div class="dash__progress-bar">
+                      <div
+                        class="dash__progress-fill"
+                        style="width:45%;background:linear-gradient(90deg,#059669,#10B981);"
+                      >
+                      </div>
+                    </div>
                   </div>
                   <span class="dash__pct">45%</span>
                 </div>
@@ -131,7 +179,13 @@ const demoHref = getDemoHref(lang);
                   <div class="dash__row-icon" style="background:#FFFBEB;"></div>
                   <div class="dash__row-body">
                     <div class="dash__row-name">Compliance Q1</div>
-                    <div class="dash__progress-bar"><div class="dash__progress-fill" style="width:89%;background:linear-gradient(90deg,#D97706,#F59E0B);"></div></div>
+                    <div class="dash__progress-bar">
+                      <div
+                        class="dash__progress-fill"
+                        style="width:89%;background:linear-gradient(90deg,#D97706,#F59E0B);"
+                      >
+                      </div>
+                    </div>
                   </div>
                   <span class="dash__pct">89%</span>
                 </div>
@@ -145,240 +199,426 @@ const demoHref = getDemoHref(lang);
 </section>
 
 <style>
-.hero {
-  background: var(--bg-primary);
-  padding: 80px 0 96px;
-  overflow: hidden;
-  position: relative;
-}
-.hero__blob {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(80px);
-}
-.hero__blob--1 {
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(124,58,237,0.14) 0%, transparent 70%);
-  top: -150px; left: -150px;
-}
-.hero__blob--2 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
-  bottom: -100px; right: -100px;
-}
-.hero__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-.hero__content { max-width: 560px; }
-.hero__title {
-  font-size: clamp(40px, 5.5vw, 72px);
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
-  color: var(--text-primary);
-  margin: 16px 0 20px;
-}
-.hero__subtitle {
-  font-size: 18px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 32px;
-  max-width: 480px;
-}
-.hero__cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
-.hero__usps {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 28px;
-}
-.hero__usp-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-primary);
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 999px;
-  padding: 5px 12px 5px 8px;
-}
-.hero__trust {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
-  color: var(--text-secondary);
-}
-.hero__trust strong { color: var(--text-primary); }
-.hero__avatars { display: flex; margin-right: 4px; }
-.avatar {
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 700; color: #fff;
-  margin-right: -8px; flex-shrink: 0;
-}
-.hero__mockup { position: relative; }
-.browser {
-  background: var(--bg-surface);
-  border-radius: 14px;
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-hover), 0 0 0 1px rgba(79,70,229,0.06);
-  overflow: hidden;
-  transform: rotate(-1.5deg);
-}
-.browser__bar {
-  display: flex; align-items: center; gap: 6px;
-  padding: 10px 14px;
-  background: #F1F5F9;
-  border-bottom: 1px solid var(--border-subtle);
-}
-.browser__dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.browser__url {
-  flex: 1; height: 20px;
-  background: var(--bg-surface);
-  border-radius: 4px; margin-left: 8px;
-  font-size: 11px; color: var(--text-secondary);
-  display: flex; align-items: center; padding: 0 8px;
-}
-.dash { display: flex; min-height: 340px; }
-.dash__sidebar {
-  width: 100px; background: #F8FAFF;
-  border-right: 1px solid var(--border-subtle);
-  padding: 12px 8px;
-  display: flex; flex-direction: column; gap: 4px;
-}
-.dash__logo-mark {
-  width: 24px; height: 24px;
-  background: var(--gradient-brand);
-  border-radius: 6px; margin: 4px 4px 12px;
-}
-.dash__menu-item {
-  display: flex; align-items: center; gap: 6px;
-  padding: 6px 8px; border-radius: 6px;
-  font-size: 10px; font-weight: 500; color: var(--text-secondary);
-}
-.dash__menu-item--active { background: #EEF2FF; color: #4F46E5; font-weight: 600; }
-.dash__menu-icon {
-  width: 14px; height: 14px; border-radius: 3px;
-  background: var(--border-subtle); flex-shrink: 0;
-}
-.dash__menu-icon--active { background: #4F46E5; }
-.dash__main { flex: 1; padding: 14px; overflow: hidden; }
-.dash__header {
-  display: flex; align-items: center;
-  justify-content: space-between; margin-bottom: 12px;
-}
-.dash__greeting { font-size: 12px; font-weight: 700; color: var(--text-primary); }
-.greeting-name-wrap {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: middle;
-  line-height: 1.2;
-}
-#hero-greeting-name {
-  display: inline-block;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-}
-.dash__date { font-size: 10px; color: var(--text-secondary); margin-top: 2px; }
-.dash__avatar-small {
-  width: 28px; height: 28px; border-radius: 50%;
-  background: var(--gradient-brand); color: #fff;
-  font-size: 9px; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-}
-.dash__stats {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 6px; margin-bottom: 12px;
-}
-.dash__stat {
-  padding: 8px; border-radius: 8px;
-  border: 1px solid var(--border-subtle);
-}
-.dash__stat--blue { background: #EEF2FF; }
-.dash__stat--green { background: #F0FDF4; }
-.dash__stat--purple { background: #F5F3FF; }
-.dash__stat-num {
-  font-size: 14px; font-weight: 800; color: var(--text-primary);
-  letter-spacing: -0.02em; line-height: 1; margin-bottom: 2px;
-}
-.dash__stat-label { font-size: 9px; color: var(--text-secondary); font-weight: 500; }
-.dash__section-title {
-  font-size: 10px; font-weight: 700; color: var(--text-secondary);
-  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
-}
-.dash__progress-section { display: flex; flex-direction: column; gap: 8px; }
-.dash__row { display: flex; align-items: center; gap: 8px; }
-.dash__row-icon { width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0; }
-.dash__row-body { flex: 1; }
-.dash__row-name { font-size: 10px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
-.dash__progress-bar { height: 5px; background: #F1F5F9; border-radius: 999px; overflow: hidden; }
-.dash__progress-fill { height: 100%; border-radius: 999px; }
-.dash__pct { font-size: 10px; font-weight: 700; color: var(--text-secondary); flex-shrink: 0; width: 26px; text-align: right; }
-.hero__float {
-  position: absolute;
-  display: flex; align-items: center; gap: 8px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px; padding: 10px 16px;
-  font-size: 13px; font-weight: 600; color: var(--text-primary);
-  box-shadow: var(--shadow-hover); white-space: nowrap;
-  z-index: 2; animation: float 3s ease-in-out infinite;
-}
-.hero__float--1 { top: -18px; right: -18px; animation-delay: 0s; }
-.hero__float--2 { bottom: 48px; left: -28px; animation-delay: 1.5s; }
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-@media (max-width: 1024px) {
-  .hero__inner { grid-template-columns: 1fr; gap: 48px; }
-  .hero__content { max-width: 100%; }
-  .hero__float--2 { left: 8px; }
-}
-@media (max-width: 640px) {
-  .hero { padding: 60px 0 72px; }
-  .hero__cta { flex-direction: column; }
-  .hero__float--1, .hero__float--2 { display: none; }
-  .dash__sidebar { width: 70px; }
-  .dash__menu-item span { display: none; }
-}
+  .hero {
+    background: var(--bg-primary);
+    padding: 40px 0 96px;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero__blob {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(80px);
+  }
+  .hero__blob--1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+      circle,
+      rgba(124, 58, 237, 0.14) 0%,
+      transparent 70%
+    );
+    top: -150px;
+    left: -150px;
+  }
+  .hero__blob--2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(
+      circle,
+      rgba(37, 99, 235, 0.12) 0%,
+      transparent 70%
+    );
+    bottom: -100px;
+    right: -100px;
+  }
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero__content {
+    max-width: 560px;
+  }
+  .hero__title {
+    font-size: clamp(40px, 5.5vw, 72px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: var(--text-primary);
+    margin: 16px 0 20px;
+  }
+  .hero__subtitle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 480px;
+  }
+  .hero__cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .hero__usps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  .hero__usp-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    padding: 5px 12px 5px 8px;
+  }
+  .hero__trust {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+  .hero__trust strong {
+    color: var(--text-primary);
+  }
+  .hero__avatars {
+    display: flex;
+    margin-right: 4px;
+  }
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    margin-right: -8px;
+    flex-shrink: 0;
+  }
+  .hero__mockup {
+    position: relative;
+  }
+  .browser {
+    background: var(--bg-surface);
+    border-radius: 14px;
+    border: 1px solid var(--border-subtle);
+    box-shadow:
+      var(--shadow-hover),
+      0 0 0 1px rgba(79, 70, 229, 0.06);
+    overflow: hidden;
+    transform: rotate(-1.5deg);
+  }
+  .browser__bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: #f1f5f9;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .browser__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .browser__url {
+    flex: 1;
+    height: 20px;
+    background: var(--bg-surface);
+    border-radius: 4px;
+    margin-left: 8px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+  }
+  .dash {
+    display: flex;
+    min-height: 340px;
+  }
+  .dash__sidebar {
+    width: 100px;
+    background: #f8faff;
+    border-right: 1px solid var(--border-subtle);
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .dash__logo-mark {
+    width: 24px;
+    height: 24px;
+    background: var(--gradient-brand);
+    border-radius: 6px;
+    margin: 4px 4px 12px;
+  }
+  .dash__menu-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+  .dash__menu-item--active {
+    background: #eef2ff;
+    color: #4f46e5;
+    font-weight: 600;
+  }
+  .dash__menu-icon {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    background: var(--border-subtle);
+    flex-shrink: 0;
+  }
+  .dash__menu-icon--active {
+    background: #4f46e5;
+  }
+  .dash__main {
+    flex: 1;
+    padding: 14px;
+    overflow: hidden;
+  }
+  .dash__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .dash__greeting {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .greeting-name-wrap {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    line-height: 1.2;
+  }
+  #hero-greeting-name {
+    display: inline-block;
+    transition:
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s ease;
+  }
+  .dash__date {
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+  .dash__avatar-small {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gradient-brand);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .dash__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .dash__stat {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+  }
+  .dash__stat--blue {
+    background: #eef2ff;
+  }
+  .dash__stat--green {
+    background: #f0fdf4;
+  }
+  .dash__stat--purple {
+    background: #f5f3ff;
+  }
+  .dash__stat-num {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .dash__stat-label {
+    font-size: 9px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  .dash__section-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .dash__progress-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .dash__row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dash__row-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  .dash__row-body {
+    flex: 1;
+  }
+  .dash__row-name {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .dash__progress-bar {
+    height: 5px;
+    background: #f1f5f9;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .dash__progress-fill {
+    height: 100%;
+    border-radius: 999px;
+  }
+  .dash__pct {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+    width: 26px;
+    text-align: right;
+  }
+  .hero__float {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    box-shadow: var(--shadow-hover);
+    white-space: nowrap;
+    z-index: 2;
+    animation: float 3s ease-in-out infinite;
+  }
+  .hero__float--1 {
+    top: -18px;
+    right: -18px;
+    animation-delay: 0s;
+  }
+  .hero__float--2 {
+    bottom: 48px;
+    left: -28px;
+    animation-delay: 1.5s;
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  @media (max-width: 1024px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .hero__content {
+      max-width: 100%;
+    }
+    .hero__float--2 {
+      left: 8px;
+    }
+  }
+  @media (max-width: 640px) {
+    .hero {
+      padding: 60px 0 72px;
+    }
+    .hero__cta {
+      flex-direction: column;
+    }
+    .hero__float--1,
+    .hero__float--2 {
+      display: none;
+    }
+    .dash__sidebar {
+      width: 70px;
+    }
+    .dash__menu-item span {
+      display: none;
+    }
+  }
 </style>
 
-<script define:vars={{ lang: Astro.props.lang ?? 'en' }}>
+<script define:vars={{ lang: Astro.props.lang ?? "en" }}>
   const names = {
-    en: ['Anna', 'Kuba', 'Marta', 'Tom', 'Zosia', 'Mark'],
-    pl: ['Anna', 'Kuba', 'Marta', 'Tomek', 'Zosia', 'Marek'],
+    en: ["Anna", "Kuba", "Marta", "Tom", "Zosia", "Mark"],
+    pl: ["Anna", "Kuba", "Marta", "Tomek", "Zosia", "Marek"],
   };
   const list = names[lang] ?? names.en;
   let idx = 0;
 
-  const el = document.getElementById('hero-greeting-name');
+  const el = document.getElementById("hero-greeting-name");
   if (el) {
     setInterval(() => {
       idx = (idx + 1) % list.length;
       // exit: slide out downward
-      el.style.transform = 'translateY(100%)';
-      el.style.opacity = '0';
+      el.style.transform = "translateY(100%)";
+      el.style.opacity = "0";
       setTimeout(() => {
         // snap to top (above clip), swap text, then slide down into place
-        el.style.transition = 'none';
-        el.style.transform = 'translateY(-100%)';
+        el.style.transition = "none";
+        el.style.transform = "translateY(-100%)";
         el.textContent = list[idx];
-        requestAnimationFrame(() => requestAnimationFrame(() => {
-          el.style.transition = '';
-          el.style.transform = 'translateY(0)';
-          el.style.opacity = '1';
-        }));
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => {
+            el.style.transition = "";
+            el.style.transform = "translateY(0)";
+            el.style.opacity = "1";
+          }),
+        );
       }, 320);
     }, 2500);
   }
