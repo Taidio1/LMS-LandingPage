@@ -43,7 +43,7 @@ Thumbs.db
 
 # Local agent docs
 .superpowers/
-docs/
+/docs/
 
 # OS
 desktop.ini
