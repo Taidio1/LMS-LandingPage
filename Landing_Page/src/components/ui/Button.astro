@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: 'primary' | 'ghost' | 'outline' | 'white' | 'gradient';
+  variant?: 'primary' | 'ghost' | 'outline' | 'white' | 'gradient' | 'accent';
   href?: string;
   type?: 'button' | 'submit';
   class?: string;
@@ -77,5 +77,15 @@ const { variant = 'primary', href, type = 'button', class: cls = '' } = Astro.pr
   background: #F8FAFC;
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+}
+.btn--accent {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+}
+.btn--accent:hover {
+  background: linear-gradient(135deg, #34D399 0%, #059669 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.45);
 }
 </style>
