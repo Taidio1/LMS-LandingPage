@@ -14,10 +14,10 @@ export const contactRoutes: Record<Lang, string> = {
   de: '/de/contact/',
 };
 
-export const demoRoutes: Record<Lang, string> = {
-  en: '/demo/',
-  pl: '/pl/demo/',
-  de: '/de/demo/',
+export const docsRoutes: Record<Lang, string> = {
+  en: '/docs/',
+  pl: '/pl/docs/',
+  de: '/docs/',
 };
 
 export const languageLabels: Record<Lang, string> = {

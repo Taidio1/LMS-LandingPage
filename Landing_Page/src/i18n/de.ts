@@ -2,7 +2,7 @@ import type { Translations } from './en';
 
 export const de: Translations = {
   meta: {
-    title: 'OnBoardToGo — White-Label-Trainingsplattform',
+    title: 'OnboardingToGo — White-Label-Trainingsplattform',
     description: 'White-Label-LMS. In wenigen Tagen eingerichtet. Schulen Sie Ihr gesamtes Team ohne steigende Kosten.',
   },
   contact: {
@@ -37,19 +37,19 @@ export const de: Translations = {
     pricing: 'Preise',
     business: 'Für Unternehmen',
     faq: 'FAQ',
-    demo: 'Demo',
-    login: 'Anmelden',
-    cta: 'Jetzt starten',
+    docs: 'Docs',
+    liveDemo: 'Live demo',
+    cta: 'Kontakt',
   },
   hero: {
     badge: '✦ White-Label-LMS für Unternehmen',
     title1: 'White-Label-Trainingsplattform.',
     title2: 'In wenigen Tagen eingerichtet.',
     subtitle: 'Schulen Sie Ihr gesamtes Team ohne steigende Kosten.',
-    ctaPrimary: 'Jetzt starten',
-    ctaSecondary: 'Demo ansehen →',
-    trust: 'Vertraut von über <strong>1.200 Unternehmen</strong>, die mit OnBoardToGo schulen',
-    usps: ['Keine Gebühren pro Nutzer', 'White-Label', 'Schnelle Einrichtung', 'Enterprise-Qualität'],
+    ctaPrimary: 'Sprechen Sie mit uns',
+    ctaSecondary: 'Testen Sie es selbst →',
+    trust: 'Vertraut von über <strong>1.200 Unternehmen</strong>, die mit OnboardingToGo schulen',
+    usps: ['White-Label', 'Schnelle Einrichtung', 'Enterprise-Qualität'],
     floatComplete: 'Kurs abgeschlossen!',
     floatStat: '+24 % Produktivität',
     dashGreeting: 'Guten Morgen, Anna 👋',
@@ -68,7 +68,7 @@ export const de: Translations = {
     ],
   },
   features: {
-    label: 'Warum OnBoardToGo',
+    label: 'Warum OnboardingToGo',
     title: 'Eine Plattform für Organisationen.',
     titleLine2: 'Keine Kosten pro Nutzer.',
     subtitle: 'Eine Plattform. Unbegrenzte Lernende. Ihre Marke. Keine Überraschungen auf der Rechnung.',
@@ -114,26 +114,26 @@ export const de: Translations = {
       cta: 'Sprechen Sie mit uns →',
     },
     learners: {
-      title: 'Für Lernende',
-      sub: 'Lernen Sie in Ihrem eigenen Tempo, auf jedem Gerät',
+      title: 'Für Lehrer & Bildungsanbieter',
+      sub: 'Kurse verkaufen und unter Ihrer eigenen Marke anbieten',
       items: [
-        'Selbstgesteuertes Lernen auf jedem Gerät',
-        'Vom Arbeitgeber anerkannte Zertifikate',
-        'Interaktive Quizze & Aufgaben',
-        'Eigenen Fortschritt verfolgen',
-        'Offline-Zugang zu Materialien',
-        'Community & Diskussionsforen',
+        'Kurse online veröffentlichen & verkaufen',
+        'Kursportal mit Ihrem Branding',
+        'Integrierte Zahlungen & Abonnements',
+        'Lernfortschritt & Analysen',
+        'Zertifikate & Abschlussabzeichen',
+        'Inhaltsfreigaben & Kohorten-Planung',
       ],
-      cta: 'Jetzt lernen →',
+      cta: 'Jetzt verkaufen →',
     },
   },
   testimonials: {
     label: 'Referenzen',
     title: 'Geliebt von Schulungsteams',
-    subtitle: 'Unternehmen und Kursersteller, die bereits mit OnBoardToGo schulen.',
+    subtitle: 'Unternehmen und Kursersteller, die bereits mit OnboardingToGo schulen.',
     items: [
       {
-        text: 'Die Implementierung von OnBoardToGo hat die Onboarding-Zeit für neue Mitarbeiter um 40 % reduziert. Ein Kurs kann an einem einzigen Nachmittag erstellt und sofort der gesamten Abteilung zugewiesen werden.',
+        text: 'Die Implementierung von OnboardingToGo hat die Onboarding-Zeit für neue Mitarbeiter um 40 % reduziert. Ein Kurs kann an einem einzigen Nachmittag erstellt und sofort der gesamten Abteilung zugewiesen werden.',
         name: 'Agnieszka Kowalska', role: 'Head of HR', company: 'TechFlow S.A.',
         initials: 'AK', color: '#7C3AED',
       },
@@ -143,7 +143,7 @@ export const de: Translations = {
         initials: 'MB', color: '#0891B2',
       },
       {
-        text: 'Als Kursersteller schätze ich die Einfachheit des Builders. Ich habe mein Mentoring-Programm auf OnBoardToGo umgestellt und hatte innerhalb einer Woche meine ersten zahlenden Kursteilnehmer.',
+        text: 'Als Kursersteller schätze ich die Einfachheit des Builders. Ich habe mein Mentoring-Programm auf OnboardingToGo umgestellt und hatte innerhalb einer Woche meine ersten zahlenden Kursteilnehmer.',
         name: 'Piotr Wierzbicki', role: 'Business Coach', company: 'PW Academy',
         initials: 'PW', color: '#059669',
       },
@@ -164,7 +164,7 @@ export const de: Translations = {
         setupFee: 3000,
         monthlyFee: 100,
         featured: false,
-        cta: 'Jetzt starten',
+        cta: 'Sprechen Sie mit uns',
         ctaHref: '/de/contact/',
         features: [
           'Unbegrenzte Nutzer',
@@ -183,7 +183,7 @@ export const de: Translations = {
         setupFee: 3000,
         monthlyFee: 1100,
         featured: true,
-        cta: 'Jetzt starten',
+        cta: 'Sprechen Sie mit uns',
         ctaHref: '/de/contact/',
         features: [
           'Alles in Plattform',
@@ -251,9 +251,9 @@ export const de: Translations = {
   },
   finalCta: {
     title: 'Bereit anzufangen?',
-    sub: 'Schließen Sie sich über 1.200 Unternehmen an, die mit OnBoardToGo schulen — eine Pauschalgebühr, unbegrenzte Lernende.',
-    cta: 'Jetzt starten',
-    link: 'Sprechen Sie mit uns →',
+    sub: 'Schließen Sie sich über 1.200 Unternehmen an, die mit OnboardingToGo schulen — eine Pauschalgebühr, unbegrenzte Lernende.',
+    cta: 'Sprechen Sie mit uns',
+    link: 'Testen Sie es selbst →',
     note: 'Keine Kreditkarte · $3.000 Einrichtung · Keine Gebühren pro Nutzer',
   },
   footer: {
