@@ -1,0 +1,675 @@
+---
+import type { Lang } from '../../i18n/index';
+
+interface Props { lang?: Lang; }
+const { lang = 'en' } = Astro.props;
+
+type Block = { type: 'p' | 'h3' | 'tip'; text: string };
+type Article = { id: string; title: string; readTime: string; updated: string; body: Block[] };
+type Section = { id: string; heading: string; articles: Article[] };
+type Content = {
+  label: string; titleStart: string; titleHighlight: string; subtitle: string;
+  sections: Section[];
+};
+
+const content: Record<'en' | 'pl', Content> = {
+  en: {
+    label: 'Documentation',
+    titleStart: 'OnBoardToGo',
+    titleHighlight: 'Docs',
+    subtitle: 'Guides, tutorials, and reference docs for platform admins and learners.',
+    sections: [
+      {
+        id: 'getting-started',
+        heading: 'Getting Started',
+        articles: [
+          {
+            id: 'introduction',
+            title: 'Introduction to OnBoardToGo',
+            readTime: '5 min read',
+            updated: 'May 2026',
+            body: [
+              { type: 'p', text: 'OnBoardToGo is a white-label LMS that lets you train your entire team under your own brand. This guide walks you through the basics of getting your platform up and running.' },
+              { type: 'h3', text: 'What you get out of the box' },
+              { type: 'p', text: 'Your platform comes with unlimited users, unlimited courses, a branded login page, and a full admin panel. No per-seat fees — ever.' },
+              { type: 'tip', text: 'You can invite your whole team before any courses are published. They will see courses as soon as you assign them.' },
+            ],
+          },
+          {
+            id: 'first-login',
+            title: 'First Login',
+            readTime: '3 min read',
+            updated: 'May 2026',
+            body: [
+              { type: 'p', text: 'After your platform is set up, you will receive a login link and admin credentials by email.' },
+              { type: 'h3', text: 'Logging in for the first time' },
+              { type: 'p', text: 'Navigate to your platform URL and enter your credentials. On first login you will be prompted to change your password and set up two-factor authentication.' },
+              { type: 'tip', text: 'Bookmark your platform URL — it will be something like learn.yourcompany.com.' },
+            ],
+          },
+          {
+            id: 'invite-team',
+            title: 'Invite Your Team',
+            readTime: '4 min read',
+            updated: 'May 2026',
+            body: [
+              { type: 'p', text: 'Go to Admin Panel → Users → Invite. You can invite individuals by email or upload a CSV for bulk invitations.' },
+              { type: 'h3', text: 'Role options' },
+              { type: 'p', text: 'Each user can be assigned one of three roles: Learner, Manager, or Admin. Managers can create courses and view reports for their group; Admins have full access.' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'admin',
+        heading: 'Admin Panel',
+        articles: [
+          {
+            id: 'managing-users',
+            title: 'Managing Users',
+            readTime: '6 min read',
+            updated: 'May 2026',
+            body: [
+              { type: 'p', text: 'The Users section of the admin panel gives you full control over who has access to your platform and what they can do.' },
+              { type: 'h3', text: 'Filtering and groups' },
+              { type: 'p', text: 'Organize users into groups (e.g. by department) to assign courses in bulk and filter reports by team.' },
+              { type: 'tip', text: 'Deactivating a user suspends access immediately without deleting their progress data.' },
+            ],
+          },
+          {
+            id: 'admin-courses',
+            title: 'Courses',
+            readTime: '7 min read',
+            updated: 'May 2026',
+            body: [
+              { type: 'p', text: 'Create courses using the built-in builder or import existing SCORM 1.2/2004 packages.' },
+              { type: 'h3', text: 'Publishing and assigning' },
+              { type: 'p', text: 'A course must be published before it can be assigned. Assign to individual users, groups, or everyone at once. You can set a due date and send automatic reminders.' },
+            ],
+          },
+          {
+            id: 'admin-reports',
+            title: 'Reports',
+            readTime: '5 min read',
+            updated: 'May 2026',
+            body: [
+              { type: 'p', text: 'Reports are available in Admin Panel → Reports. Filter by user, group, course, or date range.' },
+              { type: 'h3', text: 'Compliance export' },
+              { type: 'p', text: 'Export completion data as CSV or PDF for compliance audits. Certificates are automatically generated on completion.' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'learners',
+        heading: 'For Learners',
+        articles: [
+          {
+            id: 'taking-courses',
+            title: 'Taking Courses',
+            readTime: '3 min read',
+            updated: 'May 2026',
+            body: [
+              { type: 'p', text: 'After logging in, your assigned courses appear on the dashboard. Click a course to start or continue where you left off.' },
+              { type: 'tip', text: 'Your progress is saved automatically — you can close the browser and pick up exactly where you left off.' },
+            ],
+          },
+          {
+            id: 'certificates',
+            title: 'Certificates',
+            readTime: '2 min read',
+            updated: 'May 2026',
+            body: [
+              { type: 'p', text: 'On completing a course, a certificate is automatically generated and emailed to you. You can also download it any time from your profile.' },
+            ],
+          },
+          {
+            id: 'tracking-progress',
+            title: 'Tracking Progress',
+            readTime: '3 min read',
+            updated: 'May 2026',
+            body: [
+              { type: 'p', text: 'Your profile page shows completion percentages for all assigned courses, quiz scores, and time spent learning.' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'whitelabel',
+        heading: 'White-label & Branding',
+        articles: [
+          {
+            id: 'custom-domain',
+            title: 'Custom Domain',
+            readTime: '5 min read',
+            updated: 'May 2026',
+            body: [
+              { type: 'p', text: 'With the Platform + Brand plan, you can serve your LMS from your own domain (e.g. learn.yourcompany.com).' },
+              { type: 'h3', text: 'DNS setup' },
+              { type: 'p', text: 'Create a CNAME record pointing to your OnBoardToGo subdomain. We handle SSL automatically.' },
+              { type: 'tip', text: 'DNS propagation can take up to 48 hours, though usually completes in under an hour.' },
+            ],
+          },
+          {
+            id: 'logo-colors',
+            title: 'Logo & Colors',
+            readTime: '3 min read',
+            updated: 'May 2026',
+            body: [
+              { type: 'p', text: 'Upload your logo and set your brand colors in Admin Panel → Branding. Changes apply instantly across the entire platform.' },
+            ],
+          },
+          {
+            id: 'branded-emails',
+            title: 'Branded Emails',
+            readTime: '4 min read',
+            updated: 'May 2026',
+            body: [
+              { type: 'p', text: 'Send invitation, completion, and reminder emails from your own domain. Requires DNS configuration (SPF + DKIM records).' },
+              { type: 'tip', text: 'We provide exact DNS record values to add — no technical expertise required.' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'integrations',
+        heading: 'Integrations',
+        articles: [
+          {
+            id: 'sso-setup',
+            title: 'SSO Setup',
+            readTime: '8 min read',
+            updated: 'May 2026',
+            body: [
+              { type: 'p', text: 'OnBoardToGo supports SAML 2.0 and OAuth 2.0 single sign-on. Available on the Platform + Brand plan.' },
+              { type: 'h3', text: 'Connecting your identity provider' },
+              { type: 'p', text: 'Go to Admin Panel → Integrations → SSO. Enter your Identity Provider metadata URL or upload the XML file. Test the connection before enabling.' },
+              { type: 'tip', text: 'Works with Okta, Azure AD, Google Workspace, and most SAML-compatible identity providers.' },
+            ],
+          },
+          {
+            id: 'hr-tools',
+            title: 'HR Tools',
+            readTime: '5 min read',
+            updated: 'May 2026',
+            body: [
+              { type: 'p', text: 'Sync employees automatically from BambooHR or Workday. New hires are provisioned and assigned onboarding courses automatically.' },
+            ],
+          },
+          {
+            id: 'zapier-make',
+            title: 'Zapier & Make',
+            readTime: '4 min read',
+            updated: 'May 2026',
+            body: [
+              { type: 'p', text: 'Use the OnBoardToGo Zapier app or Make module to automate workflows: assign courses on Slack messages, notify managers on completion, export data to Google Sheets, and more.' },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  pl: {
+    label: 'Dokumentacja',
+    titleStart: 'OnBoardToGo',
+    titleHighlight: 'Docs',
+    subtitle: 'Przewodniki, tutoriale i dokumentacja dla administratorów i kursantów.',
+    sections: [
+      {
+        id: 'getting-started',
+        heading: 'Pierwsze kroki',
+        articles: [
+          {
+            id: 'introduction',
+            title: 'Wprowadzenie do OnBoardToGo',
+            readTime: '5 min czytania',
+            updated: 'maj 2026',
+            body: [
+              { type: 'p', text: 'OnBoardToGo to platforma LMS white-label, która pozwala szkolić cały zespół pod własną marką. Ten przewodnik przeprowadzi Cię przez podstawy uruchomienia platformy.' },
+              { type: 'h3', text: 'Co dostajesz od razu' },
+              { type: 'p', text: 'Twoja platforma zawiera nieograniczoną liczbę użytkowników, kursów, własną stronę logowania oraz pełny panel admina. Bez opłat za użytkownika — nigdy.' },
+              { type: 'tip', text: 'Możesz zaprosić cały zespół zanim opublikujesz kursy. Zobaczą je od razu po przypisaniu.' },
+            ],
+          },
+          {
+            id: 'first-login',
+            title: 'Pierwsze logowanie',
+            readTime: '3 min czytania',
+            updated: 'maj 2026',
+            body: [
+              { type: 'p', text: 'Po skonfigurowaniu platformy otrzymasz link do logowania i dane dostępowe na podany adres e-mail.' },
+              { type: 'h3', text: 'Pierwsze logowanie' },
+              { type: 'p', text: 'Wejdź na adres swojej platformy i zaloguj się. Przy pierwszym logowaniu zostaniesz poproszony o zmianę hasła i ustawienie weryfikacji dwuetapowej.' },
+              { type: 'tip', text: 'Zapisz adres platformy w zakładkach — będzie to coś w stylu learn.twojafirma.pl.' },
+            ],
+          },
+          {
+            id: 'invite-team',
+            title: 'Zaproś zespół',
+            readTime: '4 min czytania',
+            updated: 'maj 2026',
+            body: [
+              { type: 'p', text: 'Przejdź do Panel admina → Użytkownicy → Zaproś. Możesz zapraszać pojedyncze osoby e-mailem lub przesłać CSV dla zaproszeń zbiorczych.' },
+              { type: 'h3', text: 'Role użytkowników' },
+              { type: 'p', text: 'Każdemu użytkownikowi możesz przypisać jedną z trzech ról: Kursant, Manager lub Admin. Managerowie mogą tworzyć kursy i przeglądać raporty swojej grupy.' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'admin',
+        heading: 'Panel admina',
+        articles: [
+          {
+            id: 'managing-users',
+            title: 'Zarządzanie użytkownikami',
+            readTime: '6 min czytania',
+            updated: 'maj 2026',
+            body: [
+              { type: 'p', text: 'Sekcja Użytkownicy w panelu admina daje pełną kontrolę nad dostępem do platformy i uprawnieniami.' },
+              { type: 'h3', text: 'Filtrowanie i grupy' },
+              { type: 'p', text: 'Organizuj użytkowników w grupy (np. według działu), aby przypisywać kursy zbiorczo i filtrować raporty według zespołu.' },
+              { type: 'tip', text: 'Dezaktywacja użytkownika natychmiast blokuje dostęp bez usuwania danych o postępie.' },
+            ],
+          },
+          {
+            id: 'admin-courses',
+            title: 'Kursy',
+            readTime: '7 min czytania',
+            updated: 'maj 2026',
+            body: [
+              { type: 'p', text: 'Twórz kursy za pomocą wbudowanego kreatora lub importuj istniejące pakiety SCORM 1.2/2004.' },
+              { type: 'h3', text: 'Publikowanie i przypisywanie' },
+              { type: 'p', text: 'Kurs musi być opublikowany przed przypisaniem. Przypisuj do użytkowników, grup lub wszystkich jednocześnie. Możesz ustawić termin i automatyczne przypomnienia.' },
+            ],
+          },
+          {
+            id: 'admin-reports',
+            title: 'Raporty',
+            readTime: '5 min czytania',
+            updated: 'maj 2026',
+            body: [
+              { type: 'p', text: 'Raporty są dostępne w Panel admina → Raporty. Filtruj według użytkownika, grupy, kursu lub zakresu dat.' },
+              { type: 'h3', text: 'Eksport dla compliance' },
+              { type: 'p', text: 'Eksportuj dane ukończeń jako CSV lub PDF na potrzeby audytów. Certyfikaty są generowane automatycznie po ukończeniu kursu.' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'learners',
+        heading: 'Dla kursantów',
+        articles: [
+          {
+            id: 'taking-courses',
+            title: 'Jak się uczyć',
+            readTime: '3 min czytania',
+            updated: 'maj 2026',
+            body: [
+              { type: 'p', text: 'Po zalogowaniu przypisane kursy widoczne są na pulpicie. Kliknij kurs, aby go rozpocząć lub kontynuować od miejsca, w którym skończyłeś.' },
+              { type: 'tip', text: 'Postęp jest zapisywany automatycznie — możesz zamknąć przeglądarkę i wrócić dokładnie w tym samym miejscu.' },
+            ],
+          },
+          {
+            id: 'certificates',
+            title: 'Certyfikaty',
+            readTime: '2 min czytania',
+            updated: 'maj 2026',
+            body: [
+              { type: 'p', text: 'Po ukończeniu kursu certyfikat jest automatycznie generowany i wysyłany e-mailem. Możesz go też pobrać w dowolnym momencie z profilu.' },
+            ],
+          },
+          {
+            id: 'tracking-progress',
+            title: 'Śledzenie postępów',
+            readTime: '3 min czytania',
+            updated: 'maj 2026',
+            body: [
+              { type: 'p', text: 'Strona profilu pokazuje procent ukończenia wszystkich przypisanych kursów, wyniki quizów i czas spędzony na nauce.' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'whitelabel',
+        heading: 'White-label i branding',
+        articles: [
+          {
+            id: 'custom-domain',
+            title: 'Własna domena',
+            readTime: '5 min czytania',
+            updated: 'maj 2026',
+            body: [
+              { type: 'p', text: 'W planie Platform + Brand możesz udostępnić LMS pod własną domeną (np. nauka.twojafirma.pl).' },
+              { type: 'h3', text: 'Konfiguracja DNS' },
+              { type: 'p', text: 'Utwórz rekord CNAME wskazujący na Twoją subdomenę OnBoardToGo. Certyfikat SSL konfigurujemy automatycznie.' },
+              { type: 'tip', text: 'Propagacja DNS może zająć do 48 godzin, zazwyczaj jednak trwa mniej niż godzinę.' },
+            ],
+          },
+          {
+            id: 'logo-colors',
+            title: 'Logo i kolory',
+            readTime: '3 min czytania',
+            updated: 'maj 2026',
+            body: [
+              { type: 'p', text: 'Prześlij logo i ustaw kolory marki w Panel admina → Branding. Zmiany są widoczne natychmiast na całej platformie.' },
+            ],
+          },
+          {
+            id: 'branded-emails',
+            title: 'Wiadomości pod własną marką',
+            readTime: '4 min czytania',
+            updated: 'maj 2026',
+            body: [
+              { type: 'p', text: 'Wysyłaj zaproszenia, potwierdzenia ukończenia i przypomnienia z własnej domeny. Wymaga konfiguracji DNS (rekordy SPF + DKIM).' },
+              { type: 'tip', text: 'Dostarczamy dokładne wartości rekordów DNS do dodania — bez potrzeby wiedzy technicznej.' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'integrations',
+        heading: 'Integracje',
+        articles: [
+          {
+            id: 'sso-setup',
+            title: 'Konfiguracja SSO',
+            readTime: '8 min czytania',
+            updated: 'maj 2026',
+            body: [
+              { type: 'p', text: 'OnBoardToGo obsługuje SAML 2.0 i OAuth 2.0 (Single Sign-On). Dostępne w planie Platform + Brand.' },
+              { type: 'h3', text: 'Podłączenie dostawcy tożsamości' },
+              { type: 'p', text: 'Przejdź do Panel admina → Integracje → SSO. Wklej URL metadanych dostawcy tożsamości lub prześlij plik XML. Przetestuj połączenie przed włączeniem.' },
+              { type: 'tip', text: 'Działa z Okta, Azure AD, Google Workspace i większością dostawców zgodnych z SAML.' },
+            ],
+          },
+          {
+            id: 'hr-tools',
+            title: 'Narzędzia HR',
+            readTime: '5 min czytania',
+            updated: 'maj 2026',
+            body: [
+              { type: 'p', text: 'Synchronizuj pracowników automatycznie z BambooHR lub Workday. Nowi pracownicy są automatycznie zakładani i przypisywani do kursów onboardingowych.' },
+            ],
+          },
+          {
+            id: 'zapier-make',
+            title: 'Zapier i Make',
+            readTime: '4 min czytania',
+            updated: 'maj 2026',
+            body: [
+              { type: 'p', text: 'Użyj aplikacji OnBoardToGo w Zapierze lub modułu Make, aby automatyzować procesy: przypisuj kursy po wiadomości na Slacku, powiadamiaj managerów o ukończeniu, eksportuj dane do Google Sheets i wiele więcej.' },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+};
+
+const t = lang === 'pl' ? content.pl : content.en;
+const allArticles = t.sections.flatMap(s =>
+  s.articles.map(a => ({ ...a, sectionHeading: s.heading, sectionId: s.id }))
+);
+---
+
+<main class="docs-layout">
+  <div class="docs-header">
+    <div class="container">
+      <p class="section-label reveal">{t.label}</p>
+      <h1 class="docs-title">
+        {t.titleStart} <span class="gradient-text">{t.titleHighlight}</span>
+      </h1>
+      <p class="docs-subtitle">{t.subtitle}</p>
+    </div>
+  </div>
+
+  <div class="container docs-body">
+    <aside class="docs-sidebar" id="docsSidebar">
+      {t.sections.map(section => (
+        <div class="docs-sidebar__group">
+          <div class="docs-sidebar__category">{section.heading}</div>
+          {section.articles.map(article => (
+            <a
+              href={`#${article.id}`}
+              class="docs-sidebar__link"
+              data-article={article.id}
+            >
+              {article.title}
+            </a>
+          ))}
+        </div>
+      ))}
+    </aside>
+
+    <div class="docs-content">
+      {allArticles.map((article, i) => (
+        <section id={article.id} class="docs-section">
+          <div class="docs-breadcrumb">
+            {t.label} &rsaquo; {article.sectionHeading} &rsaquo; {article.title}
+          </div>
+          <h2 class="docs-article-title">{article.title}</h2>
+          <div class="docs-meta">
+            <span>&#x23F1; {article.readTime}</span>
+            <span>&#x1F504; {article.updated}</span>
+          </div>
+          {article.body.map(block =>
+            block.type === 'p' ? (
+              <p class="docs-p">{block.text}</p>
+            ) : block.type === 'h3' ? (
+              <h3 class="docs-h3">{block.text}</h3>
+            ) : (
+              <div class="docs-tip">{block.text}</div>
+            )
+          )}
+          <div class="docs-nav">
+            {i > 0 && (
+              <a href={`#${allArticles[i - 1].id}`} class="docs-nav__prev">
+                &larr; {allArticles[i - 1].title}
+              </a>
+            )}
+            {i < allArticles.length - 1 && (
+              <a href={`#${allArticles[i + 1].id}`} class="docs-nav__next">
+                {allArticles[i + 1].title} &rarr;
+              </a>
+            )}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</main>
+
+<style>
+.docs-layout { min-height: 100vh; }
+
+.docs-header {
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+}
+.docs-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 8px 0 12px;
+  line-height: 1.15;
+}
+.docs-subtitle {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 560px;
+}
+
+.docs-body {
+  display: flex;
+  gap: 0;
+  min-height: calc(100vh - 200px);
+  align-items: flex-start;
+}
+
+.docs-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  padding: 32px 0;
+  border-right: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 68px;
+  max-height: calc(100vh - 68px);
+  overflow-y: auto;
+}
+.docs-sidebar__group { margin-bottom: 4px; }
+.docs-sidebar__group + .docs-sidebar__group .docs-sidebar__category {
+  border-top: 1px solid var(--border-subtle);
+}
+.docs-sidebar__category {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 16px 16px 8px;
+}
+.docs-sidebar__link {
+  display: block;
+  padding: 6px 16px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-left: 3px solid transparent;
+  text-decoration: none;
+  transition: var(--transition);
+  line-height: 1.4;
+}
+.docs-sidebar__link:hover {
+  color: var(--text-primary);
+  background: rgba(37, 99, 235, 0.04);
+}
+.docs-sidebar__link.active {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.07);
+  border-left-color: #2563eb;
+  font-weight: 600;
+}
+
+.docs-content {
+  flex: 1;
+  padding: 32px 48px 80px;
+  min-width: 0;
+}
+.docs-section {
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 64px;
+}
+.docs-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.docs-breadcrumb {
+  font-size: 12px;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  margin-bottom: 16px;
+}
+.docs-article-title {
+  font-size: 1.625rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+.docs-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+.docs-h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 24px 0 8px;
+}
+.docs-p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin: 0 0 16px;
+}
+.docs-tip {
+  background: rgba(37, 99, 235, 0.06);
+  border-left: 3px solid #2563eb;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  font-size: 0.875rem;
+  color: #1e40af;
+  margin: 16px 0;
+  line-height: 1.6;
+}
+
+.docs-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  gap: 16px;
+}
+.docs-nav__prev,
+.docs-nav__next {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #2563eb;
+  text-decoration: none;
+  transition: var(--transition);
+  padding: 8px 16px;
+  border: 1.5px solid rgba(37, 99, 235, 0.3);
+  border-radius: 8px;
+}
+.docs-nav__prev:hover,
+.docs-nav__next:hover {
+  background: rgba(37, 99, 235, 0.06);
+  border-color: #2563eb;
+}
+.docs-nav__next { margin-left: auto; }
+
+@media (max-width: 768px) {
+  .docs-body { flex-direction: column; }
+  .docs-sidebar {
+    width: 100%;
+    position: static;
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 16px 0;
+  }
+  .docs-content { padding: 24px 16px 48px; }
+}
+</style>
+
+<script>
+  const sidebarLinks = document.querySelectorAll<HTMLAnchorElement>('.docs-sidebar__link');
+  const sections = document.querySelectorAll<HTMLElement>('.docs-section');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          sidebarLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('data-article') === id);
+          });
+        }
+      });
+    },
+    { rootMargin: '-10% 0px -70% 0px', threshold: 0 }
+  );
+
+  sections.forEach(section => observer.observe(section));
+
+  if (sidebarLinks.length > 0) sidebarLinks[0].classList.add('active');
+</script>
