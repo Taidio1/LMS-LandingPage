@@ -1,0 +1,956 @@
+/* ─── Login ─────────────────────────────────────────────── */
+.loginBg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #7C3AED 0%, #4F46E5 50%, #2563EB 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.loginWrap {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.loginHeader { text-align: center; }
+
+.loginBadge {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.loginTitle {
+  font-size: 30px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.loginSubtitle {
+  font-size: 15px;
+  color: rgba(255,255,255,0.75);
+  margin: 0;
+}
+
+.accountCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+.accountCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+}
+
+.accountAvatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.accountName {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+}
+
+.accountRole {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748B;
+  background: #F8FAFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+
+.accountBtn {
+  width: 100%;
+  padding: 11px 16px;
+  background: linear-gradient(135deg, #7C3AED, #2563EB);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  font-family: inherit;
+}
+
+.accountBtn:hover { opacity: 0.88; }
+
+/* ─── App Shell ──────────────────────────────────────────── */
+.shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: #F8FAFF;
+  font-family: inherit;
+}
+
+.header {
+  height: 52px;
+  background: #fff;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+  flex-shrink: 0;
+  z-index: 20;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #0F172A;
+  padding: 4px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.headerBrand {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.headerMode {
+  font-size: 11px;
+  font-weight: 600;
+  color: #7C3AED;
+  background: #F5F3FF;
+  border-radius: 999px;
+  padding: 2px 8px;
+  flex-shrink: 0;
+}
+
+.headerSpacer { flex: 1; }
+
+.headerUser {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.headerAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.headerName {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0F172A;
+}
+
+.exitBtn {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748B;
+  background: none;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.exitBtn:hover { color: #0F172A; border-color: #94A3B8; }
+
+.shellBody {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.sidebarOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,42,0.3);
+  z-index: 15;
+}
+
+.sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  background: #fff;
+  border-right: 1px solid #E2E8F0;
+  padding: 12px 10px;
+  overflow-y: auto;
+  z-index: 16;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+  font-family: inherit;
+  margin-bottom: 2px;
+}
+
+.navLink:hover { background: #F8FAFF; color: #0F172A; }
+
+.navLinkActive {
+  background: #EEF2FF;
+  color: #4F46E5;
+  font-weight: 600;
+}
+
+.navLinkActive:hover { background: #EEF2FF; }
+
+.navIcon { font-size: 14px; flex-shrink: 0; }
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+/* ─── Shared ─────────────────────────────────────────────── */
+.pageTitle {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+}
+
+.sectionTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 20px 0 10px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.badgeActive { background: #F0FDF4; color: #16A34A; }
+.badgeDraft  { background: #F8FAFF; color: #64748B; }
+.badgeInProgress { background: #EEF2FF; color: #4F46E5; }
+.badgeCompleted  { background: #F0FDF4; color: #16A34A; }
+.badgeNotStarted { background: #F8FAFF; color: #64748B; }
+
+.progressBar {
+  height: 6px;
+  background: #F1F5F9;
+  border-radius: 999px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #7C3AED, #2563EB);
+  transition: width 0.3s ease;
+}
+
+.tableWrap { overflow-x: auto; }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.table th {
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid #E2E8F0;
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 10px 12px;
+  color: #0F172A;
+  border-bottom: 1px solid #F1F5F9;
+  white-space: nowrap;
+}
+
+.table tr:last-child td { border-bottom: none; }
+.table tr:hover td { background: #F8FAFF; }
+
+.avatarSmall {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.statusDot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.statusDotActive  { background: #16A34A; }
+.statusDotInactive { background: #94A3B8; }
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #0F172A;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  z-index: 999;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  animation: toastIn 0.2s ease;
+  max-width: 320px;
+}
+
+@keyframes toastIn {
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+
+/* ─── KPI grid ───────────────────────────────────────────── */
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.kpiCard {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.kpiValue {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.kpiLabel {
+  font-size: 12px;
+  color: #64748B;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.kpiDelta {
+  font-size: 11px;
+  font-weight: 600;
+  color: #16A34A;
+}
+
+/* ─── Charts ─────────────────────────────────────────────── */
+.chartBox {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.chartTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 12px;
+}
+
+.chartSvg { width: 100%; overflow: visible; }
+
+/* ─── Two-column layout ──────────────────────────────────── */
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* ─── Search + filter ────────────────────────────────────── */
+.searchRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 160px;
+  padding: 8px 12px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #0F172A;
+  background: #fff;
+  font-family: inherit;
+  transition: border-color 0.15s;
+}
+
+.searchInput:focus { outline: none; border-color: #4F46E5; }
+
+.filterTabs {
+  display: flex;
+  background: #F1F5F9;
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.filterTab {
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748B;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.filterTabActive {
+  background: #fff;
+  color: #0F172A;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* ─── Course list (admin) ────────────────────────────────── */
+.courseList { display: flex; flex-direction: column; gap: 8px; }
+
+.courseRow {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.courseThumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.courseInfo { flex: 1; min-width: 0; }
+
+.courseRowTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0F172A;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.courseCategory {
+  font-size: 10px;
+  font-weight: 600;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.courseEnrolled {
+  font-size: 12px;
+  color: #64748B;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.courseProgressWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.coursePct {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0F172A;
+  width: 30px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.editBtn {
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #4F46E5;
+  background: #EEF2FF;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.editBtn:hover { opacity: 0.8; }
+
+/* ─── Activity feed ──────────────────────────────────────── */
+.activityFeed { display: flex; flex-direction: column; gap: 10px; }
+
+.activityItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.activityDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4F46E5;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.activityText { font-size: 12px; color: #0F172A; line-height: 1.4; }
+.activityTime { font-size: 11px; color: #94A3B8; margin-top: 1px; }
+
+/* ─── Learner course grid ────────────────────────────────── */
+.courseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.courseCard {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.courseThumbnail {
+  height: 80px;
+  width: 100%;
+}
+
+.courseCardBody { padding: 12px; }
+
+.courseCardTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.courseCardProgressRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.courseCardPct {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0F172A;
+  flex-shrink: 0;
+}
+
+.courseCardBtn {
+  width: 100%;
+  padding: 7px 0;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+
+.courseCardBtn:hover { opacity: 0.85; }
+
+.btnContinue { background: linear-gradient(135deg,#7C3AED,#2563EB); color: #fff; }
+.btnStart    { background: #F1F5F9; color: #0F172A; }
+.btnDone     { background: #F0FDF4; color: #16A34A; cursor: default; }
+
+/* ─── Stat chips ─────────────────────────────────────────── */
+.statChips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.statChip {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 100px;
+}
+
+.statChipValue {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.statChipLabel { font-size: 11px; color: #64748B; font-weight: 500; }
+
+/* ─── Continue card ──────────────────────────────────────── */
+.continueCard {
+  background: linear-gradient(135deg,#7C3AED,#4F46E5,#2563EB);
+  border-radius: 12px;
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.continueCardInfo { flex: 1; }
+.continueLabel { font-size: 11px; font-weight: 600; opacity: 0.75; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+.continueTitle { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+.continueProgressRow { display: flex; align-items: center; gap: 10px; }
+
+.continueProgressBar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.continueProgressFill {
+  height: 100%;
+  background: #fff;
+  border-radius: 999px;
+}
+
+.continuePct { font-size: 12px; font-weight: 700; }
+
+.continueBtn {
+  padding: 10px 18px;
+  background: #fff;
+  color: #4F46E5;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+
+.continueBtn:hover { opacity: 0.9; }
+
+/* ─── Progress ring ──────────────────────────────────────── */
+.progressRingSection {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.progressRingWrap { position: relative; flex-shrink: 0; }
+
+.progressRingSvg { width: 120px; height: 120px; }
+
+.progressRingText {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressRingPct {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.progressRingLabel { font-size: 10px; color: #64748B; font-weight: 500; }
+
+.progressRingInfo { flex: 1; }
+
+.streakRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.streakBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #FFF7ED;
+  border: 1px solid #FED7AA;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #C2410C;
+}
+
+.xpBar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.xpLabel { font-size: 11px; color: #64748B; }
+
+.xpProgress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ─── Certificates ───────────────────────────────────────── */
+.certGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+
+.certCard {
+  background: #fff;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 20px;
+  background-clip: padding-box;
+  position: relative;
+  box-shadow: inset 0 0 0 2px #E2E8F0;
+}
+
+.certCardGold {
+  box-shadow:
+    inset 0 0 0 2px transparent,
+    0 0 0 2px #D97706;
+  background: linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(135deg, #F59E0B, #D97706) border-box;
+  border: 2px solid transparent;
+}
+
+.certIcon { font-size: 28px; margin-bottom: 8px; }
+.certTitle { font-size: 14px; font-weight: 700; color: #0F172A; margin-bottom: 4px; }
+.certDate  { font-size: 11px; color: #64748B; margin-bottom: 12px; }
+
+.certBtn {
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #D97706;
+  background: #FFF7ED;
+  border: 1px solid #FED7AA;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+
+.certBtn:hover { opacity: 0.8; }
+
+.inProgressCerts { display: flex; flex-direction: column; gap: 10px; }
+
+.inProgressCertCard {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.inProgressCertInfo { flex: 1; }
+.inProgressCertTitle { font-size: 13px; font-weight: 600; color: #0F172A; margin-bottom: 6px; }
+
+.inProgressCertProgress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inProgressCertPct { font-size: 11px; font-weight: 700; color: #64748B; flex-shrink: 0; }
+
+.continueSmallBtn {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4F46E5;
+  background: #EEF2FF;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+
+.continueSmallBtn:hover { opacity: 0.8; }
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+
+  .headerName { display: none; }
+
+  .sidebar {
+    position: fixed;
+    top: 52px;
+    left: 0;
+    bottom: 0;
+    width: 220px;
+    transform: translateX(-100%);
+    transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+    z-index: 16;
+    box-shadow: 4px 0 16px rgba(0,0,0,0.08);
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+
+  .sidebarOverlay { display: block; top: 52px; }
+
+  .kpiGrid { grid-template-columns: repeat(2, 1fr); }
+
+  .twoCol { grid-template-columns: 1fr; }
+
+  .courseGrid { grid-template-columns: repeat(2, 1fr); }
+
+  .certGrid { grid-template-columns: 1fr; }
+
+  .accountCards { grid-template-columns: 1fr; }
+
+  .courseProgressWrap { display: none; }
+
+  .content { padding: 16px; }
+}
+
+@media (max-width: 480px) {
+  .courseGrid { grid-template-columns: 1fr; }
+  .kpiGrid { grid-template-columns: 1fr 1fr; }
+}
