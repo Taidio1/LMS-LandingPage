@@ -48,7 +48,7 @@ export const de: Translations = {
     subtitle: 'Schulen Sie Ihr gesamtes Team ohne steigende Kosten.',
     ctaPrimary: 'Sprechen Sie mit uns',
     ctaSecondary: 'Testen Sie es selbst →',
-    trust: 'Vertraut von über <strong>1.200 Unternehmen</strong>, die mit OnboardingToGo schulen',
+    trust: 'Für Teams, die Schulungen unter eigener Marke anbieten möchten',
     usps: ['White-Label', 'Schnelle Einrichtung', 'Enterprise-Qualität'],
     floatComplete: 'Kurs abgeschlossen!',
     floatStat: '+24 % Produktivität',
@@ -60,12 +60,8 @@ export const de: Translations = {
     dashActiveCourses: 'Aktive Kurse',
   },
   socialProof: {
-    trusted: 'Vertraut von:',
-    stats: [
-      { display: '12.000+', label: 'Lernende' },
-      { display: '500+', label: 'Kurse' },
-      { display: '98 %', label: 'Abschlussquote' },
-    ],
+    audienceLabel: 'Entwickelt für:',
+    audiences: ['HR-Teams', 'L&D-Abteilungen', 'Trainingsanbieter', 'Kundenakademien'],
   },
   features: {
     label: 'Warum OnboardingToGo',
@@ -79,12 +75,12 @@ export const de: Translations = {
     previewVsLastQuarter: 'vs. letztes Quartal',
     items: [
       {
-        title: 'Keine Gebühren pro Nutzer — niemals',
-        desc: 'Monatliche Pauschalgebühr, egal wie viele Personen Sie schulen. Fügen Sie 10 oder 10.000 Lernende hinzu — Ihre Rechnung bleibt gleich.',
+        title: 'Keine Gebühren pro Nutzer',
+        desc: 'Monatliche Pauschalgebühr, egal wie viele Personen Sie schulen. Fügen Sie 10 oder 10.000 Lernende hinzu, Ihre Rechnung bleibt gleich.',
       },
       {
         title: 'Vollständiges White-Label',
-        desc: 'Ihre Marke, Domain, Farben. Lernende sehen Sie — nicht uns. Eigene E-Mails, eigene Anmeldung, vollständiges Branding.',
+        desc: 'Ihre Marke, Domain, Farben. Lernende sehen Sie, nicht uns. Eigene E-Mails, eigene Anmeldung, vollständiges Branding.',
       },
       {
         title: 'Live in Tagen',
@@ -254,7 +250,7 @@ export const de: Translations = {
     sub: 'Schließen Sie sich über 1.200 Unternehmen an, die mit OnboardingToGo schulen — eine Pauschalgebühr, unbegrenzte Lernende.',
     cta: 'Sprechen Sie mit uns',
     link: 'Testen Sie es selbst →',
-    note: 'Keine Kreditkarte · $3.000 Einrichtung · Keine Gebühren pro Nutzer',
+    note: 'Keine Kreditkarte · Keine Gebühren pro Nutzer',
   },
   footer: {
     desc: 'White-Label-Trainingsplattform für Organisationen jeder Größe. In wenigen Tagen eingerichtet, im großen Maßstab schulen ohne steigende Kosten.',

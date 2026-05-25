@@ -1,11 +1,33 @@
 /* ─── Login ─────────────────────────────────────────────── */
 .loginBg {
-  min-height: 100vh;
+  min-height: 100dvh;
   background: linear-gradient(135deg, #7C3AED 0%, #4F46E5 50%, #2563EB 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 88px 24px 24px;
+  position: relative;
+}
+
+.loginBackBtn {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 8px 14px;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .loginWrap {
@@ -116,7 +138,7 @@
 .shell {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   background: #F8FAFF;
   font-family: inherit;
@@ -208,6 +230,26 @@
 }
 
 .exitBtn:hover { color: #0F172A; border-color: #94A3B8; }
+
+.siteBackBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 29px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #7C3AED, #2563EB);
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: inherit;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+
+.siteBackBtn:hover { opacity: 0.9; }
 
 .shellBody {
   display: flex;
@@ -948,9 +990,70 @@
   .courseProgressWrap { display: none; }
 
   .content { padding: 16px; }
+
+  .courseRow {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    grid-template-areas:
+      "thumb info edit"
+      "thumb enrolled badge";
+    align-items: center;
+    gap: 10px;
+  }
+
+  .courseThumb {
+    grid-area: thumb;
+  }
+
+  .courseInfo {
+    grid-area: info;
+    min-width: 0;
+  }
+
+  .courseRowTitle {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    line-height: 1.25;
+  }
+
+  .courseEnrolled {
+    grid-area: enrolled;
+    white-space: normal;
+  }
+
+  .courseRow .badge {
+    grid-area: badge;
+    justify-self: end;
+  }
+
+  .editBtn {
+    grid-area: edit;
+    justify-self: end;
+  }
 }
 
 @media (max-width: 480px) {
   .courseGrid { grid-template-columns: 1fr; }
   .kpiGrid { grid-template-columns: 1fr 1fr; }
+
+  .loginTitle {
+    font-size: 28px;
+  }
+
+  .header {
+    gap: 8px;
+    padding: 0 12px;
+  }
+
+  .headerBrand,
+  .headerMode,
+  .headerUser {
+    display: none;
+  }
+
+  .exitBtn,
+  .siteBackBtn {
+    padding: 6px 10px;
+  }
 }

@@ -1,12 +1,14 @@
 import styles from '../demo.module.css';
 
 interface Props {
+  homeHref?: string;
   onLogin: (role: 'admin' | 'learner') => void;
 }
 
-export function LoginScreen({ onLogin }: Props) {
+export function LoginScreen({ homeHref = '/', onLogin }: Props) {
   return (
     <div className={styles.loginBg}>
+      <a className={styles.loginBackBtn} href={homeHref}>Back to site</a>
       <div className={styles.loginWrap}>
         <div className={styles.loginHeader}>
           <div className={styles.loginBadge}>Interactive Demo</div>

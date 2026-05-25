@@ -20,8 +20,11 @@ const t = lang === 'de' ? de : lang === 'pl' ? pl : en;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={t.meta.description} />
     <title>{t.meta.title}</title>
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" hreflang="x-default" href="/" />
     <link rel="alternate" hreflang="en" href="/" />
     <link rel="alternate" hreflang="pl" href="/pl/" />
+    <link rel="alternate" hreflang="de" href="/de/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

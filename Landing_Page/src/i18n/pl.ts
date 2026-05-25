@@ -48,7 +48,7 @@ export const pl: Translations = {
     subtitle: 'Szkol cały zespół bez rosnących kosztów.',
     ctaPrimary: 'Porozmawiaj z nami',
     ctaSecondary: 'Przetestuj sam →',
-    trust: 'Zaufało nam ponad <strong>1 200 firm</strong> szkolących z OnboardingToGo',
+    trust: 'Dla zespołów, które chcą szkolić pod własną marką',
     usps: ['White-label', 'Szybkie wdrożenie', 'Jakość enterprise'],
     floatComplete: 'Kurs ukończony!',
     floatStat: '+24% wydajność',
@@ -60,12 +60,8 @@ export const pl: Translations = {
     dashActiveCourses: 'Aktywne kursy',
   },
   socialProof: {
-    trusted: 'Zaufały nam:',
-    stats: [
-      { display: '12 000+', label: 'Użytkowników' },
-      { display: '500+', label: 'Kursów' },
-      { display: '98%', label: 'Wskaźnik ukończeń' },
-    ],
+    audienceLabel: 'Dla kogo:',
+    audiences: ['Zespoły HR', 'Działy L&D', 'Firmy szkoleniowe', 'Akademie klientów'],
   },
   features: {
     label: 'Dlaczego OnboardingToGo',
@@ -79,12 +75,12 @@ export const pl: Translations = {
     previewVsLastQuarter: 'vs poprzedni kwartał',
     items: [
       {
-        title: 'Bez opłat za użytkownika — zawsze',
-        desc: 'Stała miesięczna opłata niezależnie od liczby szkolonych. Dodaj 10 lub 10 000 kursantów — faktura pozostaje taka sama.',
+        title: 'Bez opłat za użytkownika',
+        desc: 'Stała miesięczna opłata niezależnie od liczby szkolonych. Dodaj 10 lub 10 000 kursantów, faktura pozostaje taka sama.',
       },
       {
         title: 'Pełny white-label',
-        desc: 'Twoja marka, domena, kolory. Kursanci widzą Ciebie — nie nas. Własne e-maile, własne logowanie, pełna personalizacja.',
+        desc: 'Twoja marka, domena, kolory. Kursanci widzą Ciebie, nie nas. Własne e-maile, własne logowanie, pełna personalizacja.',
       },
       {
         title: 'Uruchom w dni',
@@ -254,7 +250,7 @@ export const pl: Translations = {
     sub: 'Dołącz do ponad 1 200 firm szkolących z OnboardingToGo — jedna stała opłata, nieograniczeni kursanci.',
     cta: 'Porozmawiaj z nami',
     link: 'Przetestuj sam →',
-    note: 'Bez karty kredytowej · Konfiguracja $3 000 · Bez opłat za użytkownika',
+    note: 'Bez karty kredytowej · Bez opłat za użytkownika',
   },
   footer: {
     desc: 'Platforma szkoleniowa white-label dla organizacji każdej wielkości. Uruchom w ciągu dni, szkol na skalę bez rosnących kosztów.',

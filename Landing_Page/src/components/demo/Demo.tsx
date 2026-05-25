@@ -13,6 +13,10 @@ import { LearnerCertificates } from './screens/learner/LearnerCertificates';
 type Screen = 'login' | 'app';
 type Role = 'admin' | 'learner';
 
+interface Props {
+  homeHref?: string;
+}
+
 const ADMIN_NAV = [
   { id: 'dashboard',  label: 'Dashboard', icon: '📊' },
   { id: 'courses',    label: 'Courses',   icon: '📚' },
@@ -27,7 +31,7 @@ const LEARNER_NAV = [
   { id: 'certificates', label: 'Certificates', icon: '🏆' },
 ];
 
-export function Demo() {
+export function Demo({ homeHref = '/' }: Props) {
   const [screen, setScreen]           = useState<Screen>('login');
   const [role, setRole]               = useState<Role>('admin');
   const [page, setPage]               = useState('dashboard');
@@ -38,14 +42,16 @@ export function Demo() {
     setPage('dashboard');
     setScreen('app');
     setSidebarOpen(false);
+    window.scrollTo({ top: 0, left: 0 });
   };
 
   const exit = () => {
     setScreen('login');
     setSidebarOpen(false);
+    window.scrollTo({ top: 0, left: 0 });
   };
 
-  if (screen === 'login') return <LoginScreen onLogin={login} />;
+  if (screen === 'login') return <LoginScreen homeHref={homeHref} onLogin={login} />;
 
   const nav = role === 'admin' ? ADMIN_NAV : LEARNER_NAV;
 
@@ -89,6 +95,7 @@ export function Demo() {
           <span className={styles.headerName}>{role === 'admin' ? 'Admin' : 'Learner'}</span>
         </div>
         <button className={styles.exitBtn} onClick={exit}>← Exit demo</button>
+        <a className={styles.siteBackBtn} href={homeHref}>Back to site</a>
       </header>
 
       <div className={styles.shellBody}>

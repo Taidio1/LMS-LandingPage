@@ -51,15 +51,6 @@ const demoHref = getDemoHref(lang);
           ))
         }
       </div>
-      <div class="hero__trust reveal reveal-d4">
-        <div class="hero__avatars" aria-hidden="true">
-          <span class="avatar" style="background:#7C3AED;">AK</span>
-          <span class="avatar" style="background:#4F46E5;">MB</span>
-          <span class="avatar" style="background:#059669;">PW</span>
-          <span class="avatar" style="background:#0891B2;">KN</span>
-        </div>
-        <span set:html={t.trust} />
-      </div>
     </div>
 
     <div class="hero__mockup reveal reveal-d2">
@@ -270,7 +261,6 @@ const demoHref = getDemoHref(lang);
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 28px;
   }
   .hero__usp-chip {
     display: inline-flex;
@@ -283,34 +273,6 @@ const demoHref = getDemoHref(lang);
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
     padding: 5px 12px 5px 8px;
-  }
-  .hero__trust {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 14px;
-    color: var(--text-secondary);
-  }
-  .hero__trust strong {
-    color: var(--text-primary);
-  }
-  .hero__avatars {
-    display: flex;
-    margin-right: 4px;
-  }
-  .avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    font-weight: 700;
-    color: #fff;
-    margin-right: -8px;
-    flex-shrink: 0;
   }
   .hero__mockup {
     position: relative;

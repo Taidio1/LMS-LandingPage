@@ -46,7 +46,7 @@ export const en = {
     subtitle: 'Train your entire team without scaling costs.',
     ctaPrimary: 'Talk to Us',
     ctaSecondary: 'Test it Yourself →',
-    trust: 'Trusted by <strong>1,200+ companies</strong> already training with OnboardingToGo',
+    trust: 'Built for teams that need training under their own brand',
     usps: ['White-label', 'Fast setup', 'Enterprise quality'],
     floatComplete: 'Course complete!',
     floatStat: '+24% productivity',
@@ -58,12 +58,8 @@ export const en = {
     dashActiveCourses: 'Active courses',
   },
   socialProof: {
-    trusted: 'Trusted by:',
-    stats: [
-      { display: '12,000+', label: 'Learners' },
-      { display: '500+', label: 'Courses' },
-      { display: '98%', label: 'Completion rate' },
-    ],
+    audienceLabel: 'Built for:',
+    audiences: ['HR teams', 'L&D departments', 'Training providers', 'Customer academies'],
   },
   features: {
     label: 'Why OnboardingToGo',
@@ -77,12 +73,12 @@ export const en = {
     previewVsLastQuarter: 'vs last quarter',
     items: [
       {
-        title: 'No per-user fees — ever',
-        desc: 'Flat monthly rate regardless of how many people train. Add 10 or 10,000 learners — your invoice stays the same.',
+        title: 'No per-user fees',
+        desc: 'Flat monthly rate regardless of how many people train. Add 10 or 10,000 learners, your invoice stays the same.',
       },
       {
         title: 'Full white-label',
-        desc: 'Your brand, domain, colors. Learners see you — not us. Custom emails, custom login, fully branded.',
+        desc: 'Your brand, domain, colors. Learners see you, not us. Custom emails, custom login, fully branded.',
       },
       {
         title: 'Live in days',
@@ -252,7 +248,7 @@ export const en = {
     sub: 'Join 1,200+ companies training with OnboardingToGo — one flat fee, unlimited learners.',
     cta: 'Talk to Us',
     link: 'Test it Yourself →',
-    note: 'No credit card · $3,000 setup · No per-user fees',
+    note: 'No credit card · No per-user fees',
   },
   footer: {
     desc: 'White-label training platform for organizations of all sizes. Set it up in days, train at scale without scaling costs.',

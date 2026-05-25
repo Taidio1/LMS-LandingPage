@@ -1,5 +1,14 @@
 ---
 import { Demo } from '../demo/Demo';
+import type { Lang } from '../../i18n/index';
+import { languageRoutes } from '../../i18n/index';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const homeHref = languageRoutes[lang];
 ---
 
-<Demo client:load />
+<Demo homeHref={homeHref} client:load />
