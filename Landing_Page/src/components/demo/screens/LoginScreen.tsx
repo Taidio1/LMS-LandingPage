@@ -11,23 +11,23 @@ export function LoginScreen({ onLogin }: Props) {
         <div className={styles.loginHeader}>
           <div className={styles.loginBadge}>Interactive Demo</div>
           <h1 className={styles.loginTitle}>OnboardingToGo LMS</h1>
-          <p className={styles.loginSubtitle}>Choose an account to explore the platform</p>
+          <p className={styles.loginSubtitle}>Choose a role to explore the platform</p>
         </div>
         <div className={styles.accountCards}>
           <div className={styles.accountCard}>
-            <div className={styles.accountAvatar} style={{ background: '#7C3AED' }}>SM</div>
-            <p className={styles.accountName}>Sarah Mitchell</p>
+            <div className={styles.accountAvatar} style={{ background: '#7C3AED' }}>⚙️</div>
+            <p className={styles.accountName}>Admin</p>
             <span className={styles.accountRole}>Platform Administrator</span>
             <button className={styles.accountBtn} onClick={() => onLogin('admin')}>
-              Log in as Sarah →
+              Log in as Admin →
             </button>
           </div>
           <div className={styles.accountCard}>
-            <div className={styles.accountAvatar} style={{ background: '#2563EB' }}>JP</div>
-            <p className={styles.accountName}>James Porter</p>
-            <span className={styles.accountRole}>Learner</span>
+            <div className={styles.accountAvatar} style={{ background: '#2563EB' }}>🎓</div>
+            <p className={styles.accountName}>Learner</p>
+            <span className={styles.accountRole}>Course Participant</span>
             <button className={styles.accountBtn} onClick={() => onLogin('learner')}>
-              Log in as James →
+              Log in as Learner →
             </button>
           </div>
         </div>

@@ -20,6 +20,12 @@ export const docsRoutes: Record<Lang, string> = {
   de: '/docs/',
 };
 
+export const demoRoutes: Record<Lang, string> = {
+  en: '/demo/',
+  pl: '/pl/demo/',
+  de: '/de/demo/',
+};
+
 export const languageLabels: Record<Lang, string> = {
   en: 'EN',
   pl: 'PL',

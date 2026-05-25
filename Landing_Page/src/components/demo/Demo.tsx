@@ -9,7 +9,6 @@ import { LearnerDashboard } from './screens/learner/LearnerDashboard';
 import { LearnerCourses } from './screens/learner/LearnerCourses';
 import { LearnerProgress } from './screens/learner/LearnerProgress';
 import { LearnerCertificates } from './screens/learner/LearnerCertificates';
-import { ADMIN_USER, LEARNER_USER } from './mock-data';
 
 type Screen = 'login' | 'app';
 type Role = 'admin' | 'learner';
@@ -48,8 +47,7 @@ export function Demo() {
 
   if (screen === 'login') return <LoginScreen onLogin={login} />;
 
-  const user = role === 'admin' ? ADMIN_USER : LEARNER_USER;
-  const nav  = role === 'admin' ? ADMIN_NAV  : LEARNER_NAV;
+  const nav = role === 'admin' ? ADMIN_NAV : LEARNER_NAV;
 
   const renderPage = () => {
     if (role === 'admin') {
@@ -86,9 +84,9 @@ export function Demo() {
             className={styles.headerAvatar}
             style={{ background: role === 'admin' ? '#7C3AED' : '#2563EB' }}
           >
-            {user.initials}
+            {role === 'admin' ? '⚙️' : '🎓'}
           </div>
-          <span className={styles.headerName}>{user.name}</span>
+          <span className={styles.headerName}>{role === 'admin' ? 'Admin' : 'Learner'}</span>
         </div>
         <button className={styles.exitBtn} onClick={exit}>← Exit demo</button>
       </header>

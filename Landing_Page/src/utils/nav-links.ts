@@ -1,4 +1,4 @@
-import { contactRoutes, docsRoutes, languageRoutes, type Lang } from '../i18n/index';
+import { contactRoutes, demoRoutes, docsRoutes, languageRoutes, type Lang } from '../i18n/index';
 
 export type NavSectionId = 'features' | 'pricing' | 'business' | 'faq' | 'signup';
 
@@ -19,4 +19,8 @@ export function getContactHref(lang: Lang) {
 
 export function getDocsHref(lang: Lang) {
   return docsRoutes[lang];
+}
+
+export function getDemoHref(lang: Lang) {
+  return demoRoutes[lang];
 }

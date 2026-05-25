@@ -7,6 +7,7 @@ import { pl } from "../../i18n/pl";
 import { de } from "../../i18n/de";
 import {
   getContactHref,
+  getDemoHref,
   getDocsHref,
   getNavSectionHref,
   type NavSectionId,
@@ -21,6 +22,7 @@ const sectionHref = (sectionId: NavSectionId) =>
   getNavSectionHref(lang, Astro.url.pathname, sectionId);
 const contactHref = getContactHref(lang);
 const docsHref = getDocsHref(lang);
+const demoHref = getDemoHref(lang);
 ---
 
 <header class="navbar" id="navbar">
@@ -128,7 +130,7 @@ const docsHref = getDocsHref(lang);
           }
         </ul>
       </div>
-      <Button variant="outline" href={docsHref}>{t.liveDemo}</Button>
+      <Button variant="outline" href={demoHref}>{t.liveDemo}</Button>
       <Button variant="gradient" href={contactHref}>{t.cta}</Button>
     </div>
 
@@ -170,7 +172,7 @@ const docsHref = getDocsHref(lang);
     }
   </nav>
   <div class="mobile-drawer__actions">
-    <Button variant="outline" href={docsHref} class="w-full"
+    <Button variant="outline" href={demoHref} class="w-full"
       >{t.liveDemo}</Button
     >
     <Button variant="gradient" href={contactHref} class="w-full">{t.cta}</Button
