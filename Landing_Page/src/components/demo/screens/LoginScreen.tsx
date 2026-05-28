@@ -1,11 +1,18 @@
 import styles from '../demo.module.css';
+import type { Lang } from '../../../i18n/index';
+import { en } from '../../../i18n/en';
+import { pl } from '../../../i18n/pl';
+import { de } from '../../../i18n/de';
 
 interface Props {
+  lang?: Lang;
   homeHref?: string;
   onLogin: (role: 'admin' | 'learner') => void;
 }
 
-export function LoginScreen({ homeHref = '/', onLogin }: Props) {
+export function LoginScreen({ lang = 'en', homeHref = '/', onLogin }: Props) {
+  const t = lang === 'de' ? de : lang === 'pl' ? pl : en;
+
   return (
     <div className={styles.loginBg}>
       {/* Background Decorations */}
@@ -19,28 +26,25 @@ export function LoginScreen({ homeHref = '/', onLogin }: Props) {
 
       <a className={styles.loginBackBtn} href={homeHref}>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        Wróć do strony
+        {t.demo.back}
       </a>
 
       <div className={styles.loginWrap}>
         <div className={styles.loginHeader}>
-          <h1 className={styles.loginTitle}>Witamy w demo OnboardingToGo</h1>
+          <h1 className={styles.loginTitle}>{t.demo.title}</h1>
           
-          <div className={styles.loginInfoBox}>
-            <p className={styles.loginInfoText}>
-              <b>Welcome to OnboardingToGo demo.</b>
+          <div className={styles.loginMainInfo}>
+            <p>{t.demo.infoText1}</p>
+            <p>{t.demo.infoText2}</p>
+          </div>
+
+          <div className={styles.loginNoticeBox}>
+            <p className={styles.loginNoticeText}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px', verticalAlign: 'text-bottom', opacity: 0.7 }}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              {t.demo.infoText3}
             </p>
-            <p className={styles.loginInfoText}>
-              Here you will find your login screen, but we will skip it for now for the seamless demo experience.
-            </p>
-            <p className={styles.loginInfoText}>
-              As a Platform user, you can login as <b>Admin</b> and as a <b>Trainee</b>. Check each of those, and learn about our platform capabilities.
-            </p>
-            <p className={styles.loginInfoText}>
-              <i>Remember, this all can be customized just for you, with your branding, and if needed, custom functionality.</i>
-            </p>
-            <p className={styles.loginInfoText}>
-              Test it and reach out to us to discuss.
+            <p className={styles.loginNoticeText}>
+              {t.demo.infoText4}
             </p>
           </div>
         </div>
@@ -51,9 +55,9 @@ export function LoginScreen({ homeHref = '/', onLogin }: Props) {
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             </div>
             <p className={styles.accountName}>Admin</p>
-            <span className={styles.accountRole}>Platform Administrator</span>
+            <span className={styles.accountRole}>{t.demo.adminRole}</span>
             <button className={styles.accountBtn} onClick={() => onLogin('admin')}>
-              Zaloguj jako Admin
+              {t.demo.loginAdmin}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
             </button>
           </div>
@@ -63,9 +67,9 @@ export function LoginScreen({ homeHref = '/', onLogin }: Props) {
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
             </div>
             <p className={styles.accountName}>Trainee</p>
-            <span className={styles.accountRole}>Course Participant</span>
+            <span className={styles.accountRole}>{t.demo.traineeRole}</span>
             <button className={styles.accountBtn} onClick={() => onLogin('learner')}>
-              Zaloguj jako Stażysta
+              {t.demo.loginTrainee}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
             </button>
           </div>

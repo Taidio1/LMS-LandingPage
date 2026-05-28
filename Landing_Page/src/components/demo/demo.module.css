@@ -87,30 +87,39 @@
   letter-spacing: -0.03em;
 }
 
-.loginInfoBox {
-  width: 100%;
-  background: #ffffff;
-  border: 1px solid #E2E8F0;
-  border-radius: 12px;
-  padding: 24px;
+.loginMainInfo {
   margin-top: 24px;
-  text-align: left;
-  box-shadow: 0 4px 12px rgba(62, 82, 232, 0.04);
-}
-
-.loginInfoText {
-  font-size: 14px;
-  color: #64748B;
+  font-size: 16px;
+  color: #1e293b;
   line-height: 1.6;
-  margin: 0 0 12px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.loginInfoText:last-child {
+.loginMainInfo p {
+  margin-bottom: 12px;
+}
+
+.loginNoticeBox {
+  margin-top: 32px;
+  padding: 16px 24px;
+  background: rgba(62, 82, 232, 0.03);
+  border-radius: 12px;
+  border: 1px dashed rgba(62, 82, 232, 0.2);
+  display: inline-block;
+  text-align: left;
+}
+
+.loginNoticeText {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.loginNoticeText:last-child {
   margin-bottom: 0;
-}
-
-.loginInfoText b {
-  color: #0F172A;
 }
 
 .accountCards {

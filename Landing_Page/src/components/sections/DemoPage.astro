@@ -11,4 +11,4 @@ const { lang = 'en' } = Astro.props;
 const homeHref = languageRoutes[lang];
 ---
 
-<Demo homeHref={homeHref} client:load />
+<Demo lang={lang} homeHref={homeHref} client:load />

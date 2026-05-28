@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './demo.module.css';
 import { LoginScreen } from './screens/LoginScreen';
+import type { Lang } from '../../i18n/index';
 import { AdminDashboard } from './screens/admin/AdminDashboard';
 import { AdminCourses } from './screens/admin/AdminCourses';
 import { AdminLearners } from './screens/admin/AdminLearners';
@@ -14,13 +15,14 @@ type Screen = 'login' | 'app';
 type Role = 'admin' | 'learner';
 
 interface Props {
+  lang?: Lang;
   homeHref?: string;
 }
 
 const ADMIN_NAV = [
   { id: 'dashboard',  label: 'Dashboard', icon: '📊' },
   { id: 'courses',    label: 'Courses',   icon: '📚' },
-  { id: 'learners',   label: 'Learners',  icon: '👥' },
+  { id: 'learners',   label: 'Trainees',  icon: '👥' },
   { id: 'reports',    label: 'Reports',   icon: '📈' },
 ];
 
@@ -31,7 +33,7 @@ const LEARNER_NAV = [
   { id: 'certificates', label: 'Certificates', icon: '🏆' },
 ];
 
-export function Demo({ homeHref = '/' }: Props) {
+export function Demo({ lang = 'en', homeHref = '/' }: Props) {
   const [screen, setScreen]           = useState<Screen>('login');
   const [role, setRole]               = useState<Role>('admin');
   const [page, setPage]               = useState('dashboard');
@@ -51,7 +53,7 @@ export function Demo({ homeHref = '/' }: Props) {
     window.scrollTo({ top: 0, left: 0 });
   };
 
-  if (screen === 'login') return <LoginScreen homeHref={homeHref} onLogin={login} />;
+  if (screen === 'login') return <LoginScreen lang={lang} homeHref={homeHref} onLogin={login} />;
 
   const nav = role === 'admin' ? ADMIN_NAV : LEARNER_NAV;
 
@@ -92,7 +94,7 @@ export function Demo({ homeHref = '/' }: Props) {
           >
             {role === 'admin' ? '⚙️' : '🎓'}
           </div>
-          <span className={styles.headerName}>{role === 'admin' ? 'Admin' : 'Learner'}</span>
+          <span className={styles.headerName}>{role === 'admin' ? 'Admin' : 'Trainee'}</span>
         </div>
         <button className={styles.exitBtn} onClick={exit}>← Exit demo</button>
         <a className={styles.siteBackBtn} href={homeHref}>Back to site</a>

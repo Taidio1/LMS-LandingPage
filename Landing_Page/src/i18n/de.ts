@@ -265,4 +265,17 @@ export const de: Translations = {
     terms: 'Nutzungsbedingungen',
     cookies: 'Cookies',
   },
+  demo: {
+    back: 'Zurück zur Seite',
+    title: 'Willkommen zur OnboardingToGo-Demo',
+    infoTitle: '',
+    infoText1: 'Hier finden Sie Ihren Anmeldebildschirm, aber wir werden ihn vorerst überspringen, um eine reibungslose Demo-Erfahrung zu ermöglichen.',
+    infoText2: 'Als Plattform-Benutzer können Sie sich als Admin und als Trainee anmelden. Testen Sie beide Rollen und lernen Sie die Funktionen unserer Plattform kennen.',
+    infoText3: 'Denken Sie daran, dass dies alles speziell für Sie angepasst werden kann, mit Ihrem Branding und bei Bedarf mit individuellen Funktionen.',
+    infoText4: 'Testen Sie es und kontaktieren Sie uns für ein Gespräch.',
+    adminRole: 'Plattform-Administrator',
+    traineeRole: 'Kursteilnehmer',
+    loginAdmin: 'Als Admin anmelden',
+    loginTrainee: 'Als Trainee anmelden',
+  },
 };

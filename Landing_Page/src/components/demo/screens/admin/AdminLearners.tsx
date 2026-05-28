@@ -16,7 +16,7 @@ export function AdminLearners() {
 
   return (
     <div>
-      <h1 className={styles.pageTitle}>Learners</h1>
+      <h1 className={styles.pageTitle}>Trainees</h1>
 
       <div className={styles.searchRow}>
         <input

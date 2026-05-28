@@ -265,4 +265,17 @@ export const pl: Translations = {
     terms: 'Regulamin',
     cookies: 'Cookies',
   },
+  demo: {
+    back: 'Wróć do strony',
+    title: 'Witamy w demo OnboardingToGo',
+    infoTitle: '',
+    infoText1: 'Tutaj znajdziesz ekran logowania, ale na razie go pominiemy, aby zapewnić płynne działanie wersji demonstracyjnej.',
+    infoText2: 'Jako użytkownik platformy możesz zalogować się jako Admin i jako Stażysta. Sprawdź każdą z tych ról i poznaj możliwości naszej platformy.',
+    infoText3: 'Pamiętaj, że wszystko to może zostać dostosowane specjalnie dla Ciebie, z Twoim brandingiem i, w razie potrzeby, niestandardową funkcjonalnością.',
+    infoText4: 'Przetestuj i skontaktuj się z nami, aby porozmawiać.',
+    adminRole: 'Administrator Platformy',
+    traineeRole: 'Uczestnik Kursu',
+    loginAdmin: 'Zaloguj jako Admin',
+    loginTrainee: 'Zaloguj jako Stażysta',
+  },
 };
