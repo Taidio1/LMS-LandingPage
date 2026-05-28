@@ -25,9 +25,24 @@ export function LoginScreen({ homeHref = '/', onLogin }: Props) {
       <div className={styles.loginWrap}>
         <div className={styles.loginHeader}>
           <h1 className={styles.loginTitle}>Witamy w demo OnboardingToGo</h1>
-          <p className={styles.loginSubtitle}>
-            Przetestuj możliwości naszej platformy logując się jako Admin lub Stażysta.
-          </p>
+          
+          <div className={styles.loginInfoBox}>
+            <p className={styles.loginInfoText}>
+              <b>Welcome to OnboardingToGo demo.</b>
+            </p>
+            <p className={styles.loginInfoText}>
+              Here you will find your login screen, but we will skip it for now for the seamless demo experience.
+            </p>
+            <p className={styles.loginInfoText}>
+              As a Platform user, you can login as <b>Admin</b> and as a <b>Trainee</b>. Check each of those, and learn about our platform capabilities.
+            </p>
+            <p className={styles.loginInfoText}>
+              <i>Remember, this all can be customized just for you, with your branding, and if needed, custom functionality.</i>
+            </p>
+            <p className={styles.loginInfoText}>
+              Test it and reach out to us to discuss.
+            </p>
+          </div>
         </div>
 
         <div className={styles.accountCards}>
