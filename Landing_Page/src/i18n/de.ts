@@ -212,7 +212,6 @@ export const de: Translations = {
         ctaHref: '/de/contact/',
         features: [
           'alles in Standard',
-          'Workflow-Automatisierung',
           'Rollen & Berechtigungen',
           'erweitertes Reporting',
           'API-Zugang',
@@ -237,10 +236,8 @@ export const de: Translations = {
         features: [
           'alles in Business',
           'White-Label-Plattform',
-          'SSO / SAML',
           'Audit-Logs',
           'Multi-Organisations-Support',
-          'dedizierte Umgebung',
           'erweiterte Berechtigungen',
           'SLA',
           'individuelle Integrationen',

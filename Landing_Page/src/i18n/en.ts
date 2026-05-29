@@ -210,7 +210,6 @@ export const en = {
         ctaHref: '/contact/',
         features: [
           'everything in Standard',
-          'workflow automation',
           'roles & permissions',
           'advanced reporting',
           'API access',
@@ -235,10 +234,8 @@ export const en = {
         features: [
           'everything in Business',
           'white-label platform',
-          'SSO / SAML',
           'audit logs',
           'multi-organization support',
-          'dedicated environment',
           'advanced permissions',
           'SLA',
           'custom integrations',

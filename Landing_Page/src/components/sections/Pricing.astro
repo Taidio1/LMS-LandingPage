@@ -1,17 +1,18 @@
 ---
-import type { Lang } from '../../i18n/index';
-import { en } from '../../i18n/en';
-import { pl } from '../../i18n/pl';
-import { de } from '../../i18n/de';
+import type { Lang } from "../../i18n/index";
+import { en } from "../../i18n/en";
+import { pl } from "../../i18n/pl";
+import { de } from "../../i18n/de";
 
-interface Props { lang?: Lang; }
-const { lang = 'en' } = Astro.props;
-const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).pricing;
+interface Props {
+  lang?: Lang;
+}
+const { lang = "en" } = Astro.props;
+const t = (lang === "de" ? de : lang === "pl" ? pl : en).pricing;
 ---
 
 <section class="pricing" id="pricing">
   <div class="container">
-
     <div class="section-header reveal">
       <span class="section-label">{t.label}</span>
       <h2 class="section-title">{t.title}</h2>
@@ -21,75 +22,122 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).pricing;
     <!-- ── Cloud Deployment ─────────────────────────────── -->
     <div class="pricing__section reveal">
       <div class="pricing__section-hd">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
         </svg>
         <h3 class="pricing__section-title">{t.cloudTitle}</h3>
       </div>
 
       <div class="pricing__grid">
-        {t.cloudPlans.map(plan => (
-          <div class={`pricing__card${plan.featured ? ' pricing__card--featured' : ''}`}>
-            {plan.featured && <span class="pricing__badge">{t.recommendedBadge}</span>}
-
-            <h4 class="pricing__plan-name">{plan.name}</h4>
-            <p class="pricing__plan-desc">{plan.desc}</p>
-
-            <div class="pricing__price-block">
-              <div class="pricing__setup-row">
-                {plan.startingFromSetup && (
-                  <span class="pricing__from-tag">{t.startingFrom}</span>
-                )}
-                <span class="pricing__setup-amount">
-                  {t.currencyPrefix}{plan.setupFee}{t.currencySuffix}
-                </span>
-                <span class="pricing__setup-label">{t.setupLabel}</span>
-              </div>
-
-              <div class="pricing__monthly-wrap">
-                {plan.startingFromMonthly && (
-                  <span class="pricing__from-sm">{t.startingFrom}</span>
-                )}
-                <div class="pricing__monthly">
-                  <span class="pricing__cur-pre">{t.currencyPrefix}</span>
-                  <span class="pricing__amount">{plan.monthlyFee}</span>
-                  <span class="pricing__cur-suf">{t.currencySuffix}</span>
-                </div>
-                <span class="pricing__period">{plan.monthlyLabel}</span>
-              </div>
-            </div>
-
-            <a
-              href={plan.ctaHref}
-              class={`pricing__cta ${plan.featured ? 'pricing__cta--white' : plan.ctaContact ? 'pricing__cta--contact' : 'pricing__cta--outline'}`}
+        {
+          t.cloudPlans.map((plan) => (
+            <div
+              class={`pricing__card${plan.featured ? " pricing__card--featured" : ""}`}
             >
-              {plan.cta}
-            </a>
+              {plan.featured && (
+                <span class="pricing__badge">{t.recommendedBadge}</span>
+              )}
 
-            <ul class="pricing__features">
-              {plan.features.map(f => (
-                <li class="pricing__feature">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M5 13l4 4L19 7"
-                      stroke={plan.featured ? 'rgba(255,255,255,0.85)' : '#4F46E5'}
-                      stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  {f}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+              <h4 class="pricing__plan-name">{plan.name}</h4>
+              <p class="pricing__plan-desc">{plan.desc}</p>
+
+              <div class="pricing__price-block">
+                <div class="pricing__setup-row">
+                  {plan.startingFromSetup && (
+                    <span class="pricing__from-tag">{t.startingFrom}</span>
+                  )}
+                  <span class="pricing__setup-amount">
+                    {t.currencyPrefix}
+                    {plan.setupFee}
+                    {t.currencySuffix}
+                  </span>
+                  <span class="pricing__setup-label">{t.setupLabel}</span>
+                </div>
+
+                <div class="pricing__monthly-wrap">
+                  <div class="pricing__monthly">
+                    <span class="pricing__cur-pre">{t.currencyPrefix}</span>
+                    <span class="pricing__amount">{plan.monthlyFee}</span>
+                    <span class="pricing__cur-suf">{t.currencySuffix}</span>
+                  </div>
+                  <span class="pricing__period">{plan.monthlyLabel}</span>
+                  {plan.startingFromMonthly && (
+                    <span class="pricing__from-sm">{t.startingFrom}</span>
+                  )}
+                </div>
+              </div>
+
+              <a
+                href={plan.ctaHref}
+                class={`pricing__cta ${plan.featured ? "pricing__cta--white" : plan.ctaContact ? "pricing__cta--contact" : "pricing__cta--outline"}`}
+              >
+                {plan.cta}
+              </a>
+
+              <ul class="pricing__features">
+                {plan.features.map((f) => (
+                  <li class="pricing__feature">
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M5 13l4 4L19 7"
+                        stroke={
+                          plan.featured ? "rgba(255,255,255,0.85)" : "#4F46E5"
+                        }
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
       </div>
     </div>
 
     <!-- ── On-Premise Deployment ────────────────────────── -->
     <div class="pricing__section reveal">
       <div class="pricing__section-hd">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <rect
+            x="2"
+            y="3"
+            width="20"
+            height="14"
+            rx="2"
+            stroke="currentColor"
+            stroke-width="1.5"></rect>
+          <path
+            d="M8 21h8M12 17v4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"></path>
         </svg>
         <h3 class="pricing__section-title">{t.onpremTitle}</h3>
       </div>
@@ -97,13 +145,17 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).pricing;
       <div class="pricing__onprem-card">
         <div class="pricing__onprem-left">
           <h4 class="pricing__plan-name">{t.onpremPlan.name}</h4>
-          <p class="pricing__plan-desc pricing__plan-desc--onprem">{t.onpremPlan.desc}</p>
+          <p class="pricing__plan-desc pricing__plan-desc--onprem">
+            {t.onpremPlan.desc}
+          </p>
 
           <div class="pricing__price-block">
             <div class="pricing__setup-row">
-              {t.onpremPlan.startingFromSetup && (
-                <span class="pricing__from-tag">{t.startingFrom}</span>
-              )}
+              {
+                t.onpremPlan.startingFromSetup && (
+                  <span class="pricing__from-tag">{t.startingFrom}</span>
+                )
+              }
               <span class="pricing__setup-amount">
                 {t.currencyPrefix}{t.onpremPlan.setupFee}{t.currencySuffix}
               </span>
@@ -111,33 +163,51 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).pricing;
             </div>
 
             <div class="pricing__monthly-wrap">
-              {t.onpremPlan.startingFromMonthly && (
-                <span class="pricing__from-sm">{t.startingFrom}</span>
-              )}
               <div class="pricing__monthly">
                 <span class="pricing__cur-pre">{t.currencyPrefix}</span>
                 <span class="pricing__amount">{t.onpremPlan.monthlyFee}</span>
                 <span class="pricing__cur-suf">{t.currencySuffix}</span>
               </div>
               <span class="pricing__period">{t.onpremPlan.monthlyLabel}</span>
+              {
+                t.onpremPlan.startingFromMonthly && (
+                  <span class="pricing__from-sm">{t.startingFrom}</span>
+                )
+              }
             </div>
           </div>
 
-          <a href={t.onpremPlan.ctaHref} class="pricing__cta pricing__cta--onprem">
+          <a
+            href={t.onpremPlan.ctaHref}
+            class="pricing__cta pricing__cta--onprem"
+          >
             {t.onpremPlan.cta}
           </a>
         </div>
 
         <ul class="pricing__features pricing__onprem-features">
-          {t.onpremPlan.features.map(f => (
-            <li class="pricing__feature">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 13l4 4L19 7" stroke="#4F46E5" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              {f}
-            </li>
-          ))}
+          {
+            t.onpremPlan.features.map((f) => (
+              <li class="pricing__feature">
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M5 13l4 4L19 7"
+                    stroke="#4F46E5"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                {f}
+              </li>
+            ))
+          }
         </ul>
       </div>
     </div>
@@ -146,23 +216,40 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).pricing;
     <div class="pricing__included reveal">
       <h3 class="pricing__included-title">{t.includedTitle}</h3>
       <ul class="pricing__included-grid">
-        {t.includedItems.map(item => (
-          <li class="pricing__included-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <circle cx="12" cy="12" r="10" fill="#EEF2FF"/>
-              <path d="M8 12l3 3 5-5" stroke="#4F46E5" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            {item}
-          </li>
-        ))}
+        {
+          t.includedItems.map((item) => (
+            <li class="pricing__included-item">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" fill="#EEF2FF" />
+                <path
+                  d="M8 12l3 3 5-5"
+                  stroke="#4F46E5"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              {item}
+            </li>
+          ))
+        }
       </ul>
     </div>
 
     <!-- ── Bottom CTA ────────────────────────────────────── -->
     <div class="pricing__bottom-cta reveal">
-      <a href={t.ctaPrimaryHref} class="pricing__btn-demo" id="pricing-cta-demo">{t.ctaPrimary}</a>
-      <a href={t.ctaSecondaryHref} class="pricing__btn-try" id="pricing-cta-try">{t.ctaSecondary} →</a>
+      <a href={t.ctaPrimaryHref} class="pricing__btn-demo" id="pricing-cta-demo"
+        >{t.ctaPrimary}</a
+      >
+      <a href={t.ctaSecondaryHref} class="pricing__btn-try" id="pricing-cta-try"
+        >{t.ctaSecondary} →</a
+      >
     </div>
 
     <p class="pricing__note reveal">{t.note}</p>
@@ -170,287 +257,450 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).pricing;
 </section>
 
 <style>
-/* ─── Section wrapper ────────────────────────────────── */
-.pricing { background: var(--bg-surface); }
+  /* ─── Section wrapper ────────────────────────────────── */
+  .pricing {
+    background: var(--bg-surface);
+  }
 
-/* ─── Sub-section (cloud / on-prem) ─────────────────── */
-.pricing__section { margin-bottom: 48px; }
+  /* ─── Sub-section (cloud / on-prem) ─────────────────── */
+  .pricing__section {
+    margin-bottom: 48px;
+  }
 
-.pricing__section-hd {
-  display: flex; align-items: center; gap: 9px;
-  margin-bottom: 20px; color: var(--text-secondary);
-}
-.pricing__section-title {
-  font-size: 11px; font-weight: 800; letter-spacing: 0.10em;
-  text-transform: uppercase; color: var(--text-secondary); margin: 0;
-}
+  .pricing__section-hd {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+  }
+  .pricing__section-title {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin: 0;
+  }
 
-/* ─── Cloud plan grid ────────────────────────────────── */
-.pricing__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  align-items: stretch;
-}
-
-/* ─── Plan card ──────────────────────────────────────── */
-.pricing__card {
-  background: var(--bg-primary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius);
-  padding: 32px;
-  position: relative;
-  transition: var(--transition);
-  display: flex;
-  flex-direction: column;
-}
-.pricing__card:not(.pricing__card--featured):hover {
-  border-color: var(--border-brand);
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-3px);
-}
-.pricing__card--featured {
-  background: var(--gradient-brand);
-  border: none;
-  transform: scale(1.04);
-  box-shadow: var(--shadow-glow);
-}
-
-/* Badge */
-.pricing__badge {
-  position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-  background: #fff; color: #4F46E5;
-  font-size: 11px; font-weight: 700; letter-spacing: 0.02em;
-  padding: 4px 14px; border-radius: 999px;
-  white-space: nowrap; box-shadow: 0 2px 12px rgba(79,70,229,0.28);
-}
-
-/* Plan name & desc */
-.pricing__plan-name {
-  font-size: 20px; font-weight: 700; color: var(--text-primary);
-  margin: 0 0 8px; letter-spacing: -0.02em;
-}
-.pricing__plan-desc {
-  font-size: 13px; color: var(--text-secondary);
-  margin: 0 0 24px; line-height: 1.55; min-height: 38px;
-}
-.pricing__card--featured .pricing__plan-name { color: #fff; }
-.pricing__card--featured .pricing__plan-desc { color: rgba(255,255,255,0.72); }
-
-/* ─── Price block ────────────────────────────────────── */
-.pricing__price-block { margin-bottom: 20px; }
-
-.pricing__setup-row {
-  display: flex; align-items: center; gap: 6px;
-  margin-bottom: 10px; flex-wrap: wrap;
-}
-.pricing__from-tag {
-  font-size: 10px; font-weight: 800; text-transform: uppercase;
-  letter-spacing: 0.07em; color: #6D6AFF;
-  background: #EEF2FF; border: 1px solid #C7D2FE;
-  padding: 2px 8px; border-radius: 4px; white-space: nowrap;
-}
-.pricing__card--featured .pricing__from-tag {
-  background: rgba(255,255,255,0.2);
-  border-color: rgba(255,255,255,0.35);
-  color: rgba(255,255,255,0.9);
-}
-.pricing__setup-amount {
-  font-size: 17px; font-weight: 700; color: var(--text-primary);
-}
-.pricing__setup-label {
-  font-size: 12px; color: var(--text-secondary);
-}
-.pricing__card--featured .pricing__setup-amount { color: rgba(255,255,255,0.95); }
-.pricing__card--featured .pricing__setup-label  { color: rgba(255,255,255,0.6); }
-
-/* Monthly display */
-.pricing__monthly-wrap { margin-bottom: 0; }
-.pricing__from-sm {
-  display: block; font-size: 10px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.06em;
-  color: var(--text-secondary); margin-bottom: 1px;
-}
-.pricing__card--featured .pricing__from-sm { color: rgba(255,255,255,0.55); }
-
-.pricing__monthly {
-  display: flex; align-items: flex-end; gap: 1px; line-height: 1;
-}
-.pricing__cur-pre {
-  font-size: 19px; font-weight: 600;
-  color: var(--text-secondary); padding-bottom: 6px;
-}
-.pricing__amount {
-  font-size: 42px; font-weight: 800;
-  color: var(--text-primary); letter-spacing: -0.03em; line-height: 1;
-}
-.pricing__cur-suf {
-  font-size: 16px; font-weight: 700;
-  color: var(--text-secondary); padding-bottom: 5px; margin-left: 3px;
-}
-.pricing__period {
-  display: block; font-size: 11px; color: var(--text-secondary);
-  margin-top: 5px; line-height: 1.4;
-}
-.pricing__card--featured .pricing__cur-pre,
-.pricing__card--featured .pricing__amount   { color: #fff; }
-.pricing__card--featured .pricing__cur-suf  { color: rgba(255,255,255,0.75); }
-.pricing__card--featured .pricing__period   { color: rgba(255,255,255,0.58); }
-
-/* ─── Card CTA buttons ───────────────────────────────── */
-.pricing__cta {
-  display: block; text-align: center;
-  padding: 12px 20px; border-radius: var(--radius-btn);
-  font-size: 14px; font-weight: 600; letter-spacing: 0.01em;
-  transition: var(--transition); margin: 20px 0 24px;
-  text-decoration: none; cursor: pointer;
-}
-.pricing__cta--white {
-  background: #fff; color: #4F46E5;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
-}
-.pricing__cta--white:hover { background: #F5F3FF; transform: translateY(-2px); }
-
-.pricing__cta--outline {
-  background: transparent; color: var(--text-primary);
-  border: 1.5px solid var(--border-subtle);
-}
-.pricing__cta--outline:hover {
-  border-color: var(--brand-accent); color: var(--brand-accent);
-  transform: translateY(-2px);
-}
-.pricing__cta--contact {
-  background: #1e1b4b; color: #fff; border: none;
-}
-.pricing__cta--contact:hover {
-  background: #312e81; transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(30,27,75,0.35);
-}
-
-/* ─── Features list ──────────────────────────────────── */
-.pricing__features {
-  display: flex; flex-direction: column; gap: 9px;
-  list-style: none; padding: 0; margin: 0;
-  flex: 1;
-}
-.pricing__feature {
-  display: flex; align-items: flex-start; gap: 9px;
-  font-size: 13px; color: var(--text-primary); line-height: 1.4;
-}
-.pricing__feature svg { flex-shrink: 0; margin-top: 1px; }
-.pricing__card--featured .pricing__feature { color: rgba(255,255,255,0.88); }
-
-/* ─── On-Premise card ────────────────────────────────── */
-.pricing__onprem-card {
-  display: flex; gap: 48px; align-items: flex-start;
-  background: var(--bg-primary);
-  border: 1px solid var(--border-subtle);
-  border-left: 4px solid #4F46E5;
-  border-radius: var(--radius);
-  padding: 40px;
-  transition: var(--transition);
-}
-.pricing__onprem-card:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-2px);
-}
-.pricing__onprem-left { flex: 0 0 340px; }
-.pricing__plan-desc--onprem { min-height: unset; }
-
-.pricing__onprem-features {
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px 32px;
-  align-content: start;
-  padding-top: 4px;
-}
-
-.pricing__cta--onprem {
-  display: inline-block; text-align: center;
-  padding: 12px 28px; border-radius: var(--radius-btn);
-  font-size: 14px; font-weight: 600;
-  background: var(--gradient-brand); color: #fff;
-  text-decoration: none; transition: var(--transition);
-  box-shadow: var(--shadow-glow);
-}
-.pricing__cta--onprem:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(79,70,229,0.38);
-}
-
-/* ─── Included in Every Plan ─────────────────────────── */
-.pricing__included {
-  background: linear-gradient(135deg, #F8F7FF 0%, #EEF2FF 100%);
-  border: 1px solid #DDD6FE;
-  border-radius: var(--radius);
-  padding: 40px;
-  margin-bottom: 40px;
-}
-.pricing__included-title {
-  font-size: 16px; font-weight: 700; color: var(--text-primary);
-  margin: 0 0 20px; letter-spacing: -0.01em; text-align: center;
-}
-.pricing__included-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px 24px;
-  list-style: none; padding: 0; margin: 0;
-}
-.pricing__included-item {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 13px; font-weight: 500; color: var(--text-primary);
-}
-
-/* ─── Bottom CTA ─────────────────────────────────────── */
-.pricing__bottom-cta {
-  display: flex; justify-content: center; align-items: center;
-  gap: 16px; margin-bottom: 20px; flex-wrap: wrap;
-}
-.pricing__btn-demo {
-  display: inline-block; padding: 15px 40px;
-  font-size: 15px; font-weight: 700; letter-spacing: 0.01em;
-  border-radius: var(--radius-btn); text-decoration: none;
-  background: var(--gradient-brand); color: #fff;
-  box-shadow: var(--shadow-glow); transition: var(--transition);
-}
-.pricing__btn-demo:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(79,70,229,0.42);
-}
-.pricing__btn-try {
-  display: inline-block; padding: 15px 24px;
-  font-size: 14px; font-weight: 600; color: var(--text-secondary);
-  text-decoration: none; transition: var(--transition);
-}
-.pricing__btn-try:hover { color: var(--brand-accent); }
-
-/* ─── Note ───────────────────────────────────────────── */
-.pricing__note {
-  text-align: center; font-size: 13px;
-  color: var(--text-secondary); margin: 0;
-}
-
-/* ─── Responsive ─────────────────────────────────────── */
-@media (max-width: 1024px) {
+  /* ─── Cloud plan grid ────────────────────────────────── */
   .pricing__grid {
-    grid-template-columns: 1fr;
-    max-width: 460px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
   }
-  .pricing__card--featured { transform: none; }
+
+  /* ─── Plan card ──────────────────────────────────────── */
+  .pricing__card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius);
+    padding: 32px;
+    position: relative;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+  }
+  .pricing__card:not(.pricing__card--featured):hover {
+    border-color: var(--border-brand);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+  }
+  .pricing__card--featured {
+    background: var(--gradient-brand);
+    border: none;
+    transform: scale(1.04);
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Badge */
+  .pricing__badge {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #4f46e5;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 4px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+    box-shadow: 0 2px 12px rgba(79, 70, 229, 0.28);
+  }
+
+  /* Plan name & desc */
+  .pricing__plan-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+  }
+  .pricing__plan-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0 0 24px;
+    line-height: 1.55;
+    min-height: 44px;
+  }
+  .pricing__card--featured .pricing__plan-name {
+    color: #fff;
+  }
+  .pricing__card--featured .pricing__plan-desc {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  /* ─── Price block ────────────────────────────────────── */
+  .pricing__price-block {
+    margin-bottom: 20px;
+    min-height: 135px;
+  }
+
+  .pricing__setup-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .pricing__from-tag {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #6d6aff;
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .pricing__card--featured .pricing__from-tag {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.9);
+  }
+  .pricing__setup-amount {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+  }
+  .pricing__setup-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+  .pricing__card--featured .pricing__setup-amount {
+    color: rgba(255, 255, 255, 0.95);
+  }
+  .pricing__card--featured .pricing__setup-label {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Monthly display */
+  .pricing__monthly-wrap {
+    margin-bottom: 0;
+    min-height: 90px;
+  }
+  .pricing__from-sm {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    margin-top: 5px;
+  }
+  .pricing__card--featured .pricing__from-sm {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .pricing__monthly {
+    display: flex;
+    align-items: flex-end;
+    gap: 1px;
+    line-height: 1;
+  }
+  .pricing__cur-pre {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding-bottom: 6px;
+  }
+  .pricing__amount {
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .pricing__cur-suf {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    padding-bottom: 5px;
+    margin-left: 3px;
+  }
+  .pricing__period {
+    display: block;
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+  .pricing__card--featured .pricing__cur-pre,
+  .pricing__card--featured .pricing__amount {
+    color: #fff;
+  }
+  .pricing__card--featured .pricing__cur-suf {
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .pricing__card--featured .pricing__period {
+    color: rgba(255, 255, 255, 0.58);
+  }
+
+  /* ─── Card CTA buttons ───────────────────────────────── */
+  .pricing__cta {
+    display: block;
+    text-align: center;
+    padding: 12px 20px;
+    border-radius: var(--radius-btn);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: var(--transition);
+    margin: 20px 0 24px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .pricing__cta--white {
+    background: #fff;
+    color: #4f46e5;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+  }
+  .pricing__cta--white:hover {
+    background: #f5f3ff;
+    transform: translateY(-2px);
+  }
+
+  .pricing__cta--outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1.5px solid var(--border-subtle);
+  }
+  .pricing__cta--outline:hover {
+    border-color: var(--brand-accent);
+    color: var(--brand-accent);
+    transform: translateY(-2px);
+  }
+  .pricing__cta--contact {
+    background: #1e1b4b;
+    color: #fff;
+    border: none;
+  }
+  .pricing__cta--contact:hover {
+    background: #312e81;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(30, 27, 75, 0.35);
+  }
+
+  /* ─── Features list ──────────────────────────────────── */
+  .pricing__features {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  }
+  .pricing__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 13px;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+  .pricing__feature svg {
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .pricing__card--featured .pricing__feature {
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  /* ─── On-Premise card ────────────────────────────────── */
   .pricing__onprem-card {
-    flex-direction: column; gap: 28px;
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid #4f46e5;
+    border-radius: var(--radius);
+    padding: 40px;
+    transition: var(--transition);
   }
-  .pricing__onprem-left { flex: none; width: 100%; }
+  .pricing__onprem-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+  .pricing__onprem-left {
+    flex: 0 0 340px;
+  }
+  .pricing__plan-desc--onprem {
+    min-height: unset;
+  }
+
   .pricing__onprem-features {
-    grid-template-columns: 1fr 1fr; padding-top: 0;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 32px;
+    align-content: start;
+    padding-top: 4px;
   }
-  .pricing__included-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px) {
-  .pricing__onprem-features { grid-template-columns: 1fr; }
-  .pricing__included-grid { grid-template-columns: 1fr; }
-  .pricing__bottom-cta { flex-direction: column; }
-  .pricing__onprem-card { padding: 28px 20px; }
-}
+
+  .pricing__cta--onprem {
+    display: inline-block;
+    text-align: center;
+    padding: 12px 28px;
+    border-radius: var(--radius-btn);
+    font-size: 14px;
+    font-weight: 600;
+    background: var(--gradient-brand);
+    color: #fff;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: var(--shadow-glow);
+  }
+  .pricing__cta--onprem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.38);
+  }
+
+  /* ─── Included in Every Plan ─────────────────────────── */
+  .pricing__included {
+    background: linear-gradient(135deg, #f8f7ff 0%, #eef2ff 100%);
+    border: 1px solid #ddd6fe;
+    border-radius: var(--radius);
+    padding: 40px;
+    margin-bottom: 40px;
+  }
+  .pricing__included-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 20px;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+  .pricing__included-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .pricing__included-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  /* ─── Bottom CTA ─────────────────────────────────────── */
+  .pricing__bottom-cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .pricing__btn-demo {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    border-radius: var(--radius-btn);
+    text-decoration: none;
+    background: var(--gradient-brand);
+    color: #fff;
+    box-shadow: var(--shadow-glow);
+    transition: var(--transition);
+  }
+  .pricing__btn-demo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(79, 70, 229, 0.42);
+  }
+  .pricing__btn-try {
+    display: inline-block;
+    padding: 15px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  .pricing__btn-try:hover {
+    color: var(--brand-accent);
+  }
+
+  /* ─── Note ───────────────────────────────────────────── */
+  .pricing__note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* ─── Responsive ─────────────────────────────────────── */
+  @media (max-width: 1100px) {
+    .pricing__grid {
+      grid-template-columns: 1fr;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+    .pricing__card--featured {
+      transform: none;
+    }
+    .pricing__onprem-card {
+      flex-direction: column;
+      gap: 28px;
+    }
+    .pricing__onprem-left {
+      flex: none;
+      width: 100%;
+    }
+    .pricing__onprem-features {
+      grid-template-columns: 1fr 1fr;
+      padding-top: 0;
+    }
+    .pricing__included-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .pricing__onprem-features {
+      grid-template-columns: 1fr;
+    }
+    .pricing__included-grid {
+      grid-template-columns: 1fr;
+    }
+    .pricing__bottom-cta {
+      flex-direction: column;
+    }
+    .pricing__onprem-card {
+      padding: 28px 20px;
+    }
+  }
 </style>
