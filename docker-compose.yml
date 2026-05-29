@@ -13,7 +13,6 @@ services:
       - "3000:80"
     depends_on:
       - landing-page
-      - lms-app
 
   landing-page:
     build:
@@ -21,17 +20,6 @@ services:
       dockerfile: Dockerfile
     image: lms-landing-page:latest
     container_name: lms-landing-page
-    restart: unless-stopped
-    networks:
-      - lms_network
-    # Brak publicznych portów — dostęp tylko przez nginx-proxy
-
-  lms-app:
-    build:
-      context: ./LMS_Odysseio_app
-      dockerfile: Dockerfile
-    image: lms-odysseio-app:latest
-    container_name: lms-odysseio-app
     restart: unless-stopped
     networks:
       - lms_network
