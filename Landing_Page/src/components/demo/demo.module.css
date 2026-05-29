@@ -87,6 +87,15 @@
   letter-spacing: -0.03em;
 }
 
+.loginTitleLive {
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+  color: #3e52e8;
+  letter-spacing: -0.02em;
+  margin-top: 4px;
+}
+
 .loginMainInfo {
   margin-top: 24px;
   font-size: 16px;

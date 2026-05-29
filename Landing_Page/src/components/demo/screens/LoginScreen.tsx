@@ -31,21 +31,13 @@ export function LoginScreen({ lang = 'en', homeHref = '/', onLogin }: Props) {
 
       <div className={styles.loginWrap}>
         <div className={styles.loginHeader}>
-          <h1 className={styles.loginTitle}>{t.demo.title}</h1>
-          
-          <div className={styles.loginMainInfo}>
-            <p>{t.demo.infoText1}</p>
-            <p>{t.demo.infoText2}</p>
-          </div>
+          <h1 className={styles.loginTitle}>
+            {t.demo.title}
+            <span className={styles.loginTitleLive}>{t.demo.titleLive}</span>
+          </h1>
 
-          <div className={styles.loginNoticeBox}>
-            <p className={styles.loginNoticeText}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px', verticalAlign: 'text-bottom', opacity: 0.7 }}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              {t.demo.infoText3}
-            </p>
-            <p className={styles.loginNoticeText}>
-              {t.demo.infoText4}
-            </p>
+          <div className={styles.loginMainInfo}>
+            <p style={{ textAlign: 'justify' }}>{t.demo.infoText1} {t.demo.infoText2}</p>
           </div>
         </div>
 
@@ -73,6 +65,16 @@ export function LoginScreen({ lang = 'en', homeHref = '/', onLogin }: Props) {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
             </button>
           </div>
+        </div>
+
+        <div className={styles.loginNoticeBox}>
+          <p className={styles.loginNoticeText}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px', verticalAlign: 'text-bottom', opacity: 0.7 }}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            {t.demo.infoText3}
+          </p>
+          <p className={styles.loginNoticeText}>
+            {t.demo.infoText4}
+          </p>
         </div>
       </div>
     </div>

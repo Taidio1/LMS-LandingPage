@@ -321,7 +321,8 @@ export const en = {
   },
   demo: {
     back: 'Back to site',
-    title: 'Welcome to OnboardingToGo demo',
+    title: 'Welcome to OnboardingToGo',
+    titleLive: 'Live demo',
     infoTitle: '',
     infoText1: 'Here you will find your loging screen, but we will skip it for now for the seampleas demo experience.',
     infoText2: 'As an Platform user, you can login as Admin and as a Traineed. Check each of those, and learn about our platform capabilities.',
@@ -329,8 +330,8 @@ export const en = {
     infoText4: 'Test it and reach out to use to discuss',
     adminRole: 'Platform Administrator',
     traineeRole: 'Course Participant',
-    loginAdmin: 'Zaloguj jako Admin',
-    loginTrainee: 'Zaloguj jako Stażysta',
+    loginAdmin: 'Login as Admin',
+    loginTrainee: 'Login as Trainee',
   },
 };
 

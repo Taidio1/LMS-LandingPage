@@ -323,7 +323,8 @@ export const de: Translations = {
   },
   demo: {
     back: 'Zurück zur Seite',
-    title: 'Willkommen zur OnboardingToGo-Demo',
+    title: 'Willkommen bei OnboardingToGo',
+    titleLive: 'Live demo',
     infoTitle: '',
     infoText1: 'Hier finden Sie Ihren Anmeldebildschirm, aber wir werden ihn vorerst überspringen, um eine reibungslose Demo-Erfahrung zu ermöglichen.',
     infoText2: 'Als Plattform-Benutzer können Sie sich als Admin und als Trainee anmelden. Testen Sie beide Rollen und lernen Sie die Funktionen unserer Plattform kennen.',

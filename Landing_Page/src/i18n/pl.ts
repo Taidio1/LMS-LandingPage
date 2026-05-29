@@ -323,7 +323,8 @@ export const pl: Translations = {
   },
   demo: {
     back: 'Wróć do strony',
-    title: 'Witamy w demo OnboardingToGo',
+    title: 'Witamy w OnboardingToGo',
+    titleLive: 'Live demo',
     infoTitle: '',
     infoText1: 'Tutaj znajdziesz ekran logowania, ale na razie go pominiemy, aby zapewnić płynne działanie wersji demonstracyjnej.',
     infoText2: 'Jako użytkownik platformy możesz zalogować się jako Admin i jako Stażysta. Sprawdź każdą z tych ról i poznaj możliwości naszej platformy.',
