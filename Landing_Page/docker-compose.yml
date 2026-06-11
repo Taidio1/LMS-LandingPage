@@ -6,6 +6,8 @@ services:
     build: .
     container_name: lms-landing-page-standalone
     restart: unless-stopped
+    env_file:
+      - .env
     ports:
-      # Host 4000 -> Nginx 80
-      - "4000:80"
+      # Host 4000 -> Node (Astro) 4321
+      - "4000:4321"

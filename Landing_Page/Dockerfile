@@ -10,19 +10,24 @@ RUN npm install
 # Kopiowanie reszty kodu aplikacji
 COPY . .
 
-# Budowanie aplikacji (Astro domyślnie generuje pliki statyczne w folderze /dist)
+# Budowanie aplikacji (tryb hybrid: statyczne strony + serwerowy endpoint /api/contact)
 RUN npm run build
 
-# Etap serwowania z użyciem lekkiego Nginx
-FROM nginx:alpine
+# Etap serwowania — Node (adapter @astrojs/node, standalone)
+FROM node:20-alpine
 
-# Usunięcie domyślnej konfiguracji Nginx i skopiowanie własnych zasobów statycznych
-RUN rm -rf /usr/share/nginx/html/*
-COPY --from=builder /app/dist /usr/share/nginx/html
+WORKDIR /app
 
-# Własny config nginx (cache, gzip, security headers)
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+ENV NODE_ENV=production
+ENV HOST=0.0.0.0
+ENV PORT=4321
 
-EXPOSE 80
+# Tylko zależności produkcyjne (m.in. nodemailer używany w runtime)
+COPY package*.json ./
+RUN npm install --omit=dev
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY --from=builder /app/dist ./dist
+
+EXPOSE 4321
+
+CMD ["node", "./dist/server/entry.mjs"]

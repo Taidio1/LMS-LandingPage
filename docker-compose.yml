@@ -21,6 +21,9 @@ services:
     image: lms-landing-page:latest
     container_name: lms-landing-page
     restart: unless-stopped
+    # Dane SMTP (Mailgun) — plik trzeba utworzyć na serwerze, nie jest w repo
+    env_file:
+      - ./Landing_Page/.env
     networks:
       - lms_network
     # Brak publicznych portów — dostęp tylko przez nginx-proxy

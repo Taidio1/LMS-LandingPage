@@ -64,7 +64,13 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).contact;
           <textarea name="message" rows="5" placeholder={t.messagePlaceholder} required></textarea>
         </label>
 
+        <label class="contact-form__hp" aria-hidden="true">
+          <span>Website</span>
+          <input name="website" tabindex="-1" autocomplete="off" />
+        </label>
+
         <button type="submit" class="contact-form__submit">{t.submit}</button>
+        <p class="contact-form__status" id="contactFormStatus" role="status" hidden></p>
         <p class="contact-form__note">{t.responseTime}</p>
       </form>
     </div>
@@ -250,6 +256,37 @@ const t = (lang === 'de' ? de : lang === 'pl' ? pl : en).contact;
   line-height: 1.5;
   text-align: center;
 }
+/* Honeypot — niewidoczne dla ludzi, boty wypełniają */
+.contact-form__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.contact-form__status {
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+}
+.contact-form__status--success {
+  background: rgba(5,150,105,0.1);
+  color: #047857;
+  border: 1px solid rgba(5,150,105,0.25);
+}
+.contact-form__status--error {
+  background: rgba(220,38,38,0.08);
+  color: #B91C1C;
+  border: 1px solid rgba(220,38,38,0.22);
+}
+.contact-form__submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
 .contact-direct {
   grid-column: 1 / -1;
   display: grid;
@@ -320,28 +357,48 @@ a.contact-direct__item:hover {
 }
 </style>
 
-<script define:vars={{ contactEmail: t.contactEmail }}>
+<script define:vars={{ labels: { submit: t.submit, sending: t.submitSending, success: t.submitSuccess, error: t.submitError } }}>
   const form = document.getElementById('contactForm');
+  const status = document.getElementById('contactFormStatus');
+  const submitButton = form?.querySelector('.contact-form__submit');
 
-  form?.addEventListener('submit', (event) => {
+  function showStatus(kind, text) {
+    status.textContent = text;
+    status.classList.remove('contact-form__status--success', 'contact-form__status--error');
+    status.classList.add(`contact-form__status--${kind}`);
+    status.hidden = false;
+  }
+
+  form?.addEventListener('submit', async (event) => {
     event.preventDefault();
     const data = new FormData(form);
-    const name = String(data.get('name') ?? '').trim();
-    const email = String(data.get('email') ?? '').trim();
-    const company = String(data.get('company') ?? '').trim();
-    const topic = String(data.get('topic') ?? '').trim();
-    const message = String(data.get('message') ?? '').trim();
+    const payload = {
+      name: String(data.get('name') ?? '').trim(),
+      email: String(data.get('email') ?? '').trim(),
+      company: String(data.get('company') ?? '').trim(),
+      topic: String(data.get('topic') ?? '').trim(),
+      message: String(data.get('message') ?? '').trim(),
+      website: String(data.get('website') ?? ''),
+    };
 
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Company: ${company || '-'}`,
-      `Topic: ${topic}`,
-      '',
-      message,
-    ].join('\n');
+    submitButton.disabled = true;
+    submitButton.textContent = labels.sending;
+    status.hidden = true;
 
-    const subject = `OnBoardToGo inquiry: ${topic || 'Contact'}`;
-    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
+      form.reset();
+      showStatus('success', labels.success);
+    } catch {
+      showStatus('error', labels.error);
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = labels.submit;
+    }
   });
 </script>
