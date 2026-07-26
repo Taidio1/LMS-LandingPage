@@ -16,6 +16,15 @@ const t = lang === 'de' ? de : lang === 'pl' ? pl : en;
 <!DOCTYPE html>
 <html lang={lang}>
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-QKPYMJLW7J"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QKPYMJLW7J');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={t.meta.description} />
